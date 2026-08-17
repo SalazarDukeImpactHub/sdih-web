@@ -54,7 +54,7 @@ export function ParticleNetwork({
   const particlesRef = useRef<Particle[]>([])
   const sparklesRef = useRef<Sparkle[]>([])
   const dataStreamsRef = useRef<DataStream[]>([])
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | undefined>(undefined)
   const mouseRef = useRef({ x: -1000, y: -1000 })
   const frameCountRef = useRef(0)
 

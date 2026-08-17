@@ -7,6 +7,8 @@ import {
   Sparkles,
   Download,
   ExternalLink,
+  Bot,
+  Clock,
   type LucideIcon,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -21,6 +23,7 @@ interface Resource {
   featured?: boolean
   note?: string
   href?: string
+  disabled?: boolean
 }
 
 const resources: Resource[] = [
@@ -29,18 +32,28 @@ const resources: Resource[] = [
     title: "De Cero a Experto",
     type: "eBook",
     description:
-      "Guia completa para revolucionar tu negocio con inteligencia artificial. Un e-book practico con herramientas y aplicaciones reales para implementar IA.",
+      "Guía completa para revolucionar tu negocio con inteligencia artificial. Un e-book práctico con herramientas y aplicaciones reales para implementar IA.",
     action: "Comprar e-book",
     actionIcon: ExternalLink,
     featured: true,
     href: "https://pay.hotmart.com/D101421926A?bid=1756677646366",
   },
   {
+    icon: Bot,
+    title: "Galería de GPTs",
+    type: "Interactivo",
+    description:
+      "Sala de experimentación con GPTs personalizados. Interactúa con herramientas de IA especializadas para diferentes casos de uso.",
+    action: "Explorar GPTs",
+    actionIcon: ExternalLink,
+    href: "https://humorous-polyester-33a.notion.site/Sala-de-Experimentaci-n-GPTs-Interact-a-y-Descubre-el-Poder-de-la-IA-25330d9b1a1180ddba0dc3d2da96ff7d",
+  },
+  {
     icon: FileText,
     title: "Templates Notion",
     type: "Plantillas",
     description:
-      "Coleccion de templates de Notion optimizados para gestion de proyectos, productividad y organizacion.",
+      "Colección de templates de Notion optimizados para gestión de proyectos, productividad y organización.",
     action: "Ver Templates",
     actionIcon: ExternalLink,
     href: "https://www.notion.com/en-gb/@jennifersalazarduke",
@@ -48,12 +61,22 @@ const resources: Resource[] = [
   {
     icon: Sparkles,
     title: "Notion AI",
-    type: "Promocion",
+    type: "Promoción",
     description:
-      "Potencia tu productividad con Notion AI integrada. Accede a traves de nuestro enlace de afiliado.",
+      "Potencia tu productividad con Notion AI integrada. Accede a través de nuestro enlace de afiliado.",
     action: "Obtener Notion AI",
     actionIcon: ExternalLink,
     href: "https://affiliate.notion.so/yetpzpcwupr5",
+  },
+  {
+    icon: Music,
+    title: "Podcast",
+    type: "Próximamente",
+    description:
+      "Entre Café, IA y Blockchain — Conversaciones sobre innovación, tecnología y el futuro. Historias reales de emprendimiento y transformación digital.",
+    action: "Próximamente",
+    actionIcon: Clock,
+    disabled: true,
   },
 ]
 
@@ -85,12 +108,14 @@ export function Resources() {
         </div>
 
         {/* Resources Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {resources.map((resource) => (
             <div
               key={resource.title}
               className={`relative group p-6 rounded-xl border transition-all duration-300 ${
-                resource.featured
+                resource.disabled
+                  ? "bg-card/30 border-border/30 opacity-60"
+                  : resource.featured
                   ? "bg-primary/5 border-primary/30 hover:border-primary/50"
                   : "bg-card border-border hover:border-primary/30"
               }`}
@@ -99,7 +124,9 @@ export function Resources() {
               <div className="absolute top-4 right-4">
                 <span
                   className={`text-xs px-2 py-1 rounded-full ${
-                    resource.featured
+                    resource.disabled
+                      ? "bg-muted text-muted-foreground"
+                      : resource.featured
                       ? "bg-primary/20 text-primary"
                       : "bg-muted text-muted-foreground"
                   }`}
@@ -111,12 +138,20 @@ export function Resources() {
               {/* Icon */}
               <div
                 className={`inline-flex p-3 rounded-lg mb-4 ${
-                  resource.featured ? "bg-primary/20" : "bg-muted"
+                  resource.disabled
+                    ? "bg-muted/20"
+                    : resource.featured
+                    ? "bg-primary/20"
+                    : "bg-muted"
                 }`}
               >
                 <resource.icon
                   className={`w-5 h-5 ${
-                    resource.featured ? "text-primary" : "text-muted-foreground"
+                    resource.disabled
+                      ? "text-muted-foreground/50"
+                      : resource.featured
+                      ? "text-primary"
+                      : "text-muted-foreground"
                   }`}
                 />
               </div>
@@ -135,7 +170,21 @@ export function Resources() {
               )}
 
               {/* Action */}
-              {resource.href ? (
+              {resource.disabled ? (
+                <Button
+                  variant={resource.featured ? "default" : "outline"}
+                  size="sm"
+                  disabled
+                  className={`w-full ${
+                    resource.featured
+                      ? "bg-primary/50 text-primary-foreground/50"
+                      : "border-border/50 text-muted-foreground/50 hover:bg-transparent"
+                  }`}
+                >
+                  <resource.actionIcon className="w-4 h-4 mr-2" />
+                  {resource.action}
+                </Button>
+              ) : resource.href ? (
                 <a href={resource.href} target="_blank" rel="noopener noreferrer" className="block">
                   <Button
                     variant={resource.featured ? "default" : "outline"}

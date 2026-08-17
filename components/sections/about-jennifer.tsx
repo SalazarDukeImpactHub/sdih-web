@@ -10,7 +10,7 @@ const features = [
   },
   {
     icon: Network,
-    title: "Metodologia KAIA",
+    title: "Metodología KAIA",
   },
   {
     icon: Lightbulb,
@@ -100,7 +100,7 @@ export function AboutJennifer() {
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              En febrero de 2023 perdi a mi hermano. Ese dolor se convirtio en mision: crear sistemas donde la salud mental no sea un diagnostico que limita, sino conocimiento que se estructura, se mide y se escala. Hoy convierto 30 anos de conocimiento clinico en TLP de la Dra. Maria Victoria Perez en un asistente de IA consultable, y construyo mi propio sistema de autocuidado con CBT e inteligencia artificial. Diseno desde la experiencia — vivo con la condicion que estoy sistematizando.
+              En febrero de 2023 perdí a mi hermano. Ese dolor se convirtió en misión: crear sistemas donde la salud mental no sea un diagnóstico que limita, sino conocimiento que se estructura, se mide y se escala. Hoy convierto 30 años de conocimiento clínico en TLP de la Dra. María Victoria Pérez en un asistente de IA consultable, y construyo mi propio sistema de autocuidado con CBT e inteligencia artificial. Diseño desde la experiencia — vivo con la condición que estoy sistematizando.
             </p>
 
             {/* Features Grid */}

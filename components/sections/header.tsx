@@ -10,11 +10,11 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { label: "Inicio", href: "#hero" },
-  { label: "Sobre Jennifer", href: "#jennifer" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Asesorias", href: "#asesorias" },
-  { label: "Recursos", href: "#recursos" },
+  { label: "Historia", href: "#jennifer" },
+  { label: "Talleres", href: "#talleres" },
   { label: "Proyectos", href: "#proyectos" },
+  { label: "Asesorías", href: "#asesorias" },
+  { label: "Recursos", href: "#recursos" },
 ]
 
 export function Header() {
@@ -75,7 +75,9 @@ export function Header() {
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              <Link href="#asesorias">Agendar Asesoria</Link>
+              <a href="https://wa.me/573136139790" target="_blank" rel="noopener noreferrer">
+                Agendar asesoría
+              </a>
             </Button>
           </div>
 
@@ -116,9 +118,9 @@ export function Header() {
               asChild
               className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              <Link href="#asesorias" onClick={() => setIsMobileMenuOpen(false)}>
-                Agendar Asesoria
-              </Link>
+              <a href="https://wa.me/573136139790" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
+                Agendar asesoría
+              </a>
             </Button>
           </div>
         </nav>

@@ -25,23 +25,23 @@ const WHATSAPP_NUMBER = "573136139790"
 const capabilities = [
   {
     icon: Brain,
-    title: "Sistemas de IA para conocimiento clinico",
+    title: "Sistemas de IA para conocimiento clínico",
   },
   {
     icon: Workflow,
-    title: "Automatizacion de procesos con impacto",
+    title: "Automatización de procesos con impacto",
   },
   {
     icon: FolderKanban,
-    title: "Gestion del conocimiento organizacional",
+    title: "Gestión del conocimiento organizacional",
   },
   {
     icon: Lightbulb,
-    title: "Estrategia de transformacion digital",
+    title: "Estrategia de transformación digital",
   },
   {
     icon: Blocks,
-    title: "Diseno de productos de IA",
+    title: "Diseño de productos de IA",
   },
   {
     icon: Target,
@@ -52,57 +52,57 @@ const capabilities = [
 const benefits = [
   {
     icon: Rocket,
-    title: "Enfoque Practico",
-    description: "Cada sesion esta disenada para que salgas con acciones concretas que puedas implementar de inmediato.",
+    title: "Enfoque Práctico",
+    description: "Cada sesión está diseñada para que salgas con acciones concretas que puedas implementar de inmediato.",
   },
   {
     icon: Zap,
     title: "Personalizado",
-    description: "Trabajamos directamente sobre tu caso, proyecto o negocio especifico, no con contenido generico.",
+    description: "Trabajamos directamente sobre tu caso, proyecto o negocio específico, no con contenido genérico.",
   },
   {
     icon: LineChart,
     title: "Resultados Medibles",
-    description: "Definimos juntos metricas claras para evaluar el impacto de las soluciones implementadas.",
+    description: "Definimos juntos métricas claras para evaluar el impacto de las soluciones implementadas.",
   },
   {
     icon: Shield,
-    title: "Acompanamiento",
-    description: "No solo te doy herramientas, te acompano en el proceso de implementacion y resolucion de dudas.",
+    title: "Acompañamiento",
+    description: "No solo te doy herramientas, te acompaño en el proceso de implementación y resolución de dudas.",
   },
 ]
 
 const faqs = [
   {
-    question: "Que es Salazar Duke Impact Hub?",
-    answer: "Un ecosistema de innovacion social donde la neurodiversidad es ventaja competitiva. Usamos IA, automatizacion y trazabilidad para convertir conocimiento clinico y experiencia de vida en sistemas medibles. La fundadora vive con TLP y es el primer caso de uso del sistema que construye.",
+    question: "¿Qué es Salazar Duke Impact Hub?",
+    answer: "Un ecosistema de innovación social donde la neurodiversidad es ventaja competitiva. Usamos IA, automatización y trazabilidad para convertir conocimiento clínico y experiencia de vida en sistemas medibles. La fundadora vive con TLP y es el primer caso de uso del sistema que construye.",
   },
   {
-    question: "Como es el proceso para trabajar juntos?",
-    answer: "Primero conversamos por WhatsApp para entender tu situacion y objetivos. Luego definimos el alcance del acompanamiento segun tus necesidades especificas y acordamos los terminos. Finalmente, comenzamos a trabajar en sesiones personalizadas.",
+    question: "¿Cómo es el proceso para trabajar juntos?",
+    answer: "Primero conversamos por WhatsApp para entender tu situación y objetivos. Luego definimos el alcance del acompañamiento según tus necesidades específicas y acordamos los términos. Finalmente, comenzamos a trabajar en sesiones personalizadas.",
   },
   {
-    question: "Que tipo de proyectos puedo traer?",
-    answer: "Puedes traer cualquier proyecto relacionado con transformacion digital, implementacion de IA, automatizacion de procesos, estructuracion de negocios digitales, o cualquier iniciativa donde la tecnologia pueda generar impacto.",
+    question: "¿Qué tipo de proyectos puedo traer?",
+    answer: "Puedes traer cualquier proyecto relacionado con transformación digital, implementación de IA, automatización de procesos, estructuración de negocios digitales, o cualquier iniciativa donde la tecnología pueda generar impacto.",
   },
   {
-    question: "Necesito conocimientos tecnicos previos?",
-    answer: "No es necesario tener conocimientos tecnicos previos. Las sesiones se adaptan a tu nivel actual y objetivos especificos. Mi rol es traducir lo complejo en acciones simples y entendibles.",
+    question: "¿Necesito conocimientos técnicos previos?",
+    answer: "No es necesario tener conocimientos técnicos previos. Las sesiones se adaptan a tu nivel actual y objetivos específicos. Mi rol es traducir lo complejo en acciones simples y entendibles.",
   },
   {
-    question: "Trabajas con empresas o solo con personas?",
-    answer: "Trabajo tanto con emprendedores individuales como con equipos y empresas. El enfoque se adapta segun el contexto, pero siempre manteniendo un acompanamiento cercano y personalizado.",
+    question: "¿Trabajas con empresas o solo con personas?",
+    answer: "Trabajo tanto con emprendedores individuales como con equipos y empresas. El enfoque se adapta según el contexto, pero siempre manteniendo un acompañamiento cercano y personalizado.",
   },
   {
-    question: "Que tan rapido puedo ver resultados?",
-    answer: "Depende del proyecto, pero mi enfoque es que desde la primera sesion tengas claridad y acciones concretas. Algunos resultados son inmediatos, otros requieren implementacion gradual.",
+    question: "¿Qué tan rápido puedo ver resultados?",
+    answer: "Depende del proyecto, pero mi enfoque es que desde la primera sesión tengas claridad y acciones concretas. Algunos resultados son inmediatos, otros requieren implementación gradual.",
   },
 ]
 
 export function Advisory() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
-  const whatsappMessage = "Hola, me interesa conocer mas sobre las asesorias de Salazar Duke Impact Hub. Me gustaria saber como podemos trabajar juntos."
+  const whatsappMessage = "Hola, me interesa conocer más sobre las asesorías de Salazar Duke Impact Hub. Me gustaría saber cómo podemos trabajar juntos."
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
 
   return (
@@ -128,7 +128,7 @@ export function Advisory() {
           </h2>
 
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-6 text-pretty leading-relaxed">
-            Diseno sistemas que convierten conocimiento en operacion medible. Si trabajas en salud mental, educacion, deep tech o impacto social y necesitas estructurar tu informacion, tus procesos o tu conocimiento con tecnologia — hablemos.
+            Diseño sistemas que convierten conocimiento en operación medible. Si trabajas en salud mental, educación, deep tech o impacto social y necesitas estructurar tu información, tus procesos o tu conocimiento con tecnología — hablemos.
           </p>
 
           <p className="max-w-2xl mx-auto text-base text-foreground/70 leading-relaxed">
@@ -139,7 +139,7 @@ export function Advisory() {
         {/* ===== SECTION 2: CAPABILITIES ===== */}
         <div className="mb-20">
           <h3 className="text-xl font-semibold text-foreground text-center mb-8">
-            En que puedo ayudarte
+            ¿En qué puedo ayudarte?
           </h3>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -162,7 +162,7 @@ export function Advisory() {
         {/* ===== SECTION 3: BENEFITS ===== */}
         <div className="mb-20">
           <h3 className="text-xl font-semibold text-foreground text-center mb-8">
-            Como trabajo
+            ¿Cómo trabajo?
           </h3>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
@@ -193,7 +193,7 @@ export function Advisory() {
               Hablemos sobre tu proyecto
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Cuentame que estas construyendo o que desafio enfrentas. Juntos podemos definir como la tecnologia puede ayudarte a alcanzar tus objetivos.
+              Cuéntame qué estás construyendo o qué desafío enfrentas. Juntos podemos definir cómo la tecnología puede ayudarte a alcanzar tus objetivos.
             </p>
             
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
@@ -207,7 +207,7 @@ export function Advisory() {
             </a>
 
             <p className="text-sm text-muted-foreground mt-4">
-              Sin compromiso - Solo una conversacion para conocer tu caso
+              Sin compromiso - Solo una conversación para conocer tu caso
             </p>
           </div>
         </div>

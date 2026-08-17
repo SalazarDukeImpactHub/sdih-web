@@ -6,20 +6,20 @@ import { MessageCircle, Mail, Linkedin, Instagram, ArrowUp } from "lucide-react"
 
 const navigation = {
   ecosystem: [
+    { name: "Talleres", href: "https://talleres.salazardukeimpacthubteam.com/", external: true },
     { name: "Asesorías", href: "#asesorias" },
-    { name: "GPTs", href: "#gpts" },
     { name: "Recursos", href: "#recursos" },
     { name: "Proyectos", href: "#proyectos" },
   ],
   resources: [
     { name: "eBook", href: "#recursos" },
     { name: "Templates", href: "#recursos" },
-    { name: "Podcast", href: "#podcast" },
+    { name: "GPTs", href: "#recursos" },
   ],
   connect: [
     { name: "Comunidad WhatsApp", href: "https://chat.whatsapp.com/JRMehCKsyNkL84iHJGro1r", external: true },
     { name: "Instagram", href: "https://www.instagram.com/salazardukeimpacthub/", external: true },
-    { name: "TikTok", href: "https://www.tiktok.com/@salazardukeimpacthub?lang=en", external: true },
+    { name: "TikTok", href: "https://www.tiktok.com/@salazardukeimpacthub", external: true },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/jennifer-salazar-duke-1194b2289", external: true },
   ],
 }
@@ -66,7 +66,7 @@ export function Footer() {
                 />
               </Link>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mb-6">
-                Ecosistema de innovacion social liderado por Jennifer Salazar Duke. Salud mental + tecnologia = doble impacto medible. Medellin, Colombia.
+                Ecosistema de innovación social liderado por Jennifer Salazar Duke. Salud mental + tecnología = doble impacto medible. Medellín, Colombia.
               </p>
               {/* Social Links */}
               <div className="flex gap-3">

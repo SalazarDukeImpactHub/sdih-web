@@ -16,7 +16,7 @@ export function AIAssistant({
   gptUrl = "https://chatgpt.com/g/g-69b36d312d5c8191bf0520f296509dfc-asesor-ia-salazar-duke-impact-hub",
   whatsappUrl = "https://api.whatsapp.com/send/?phone=573136139790&text&type=phone_number&app_absent=0",
   assistantName = "Asistente Salazar Duke",
-  welcomeMessage = "Hola, soy el asistente de Salazar Duke Impact Hub. Estoy aqui para ayudarte a explorar nuestro ecosistema de innovacion.",
+  welcomeMessage = "Hola, soy el asistente de Salazar Duke Impact Hub. Estoy aquí para ayudarte a explorar nuestro ecosistema de innovación.",
 }: AIAssistantProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [hasInteracted, setHasInteracted] = useState(false)

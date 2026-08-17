@@ -66,7 +66,7 @@ export function Hero() {
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/30 backdrop-blur-sm mb-8 animate-fade-in">
           <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
           <span className="text-sm text-muted-foreground tracking-wide">
-            Innovacion social donde la salud mental es ventaja competitiva
+            Innovación social donde la salud mental es ventaja competitiva
           </span>
         </div>
 
@@ -79,9 +79,9 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="max-w-3xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10 animate-fade-in-up delay-100">
-          Sistemas de IA, automatizacion y trazabilidad al servicio del bienestar integral.{" "}
+          Sistemas de IA, automatización y trazabilidad al servicio del bienestar integral.{" "}
           <span className="text-foreground font-medium">Doble impacto medible</span>:{" "}
-          valor para empresas, proposito real para personas.
+          valor para empresas, propósito real para personas.
         </p>
 
         {/* CTAs */}
@@ -91,10 +91,10 @@ export function Hero() {
             size="lg"
             className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base group"
           >
-            <Link href="#asesorias">
-              Agendar Asesoría
+            <a href="https://wa.me/573136139790" target="_blank" rel="noopener noreferrer">
+              Agendar asesoría
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            </a>
           </Button>
           <Button
             asChild
@@ -102,7 +102,7 @@ export function Hero() {
             size="lg"
             className="border-border hover:bg-muted/50 px-8 py-6 text-base"
           >
-            <Link href="#servicios">Explorar Ecosistema</Link>
+            <Link href="#talleres">Ver talleres</Link>
           </Button>
         </div>
 

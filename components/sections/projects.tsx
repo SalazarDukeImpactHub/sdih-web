@@ -1,33 +1,93 @@
 "use client"
 
-import { ArrowUpRight, Compass, Dna, Sparkles } from "lucide-react"
+import { ArrowUpRight, Sparkles, Trophy, Medal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const projects = [
+interface Project {
+  id: number
+  title: string
+  category: string
+  description: string
+  tags: string[]
+  href: string
+  badge?: string
+  icon?: React.ReactNode
+}
+
+const featuredProjects: Project[] = [
   {
     id: 1,
-    title: "Proyecto Ikigai ML",
-    category: "Desarrollo de Investigacion",
+    title: "Musa Harness",
+    category: "Fábrica de contenido con voz de marca",
     description:
-      "Conoce el ADN de habilidades por profesion. Es un desarrollo de investigacion que permite conocer el ADN de habilidades por profesion para tener una perspectiva distinta. Puedes interactuar con ella de manera gratuita y acceder a los documentos de desarrollo.",
-    tags: ["ADN Profesional", "Analisis de Habilidades", "Perspectiva Unica", "Documentos Gratis"],
-    icon: Compass,
-    status: "En desarrollo",
-    accentColor: "from-emerald-500/20 to-teal-500/20",
-    borderAccent: "group-hover:border-emerald-500/40",
-    href: "https://humorous-polyester-33a.notion.site/Proyecto-Ikigai-Encuentra-tu-Prop-sito-Profesional-con-IA-25130d9b1a1180dcbb3dda82ffd7ac21",
+      "Sistema de generación de contenido multi-canal que mantiene consistencia de voz de marca mientras escala producción. Arquitectura de agentes de IA especializados.",
+    tags: ["Agentes IA", "Contenido", "Automatización", "Voz de marca"],
+    href: "https://github.com/SalazarDukeImpactHub/musa-harness",
+    badge: "🏆 1er lugar",
   },
   {
     id: 2,
-    title: "Clasificador Biomedico Multietiqueta",
-    category: "De titulo + abstract a areas medicas en segundos",
+    title: "CavalTech",
+    category: "Auditoría automatizada de LRPD (Ley 1581)",
     description:
-      "IA que clasifica literatura cientifica automaticamente. Una herramienta de IA que lee el titulo y el resumen de un articulo cientifico y predice si pertenece a una o varias areas medicas. Ahorra tiempo en la clasificacion de literatura biomedica, ayudando a priorizar que leer primero con una interfaz simple y resultados claros.",
-    tags: ["Cardiovascular", "Neurologico", "Hepatorrenal", "Oncologico"],
-    icon: Dna,
-    status: "Completado",
-    accentColor: "from-primary/20 to-emerald-500/20",
-    borderAccent: "group-hover:border-primary/40",
+      "Autodiagnóstico impulsado por IA para cumplimiento de la Ley 1581 (protección de datos en Colombia). Next.js + Supabase + Claude. Detecta brechas de privacidad en minutos.",
+    tags: ["Compliance", "IA Legal", "Protección datos", "Colombia"],
+    href: "https://github.com/SalazarDukeImpactHub/cavaltechackathon",
+    badge: "🥈 2do lugar",
+  },
+  {
+    id: 3,
+    title: "Centinela",
+    category: "Agente de voz para seguimiento posoperatorio",
+    description:
+      "Sistema RAG de inteligencia artificial que realiza seguimiento post-operatorio mediante entrevistas conversacionales. Recall 12/12 en identificación de casos críticos. Participante Tech Sphere Challenge 2026.",
+    tags: ["RAG", "Voz", "Salud", "Crítico"],
+    href: "https://github.com/SalazarDukeImpactHub/centinela",
+    badge: "🎯 Tech Sphere 2026",
+  },
+  {
+    id: 4,
+    title: "Ikigai IA",
+    category: "Orientador vocacional con ML y NLP",
+    description:
+      "Sistema de inteligencia artificial que cruza datos de O*NET y DANE para orientación vocacional personalizada. Ayuda a personas a encontrar su propósito profesional con base científica.",
+    tags: ["ML", "Vocacional", "NLP", "Datos públicos"],
+    href: "https://github.com/SalazarDukeImpactHub/Ikigai-IA-ML",
+  },
+  {
+    id: 5,
+    title: "Asesor Virtual SDIH",
+    category: "Bot de Telegram para recomendaciones",
+    description:
+      "Asistente inteligente en Telegram que recomienda talleres y asesorías según el perfil del usuario. Personalización en tiempo real basada en preferencias y objetivos.",
+    tags: ["Telegram", "Bot", "Recomendaciones", "Perfilación"],
+    href: "https://github.com/SalazarDukeImpactHub/asesor-sdih-bootcamp",
+  },
+]
+
+const secondaryProjects: Project[] = [
+  {
+    id: 6,
+    title: "Chatbot INGE LEAN",
+    category: "Asistente especializado en metodología LEAN",
+    description: "Bot interactivo para enseñanza y consulta de prácticas LEAN.",
+    tags: ["Chatbot", "LEAN", "Educación"],
+    href: "https://github.com/SalazarDukeImpactHub",
+  },
+  {
+    id: 7,
+    title: "Sistema de Talento Humano Comfachocó",
+    category: "Plataforma integral de gestión de RR.HH.",
+    description: "Solución desarrollada en hackathon para optimizar procesos de talento humano.",
+    tags: ["RR.HH.", "Hackathon", "Gestión"],
+    href: "https://github.com/SalazarDukeImpactHub",
+  },
+  {
+    id: 8,
+    title: "Clasificador Biomédico Multietiqueta",
+    category: "Clasificación de literatura científica",
+    description: "IA que clasifica artículos científicos automáticamente por área médica (F1 ≈ 0.905).",
+    tags: ["ML", "Biomedicina", "Clasificación"],
     href: "https://huggingface.co/spaces/jennifersalazarduke/clasificador-biomedicoTECH_SPHERE",
   },
 ]
@@ -40,7 +100,7 @@ export function Projects() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm text-primary font-medium tracking-wide">
@@ -49,65 +109,68 @@ export function Projects() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-            Innovación en <span className="text-primary">Acción</span>
+            Innovación en <span className="text-primary">acción</span>
           </h2>
 
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground text-pretty">
-            Proyectos que demuestran la aplicación práctica de tecnología
-            emergente para resolver desafíos reales.
+            Proyectos que demuestran la aplicación práctica de tecnología emergente para resolver desafíos reales.
+            Desde hackathones ganadores hasta investigación que se convierte en producto.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project) => (
-            <div
+        {/* Featured Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          {featuredProjects.map((project, index) => (
+            <a
               key={project.id}
-              className={`group relative bg-card border border-border rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 ${project.borderAccent}`}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative bg-card border border-border rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30 ${
+                index < 2 ? "lg:col-span-1" : ""
+              }`}
             >
               {/* Gradient Accent */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
               {/* Content */}
               <div className="relative p-6 lg:p-8">
                 {/* Header Row */}
                 <div className="flex items-start justify-between mb-6">
-                  {/* Icon */}
-                  <div className="relative">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <project.icon className="w-7 h-7 text-primary" />
-                    </div>
+                  <div className="flex-1">
+                    {/* Badge if exists */}
+                    {project.badge && (
+                      <div className="mb-3 inline-block">
+                        <span className="text-xs px-3 py-1.5 rounded-full font-medium bg-primary/20 text-primary">
+                          {project.badge}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  
-                  {/* Status Badge */}
-                  <span
-                    className={`text-xs px-3 py-1.5 rounded-full font-medium ${
-                      project.status === "Completado"
-                        ? "bg-primary/20 text-primary"
-                        : "bg-muted text-muted-foreground border border-border"
-                    }`}
-                  >
-                    {project.status}
-                  </span>
+
+                  {/* External Icon */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ArrowUpRight className="w-5 h-5 text-primary" />
+                  </div>
                 </div>
 
                 {/* Category */}
-                <div className="text-sm text-primary font-medium mb-2">
+                <div className="text-xs text-primary/80 font-semibold tracking-wide mb-2">
                   {project.category}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
                   {project.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-6 text-sm lg:text-base">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                   {project.description}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -117,35 +180,81 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-
-                {/* Action */}
-                {project.href ? (
-                  <a href={project.href} target="_blank" rel="noopener noreferrer">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group/btn"
-                    >
-                      <span>Explorar proyecto</span>
-                      <ArrowUpRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                    </Button>
-                  </a>
-                ) : (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all group/btn"
-                  >
-                    <span>Ver mas</span>
-                    <ArrowUpRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </Button>
-                )}
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
+        {/* Secondary Projects Divider */}
+        <div className="my-16 relative">
+          <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="relative flex justify-center">
+            <span className="bg-background px-4 text-xs text-muted-foreground tracking-widest uppercase">
+              Otros proyectos
+            </span>
+          </div>
+        </div>
 
+        {/* Secondary Projects Grid */}
+        <div className="grid md:grid-cols-3 gap-4 lg:gap-6 mb-8">
+          {secondaryProjects.map((project) => (
+            <a
+              key={project.id}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative p-5 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 hover:bg-card transition-all duration-300"
+            >
+              {/* Content */}
+              <div className="relative">
+                {/* Category */}
+                <div className="text-xs text-primary/70 font-medium mb-2 group-hover:text-primary transition-colors">
+                  {project.category}
+                </div>
+
+                {/* Title */}
+                <h4 className="text-sm font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 flex items-center gap-2">
+                  {project.title}
+                  <ArrowUpRight className="w-3 h-3 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </h4>
+
+                {/* Description */}
+                <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs px-2 py-0.5 rounded-full bg-muted/30 text-muted-foreground/80 border border-border/30"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center">
+          <p className="text-sm text-muted-foreground mb-4">
+            Descubre más proyectos y detalles técnicos en nuestro GitHub
+          </p>
+          <Button
+            asChild
+            variant="outline"
+            className="border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+          >
+            <a href="https://github.com/SalazarDukeImpactHub" target="_blank" rel="noopener noreferrer">
+              Ver todo en GitHub
+              <ArrowUpRight className="w-4 h-4 ml-2" />
+            </a>
+          </Button>
+        </div>
       </div>
     </section>
   )

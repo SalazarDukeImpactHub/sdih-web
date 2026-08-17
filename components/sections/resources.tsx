@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/ui/reveal"
 
 interface Resource {
   icon: LucideIcon
@@ -96,10 +97,12 @@ export function Resources() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
-            Herramientas para tu{" "}
-            <span className="text-primary">Crecimiento</span>
-          </h2>
+          <Reveal>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Herramientas para tu{" "}
+              <span className="text-primary">Crecimiento</span>
+            </h2>
+          </Reveal>
 
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             Recursos, guías y promociones exclusivas para acelerar tu
@@ -108,11 +111,12 @@ export function Resources() {
         </div>
 
         {/* Resources Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-          {resources.map((resource) => (
-            <div
-              key={resource.title}
-              className={`relative group p-6 rounded-xl border transition-all duration-300 ${
+        <Reveal delay={160}>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+            {resources.map((resource) => (
+              <div
+                key={resource.title}
+                className={`relative group p-6 rounded-xl border transition-all duration-300 lift ${
                 resource.disabled
                   ? "bg-card/30 border-border/30 opacity-60"
                   : resource.featured
@@ -214,8 +218,9 @@ export function Resources() {
                 </Button>
               )}
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
 
       </div>
     </section>

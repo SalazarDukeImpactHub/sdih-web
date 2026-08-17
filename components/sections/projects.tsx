@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react"
 import { SectionHead } from "@/components/ui/section-head"
+import { Reveal } from "@/components/ui/reveal"
 
 interface Project {
   id: number
@@ -98,26 +99,29 @@ export function Projects() {
       className="relative py-28 lg:py-40 border-t border-border"
     >
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <SectionHead
-          eyebrow="Proyectos"
-          title={
-            <>
-              Innovación en <em className="not-italic text-primary">acción</em>
-            </>
-          }
-          lead="Proyectos que demuestran la aplicación práctica de tecnología emergente para resolver desafíos reales. Desde hackathones ganadores hasta investigación que se convierte en producto."
-        />
+        <Reveal>
+          <SectionHead
+            eyebrow="Proyectos"
+            title={
+              <>
+                Innovación en <em className="not-italic text-primary">acción</em>
+              </>
+            }
+            lead="Proyectos que demuestran la aplicación práctica de tecnología emergente para resolver desafíos reales. Desde hackathones ganadores hasta investigación que se convierte en producto."
+          />
+        </Reveal>
 
         {/* Destacados — newspaper grid */}
-        <div className="newspaper grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <a
-              key={project.id}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-8 flex flex-col"
-            >
+        <Reveal delay={160}>
+          <div className="newspaper grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <a
+                key={project.id}
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-8 flex flex-col lift"
+              >
               <div className="flex items-start justify-between gap-4 mb-5">
                 <span className="meta text-primary">{project.category}</span>
                 <ArrowUpRight className="w-4 h-4 flex-shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -145,21 +149,25 @@ export function Projects() {
                 ))}
               </div>
             </a>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Divisor editorial */}
-        <p className="eyebrow mt-20 mb-8">Otros proyectos</p>
+        <Reveal delay={320}>
+          <p className="eyebrow mt-20 mb-8">Otros proyectos</p>
+        </Reveal>
 
-        <div className="newspaper grid-cols-1 md:grid-cols-3">
-          {secondaryProjects.map((project) => (
-            <a
-              key={project.id}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-7"
-            >
+        <Reveal delay={240}>
+          <div className="newspaper grid-cols-1 md:grid-cols-3">
+            {secondaryProjects.map((project) => (
+              <a
+                key={project.id}
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-7 lift"
+              >
               <span className="meta text-primary">{project.category}</span>
               <h3 className="font-display italic text-lg leading-snug text-foreground mt-3 mb-2 flex items-start gap-2">
                 {project.title}
@@ -169,10 +177,12 @@ export function Projects() {
                 {project.description}
               </p>
             </a>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
 
-        <div className="mt-14 pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+        <Reveal delay={280}>
+          <div className="mt-14 pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
           <p className="text-sm text-muted-foreground">
             Descubre más proyectos y detalles técnicos en nuestro GitHub
           </p>
@@ -184,7 +194,8 @@ export function Projects() {
           >
             Ver todo en GitHub →
           </a>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

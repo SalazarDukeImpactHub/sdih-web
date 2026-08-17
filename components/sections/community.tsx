@@ -2,6 +2,7 @@
 
 import { MessageCircle, Users, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/ui/reveal"
 
 export function Community() {
   return (
@@ -37,9 +38,11 @@ export function Community() {
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
-              Únete a la <span className="text-primary">Comunidad</span>
-            </h2>
+            <Reveal>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                Únete a la <span className="text-primary">Comunidad</span>
+              </h2>
+            </Reveal>
 
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Conecta con otros innovadores, comparte experiencias y mantente al

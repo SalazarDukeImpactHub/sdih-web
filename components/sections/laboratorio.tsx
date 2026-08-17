@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react"
 import { SectionHead } from "@/components/ui/section-head"
+import { Reveal } from "@/components/ui/reveal"
 
 interface PiezaLab {
   titulo: string
@@ -35,26 +36,29 @@ export function Laboratorio() {
       className="relative py-28 lg:py-40 border-t border-border"
     >
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <SectionHead
-          eyebrow="Laboratorio"
-          title={
-            <>
-              Aprende <span className="text-primary">explorando</span>
-            </>
-          }
-          lead="Piezas educativas interactivas creadas en el hub, abiertas para todos — porque el conocimiento que no circula no genera impacto. El material completo de cada taller vive en la vitrina, para quienes se inscriben."
-        />
+        <Reveal>
+          <SectionHead
+            eyebrow="Laboratorio"
+            title={
+              <>
+                Aprende <span className="text-primary">explorando</span>
+              </>
+            }
+            lead="Piezas educativas interactivas creadas en el hub, abiertas para todos — porque el conocimiento que no circula no genera impacto. El material completo de cada taller vive en la vitrina, para quienes se inscriben."
+          />
+        </Reveal>
 
         {/* Piezas — newspaper grid de 2 */}
-        <div className="newspaper grid-cols-1 lg:grid-cols-2">
-          {piezas.map((pieza) => (
-            <a
-              key={pieza.href}
-              href={pieza.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block"
-            >
+        <Reveal delay={160}>
+          <div className="newspaper grid-cols-1 lg:grid-cols-2">
+            {piezas.map((pieza) => (
+              <a
+                key={pieza.href}
+                href={pieza.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block lift"
+              >
               {pieza.imagen && (
                 <div className="w-full aspect-[2/1] overflow-hidden border-b border-border">
                   <img
@@ -77,8 +81,9 @@ export function Laboratorio() {
                 </p>
               </div>
             </a>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )

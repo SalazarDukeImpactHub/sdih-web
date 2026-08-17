@@ -1,6 +1,7 @@
 import { ArrowRight, Code } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SectionHead } from "@/components/ui/section-head"
+import { Reveal } from "@/components/ui/reveal"
 
 const promesas = [
   {
@@ -27,21 +28,24 @@ export function Talleres() {
       className="relative py-28 lg:py-40 border-t border-border"
     >
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <SectionHead
-          eyebrow="Talleres"
-          title={
-            <>
-              IA que <span className="text-primary">usas</span>, no solo
-              entiendes
-            </>
-          }
-          lead="Talleres prácticos diseñados para que salgas con herramientas reales que implementar. Cada sesión te entrega prompts listos para usar, plantillas de Notion, y recursos que aplicas el mismo día."
-        />
+        <Reveal>
+          <SectionHead
+            eyebrow="Talleres"
+            title={
+              <>
+                IA que <span className="text-primary">usas</span>, no solo
+                entiendes
+              </>
+            }
+            lead="Talleres prácticos diseñados para que salgas con herramientas reales que implementar. Cada sesión te entrega prompts listos para usar, plantillas de Notion, y recursos que aplicas el mismo día."
+          />
+        </Reveal>
 
         {/* Promesas — newspaper grid */}
-        <div className="newspaper grid-cols-1 sm:grid-cols-3">
-          {promesas.map((p) => (
-            <div key={p.title} className="p-8">
+        <Reveal delay={160}>
+          <div className="newspaper grid-cols-1 sm:grid-cols-3">
+            {promesas.map((p) => (
+              <div key={p.title} className="p-8 lift">
               <p.icon className="w-4 h-4 text-primary mb-4" />
               <h3 className="font-display italic text-2xl mb-3 text-foreground">
                 {p.title}
@@ -50,8 +54,9 @@ export function Talleres() {
                 {p.body}
               </p>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Nota editorial — regla lateral, sin caja ni radio */}
         <div className="mt-16 border-l-2 border-primary pl-6 max-w-2xl">

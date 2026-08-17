@@ -1,6 +1,7 @@
 "use client"
 
 import { Instagram, Linkedin } from "lucide-react"
+import { Reveal } from "@/components/ui/reveal"
 
 const socials = [
   {
@@ -41,34 +42,37 @@ export function Social() {
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-muted/30 mb-6">
-            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-            <span className="text-xs text-muted-foreground tracking-wider">
-              CONECTA
-            </span>
+        <Reveal>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-muted/30 mb-6">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full" />
+              <span className="text-xs text-muted-foreground tracking-wider">
+                CONECTA
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Síguenos en <span className="text-primary">Redes</span>
+            </h2>
+
+            <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+              Únete a la conversación y mantente al día con las últimas tendencias
+              en tecnología, innovación y transformación digital.
+            </p>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Síguenos en <span className="text-primary">Redes</span>
-          </h2>
-
-          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            Únete a la conversación y mantente al día con las últimas tendencias
-            en tecnología, innovación y transformación digital.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Social Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {socials.map((social) => (
-            <a
-              key={social.name}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden"
-            >
+        <Reveal delay={160}>
+          <div className="grid md:grid-cols-3 gap-6">
+            {socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden lift"
+              >
               {/* Gradient hover effect */}
               <div className={`absolute inset-0 bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
               
@@ -97,8 +101,9 @@ export function Social() {
                 </svg>
               </div>
             </a>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )

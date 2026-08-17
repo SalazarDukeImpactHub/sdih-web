@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Reveal } from "@/components/ui/reveal"
 
 const WHATSAPP_NUMBER = "573136139790"
 
@@ -122,10 +123,12 @@ export function Advisory() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
-            Te ayudo a construir{" "}
-            <span className="text-primary">a tu medida</span>
-          </h2>
+          <Reveal>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+              Te ayudo a construir{" "}
+              <span className="text-primary">a tu medida</span>
+            </h2>
+          </Reveal>
 
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-6 text-pretty leading-relaxed">
             Diseño sistemas que convierten conocimiento en operación medible. Si trabajas en salud mental, educación, deep tech o impacto social y necesitas estructurar tu información, tus procesos o tu conocimiento con tecnología — hablemos.
@@ -137,17 +140,18 @@ export function Advisory() {
         </div>
 
         {/* ===== SECTION 2: CAPABILITIES ===== */}
-        <div className="mb-20">
-          <h3 className="text-xl font-semibold text-foreground text-center mb-8">
-            ¿En qué puedo ayudarte?
-          </h3>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {capabilities.map((capability, index) => (
-              <div
-                key={index}
-                className="p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 hover:bg-card/80 transition-all group flex items-center gap-3"
-              >
+        <Reveal delay={160}>
+          <div className="mb-20">
+            <h3 className="text-xl font-semibold text-foreground text-center mb-8">
+              ¿En qué puedo ayudarte?
+            </h3>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {capabilities.map((capability, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 hover:bg-card/80 transition-all group flex items-center gap-3 lift"
+                >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   <capability.icon className="w-5 h-5 text-primary" />
                 </div>
@@ -155,22 +159,24 @@ export function Advisory() {
                   {capability.title}
                 </h4>
               </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* ===== SECTION 3: BENEFITS ===== */}
-        <div className="mb-20">
-          <h3 className="text-xl font-semibold text-foreground text-center mb-8">
-            ¿Cómo trabajo?
-          </h3>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="p-5 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors text-center"
-              >
+        <Reveal delay={240}>
+          <div className="mb-20">
+            <h3 className="text-xl font-semibold text-foreground text-center mb-8">
+              ¿Cómo trabajo?
+            </h3>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              {benefits.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="p-5 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors text-center lift"
+                >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
                   <benefit.icon className="w-5 h-5 text-primary" />
                 </div>
@@ -181,12 +187,14 @@ export function Advisory() {
                   {benefit.description}
                 </p>
               </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* ===== SECTION 4: CTA ===== */}
-        <div className="max-w-2xl mx-auto text-center mb-16">
+        <Reveal delay={320}>
+          <div className="max-w-2xl mx-auto text-center mb-16">
           <div className="p-8 rounded-2xl bg-gradient-to-br from-primary/10 via-card to-primary/5 border border-primary/20">
             <Users className="w-12 h-12 text-primary mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-foreground mb-4">
@@ -211,12 +219,14 @@ export function Advisory() {
             </p>
           </div>
         </div>
+        </Reveal>
 
         {/* ===== SECTION 5: FAQ ===== */}
-        <div className="max-w-3xl mx-auto">
-          <h3 className="text-xl font-semibold text-foreground text-center mb-8">
-            Preguntas frecuentes
-          </h3>
+        <Reveal delay={400}>
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-xl font-semibold text-foreground text-center mb-8">
+              Preguntas frecuentes
+            </h3>
 
           <div className="space-y-3">
             {faqs.map((faq, index) => {
@@ -273,6 +283,7 @@ export function Advisory() {
             })}
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   )

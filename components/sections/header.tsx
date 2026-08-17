@@ -34,12 +34,12 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
+          ? "h-14 bg-background/80 backdrop-blur-md border-b border-border"
+          : "h-16 lg:h-20 bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-full">
           {/* Logo + wordmark */}
           <Link href="/" className="group">
             <Image

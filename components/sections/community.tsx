@@ -8,18 +8,6 @@ export function Community() {
     <section id="comunidad" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background Lines */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      {/* Escena voxel de fondo */}
-      <img
-        src="/images/voxel/imagenes.webp"
-        alt=""
-        aria-hidden
-        className="absolute right-0 bottom-8 w-[380px] max-w-[42%] h-auto opacity-15 pointer-events-none select-none"
-        style={{
-          maskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
-          WebkitMaskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
-          filter: "blur(1.5px)",
-        }}
-      />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative bg-card border border-border rounded-2xl p-8 lg:p-12 overflow-hidden">

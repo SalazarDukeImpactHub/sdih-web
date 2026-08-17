@@ -85,18 +85,6 @@ export function Resources() {
     <section id="recursos" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-muted/20" />
-      {/* Escena voxel de fondo */}
-      <img
-        src="/images/voxel/host.webp"
-        alt=""
-        aria-hidden
-        className="absolute left-0 top-16 w-[420px] max-w-[45%] h-auto opacity-15 pointer-events-none select-none"
-        style={{
-          maskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
-          WebkitMaskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
-          filter: "blur(1.5px)",
-        }}
-      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

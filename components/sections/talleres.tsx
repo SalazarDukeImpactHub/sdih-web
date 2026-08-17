@@ -27,19 +27,6 @@ export function Talleres() {
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
 
-      {/* Escena voxel de fondo — difuminada, sin partir el contenido */}
-      <img
-        src="/images/voxel/memoria.webp"
-        alt=""
-        aria-hidden
-        className="absolute right-0 top-16 w-[440px] max-w-[45%] h-auto opacity-15 pointer-events-none select-none"
-        style={{
-          maskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
-          WebkitMaskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
-          filter: "blur(1.5px)",
-        }}
-      />
-
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Label */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8">

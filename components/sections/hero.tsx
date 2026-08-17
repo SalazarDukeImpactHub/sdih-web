@@ -1,217 +1,131 @@
-"use client"
-
-import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+const stats = [
+  { value: "IA", label: "IA Aplicada a Salud Mental" },
+  { value: "Care", label: "Sistemas de Autocuidado" },
+  { value: "Know", label: "Gestion del Conocimiento Clinico" },
+  { value: "Track", label: "Trazabilidad + Impacto" },
+]
+
 export function Hero() {
-  const gridRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!gridRef.current) return
-      const rect = gridRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      gridRef.current.style.setProperty("--mouse-x", `${x}px`)
-      gridRef.current.style.setProperty("--mouse-y", `${y}px`)
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Animated Grid Background */}
-      <div
-        ref={gridRef}
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px)
-          `,
-          backgroundSize: "60px 60px",
-        }}
-      >
-        {/* Radial glow following mouse */}
-        <div
-          className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)",
-            left: "var(--mouse-x, 50%)",
-            top: "var(--mouse-y, 50%)",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/40 rounded-full animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-primary/30 rounded-full animate-pulse delay-500" />
-        <div className="absolute bottom-1/3 left-1/3 w-2.5 h-2.5 bg-primary/20 rounded-full animate-pulse delay-1000" />
-        <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-primary/50 rounded-full animate-pulse delay-700" />
-      </div>
-
-      {/* Escena voxel protagonista (desktop) — arriba a la derecha, sin tapar el texto */}
-      <div className="absolute inset-0 hidden lg:flex items-start justify-end pointer-events-none z-5 pr-10 xl:pr-16 pt-44 xl:pt-40">
-        <div className="w-1/4 max-w-sm relative glow-halo">
-          {/* Halo de luz morada detrás */}
-          <div
-            className="absolute inset-0 rounded-full pointer-events-none"
-            style={{
-              background: "radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%)",
-              filter: "blur(30px)",
-              transform: "scale(1.2)",
-            }}
-          />
+      {/* Escena voxel — arte, no interfaz. Única pieza en movimiento. */}
+      <div className="absolute inset-0 hidden lg:flex items-center justify-end pointer-events-none pr-10 xl:pr-20">
+        <div className="w-[22%] max-w-xs relative glow-halo">
           <img
             src="/images/voxel/laboratorio-harness.webp"
             alt="Laboratorio del arnés — escena voxel"
-            className="w-full h-auto animate-float-cube"
+            className="w-full h-auto animate-float-cube opacity-90"
             style={{
-              maskImage: "radial-gradient(ellipse 75% 75% at center, black 55%, transparent 80%)",
-              WebkitMaskImage: "radial-gradient(ellipse 75% 75% at center, black 55%, transparent 80%)",
-              animationDuration: "9s",
+              maskImage:
+                "radial-gradient(ellipse 75% 75% at center, black 55%, transparent 82%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 75% 75% at center, black 55%, transparent 82%)",
             }}
           />
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:max-w-4xl lg:text-left">
-        {/* Welcome Line */}
-        <p className="text-sm font-medium mb-6 animate-fade-in" style={{ color: "var(--accent-lt)" }}>
-          Bienvenida, bienvenido al hub
-        </p>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-20">
+        <div className="max-w-4xl">
+          {/* Línea de bienvenida */}
+          <p className="eyebrow mb-6 animate-fade-in">
+            Bienvenida, bienvenido al hub
+          </p>
 
-        {/* Tag */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/30 backdrop-blur-sm mb-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-          <span className="text-sm text-muted-foreground tracking-wide">
+          {/* Bajada de posicionamiento — sin píldora, como pie de índice */}
+          <p
+            className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary mb-10 animate-fade-in max-w-md leading-relaxed"
+            style={{ animationDelay: "60ms" }}
+          >
             Innovación social donde la salud mental es ventaja competitiva
-          </span>
-        </div>
+          </p>
 
-        {/* Main Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up">
-          <span className="text-foreground">SALAZAR DUKE</span>
-          <br className="hidden sm:block" />
-          <span className="text-primary">IMPACT HUB</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="max-w-3xl mx-auto text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10 animate-fade-in-up delay-100">
-          Sistemas de IA, automatización y trazabilidad al servicio del bienestar integral.{" "}
-          <span className="text-foreground font-medium">Doble impacto medible</span>:{" "}
-          valor para empresas, propósito real para personas.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-200">
-          <Button
-            asChild
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base group"
+          {/* Titular */}
+          <h1
+            className="font-display italic text-foreground mb-8 animate-fade-in-up"
+            style={{
+              fontSize: "clamp(46px, 8vw, 104px)",
+              fontWeight: 500,
+              lineHeight: 0.92,
+              letterSpacing: "-0.035em",
+            }}
           >
-            <a href="https://wa.me/573136139790" target="_blank" rel="noopener noreferrer">
-              Agendar asesoría
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-border hover:bg-muted/50 px-8 py-6 text-base"
-          >
-            <Link href="#talleres">Ver talleres</Link>
-          </Button>
-        </div>
+            Salazar Duke
+            <br />
+            <span className="text-primary">Impact Hub</span>
+          </h1>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-20 max-w-4xl mx-auto animate-fade-in-up delay-300">
-          {[
-            { value: "IA", label: "IA Aplicada a Salud Mental" },
-            { value: "Care", label: "Sistemas de Autocuidado" },
-            { value: "Know", label: "Gestion del Conocimiento Clinico" },
-            { value: "Track", label: "Trazabilidad + Impacto" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">
-                {stat.value}
+          {/* Subtítulo */}
+          <p
+            className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12 animate-fade-in-up"
+            style={{ animationDelay: "80ms" }}
+          >
+            Sistemas de IA, automatización y trazabilidad al servicio del
+            bienestar integral.{" "}
+            <span className="text-foreground">Doble impacto medible</span>:
+            valor para empresas, propósito real para personas.
+          </p>
+
+          {/* Acciones */}
+          <div
+            className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 animate-fade-in-up"
+            style={{ animationDelay: "160ms" }}
+          >
+            <Button asChild size="lg" className="h-12 px-7 text-[15px] group">
+              <a
+                href="https://wa.me/573136139790"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Agendar asesoría
+                <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+            <Link
+              href="#talleres"
+              className="font-mono text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
+            >
+              Ver talleres
+            </Link>
+          </div>
+
+          {/* Ejes del hub.
+              Estos valores son palabras, no cifras: por eso van en display
+              italic y NO con el tratamiento visual de un número grande, que
+              es lo que antes hacía leerlos como un dato faltante. */}
+          <div
+            className="mt-20 pt-8 border-t border-border grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 animate-fade-in-up"
+            style={{ animationDelay: "240ms" }}
+          >
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <span className="font-display italic text-xl text-primary leading-none">
+                  {stat.value}
+                </span>
+                <p className="meta mt-2 leading-relaxed">{stat.label}</p>
               </div>
-              <div className="text-xs sm:text-sm text-muted-foreground">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <Link
-          href="#jennifer"
-          className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors"
-        >
-          <span className="text-xs tracking-widest mb-2">SCROLL</span>
-          <ChevronDown className="w-5 h-5" />
-        </Link>
-      </div>
-
-      {/* CSS Animations */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out forwards;
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.6s ease-out forwards;
-        }
-        .delay-100 {
-          animation-delay: 100ms;
-        }
-        .delay-200 {
-          animation-delay: 200ms;
-        }
-        .delay-300 {
-          animation-delay: 300ms;
-        }
-        .delay-500 {
-          animation-delay: 500ms;
-        }
-        .delay-700 {
-          animation-delay: 700ms;
-        }
-        .delay-1000 {
-          animation-delay: 1000ms;
-        }
-      `}</style>
+      {/* Indicador de scroll */}
+      <Link
+        href="#jennifer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <span className="font-mono text-[10px] tracking-[0.22em] mb-2">
+          SCROLL
+        </span>
+        <ChevronDown className="w-4 h-4" />
+      </Link>
     </section>
   )
 }

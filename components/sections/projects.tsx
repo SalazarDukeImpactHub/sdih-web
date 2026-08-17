@@ -1,7 +1,5 @@
-"use client"
-
-import { ArrowUpRight, Sparkles, Trophy, Medal } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowUpRight } from "lucide-react"
+import { SectionHead } from "@/components/ui/section-head"
 
 interface Project {
   id: number
@@ -11,7 +9,6 @@ interface Project {
   tags: string[]
   href: string
   badge?: string
-  icon?: React.ReactNode
 }
 
 const featuredProjects: Project[] = [
@@ -78,7 +75,8 @@ const secondaryProjects: Project[] = [
     id: 7,
     title: "Sistema de Talento Humano Comfachocó",
     category: "Plataforma integral de gestión de RR.HH.",
-    description: "Solución desarrollada en hackathon para optimizar procesos de talento humano.",
+    description:
+      "Solución desarrollada en hackathon para optimizar procesos de talento humano.",
     tags: ["RR.HH.", "Hackathon", "Gestión"],
     href: "https://github.com/SalazarDukeImpactHub",
   },
@@ -86,7 +84,8 @@ const secondaryProjects: Project[] = [
     id: 8,
     title: "Clasificador Biomédico Multietiqueta",
     category: "Clasificación de literatura científica",
-    description: "IA que clasifica artículos científicos automáticamente por área médica (F1 ≈ 0.905).",
+    description:
+      "IA que clasifica artículos científicos automáticamente por área médica (F1 ≈ 0.905).",
     tags: ["ML", "Biomedicina", "Clasificación"],
     href: "https://huggingface.co/spaces/jennifersalazarduke/clasificador-biomedicoTECH_SPHERE",
   },
@@ -94,164 +93,96 @@ const secondaryProjects: Project[] = [
 
 export function Projects() {
   return (
-    <section id="proyectos" className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-muted/10" />
+    <section
+      id="proyectos"
+      className="relative py-28 lg:py-40 border-t border-border"
+    >
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <SectionHead
+          eyebrow="Proyectos"
+          title={
+            <>
+              Innovación en <em className="not-italic text-primary">acción</em>
+            </>
+          }
+          lead="Proyectos que demuestran la aplicación práctica de tecnología emergente para resolver desafíos reales. Desde hackathones ganadores hasta investigación que se convierte en producto."
+        />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium tracking-wide">
-              PROYECTOS
-            </span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
-            Innovación en <span className="text-primary">acción</span>
-          </h2>
-
-          <p className="max-w-2xl mx-auto text-lg text-muted-foreground text-pretty">
-            Proyectos que demuestran la aplicación práctica de tecnología emergente para resolver desafíos reales.
-            Desde hackathones ganadores hasta investigación que se convierte en producto.
-          </p>
-        </div>
-
-        {/* Featured Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {featuredProjects.map((project, index) => (
+        {/* Destacados — newspaper grid */}
+        <div className="newspaper grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map((project) => (
             <a
               key={project.id}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative bg-card border border-border rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30 ${
-                index < 2 ? "lg:col-span-1" : ""
-              }`}
+              className="group p-8 flex flex-col"
             >
-              {/* Gradient Accent */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="flex items-start justify-between gap-4 mb-5">
+                <span className="meta text-primary">{project.category}</span>
+                <ArrowUpRight className="w-4 h-4 flex-shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
 
-              {/* Content */}
-              <div className="relative p-6 lg:p-8">
-                {/* Header Row */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex-1">
-                    {/* Badge if exists */}
-                    {project.badge && (
-                      <div className="mb-3 inline-block">
-                        <span className="text-xs px-3 py-1.5 rounded-full font-medium bg-primary/20 text-primary">
-                          {project.badge}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+              <h3 className="font-display italic text-2xl leading-tight text-foreground mb-2">
+                {project.title}
+              </h3>
 
-                  {/* External Icon */}
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight className="w-5 h-5 text-primary" />
-                  </div>
-                </div>
+              {project.badge && (
+                <span className="font-mono text-xs text-foreground/70 mb-4">
+                  {project.badge}
+                </span>
+              )}
 
-                {/* Category */}
-                <div className="text-xs text-primary/80 font-semibold tracking-wide mb-2">
-                  {project.category}
-                </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                {project.description}
+              </p>
 
-                {/* Title */}
-                <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-3 py-1.5 rounded-full bg-muted/50 text-muted-foreground border border-border/50"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-x-3 gap-y-1 pt-4 border-t border-border">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="meta">
+                    {tag}
+                  </span>
+                ))}
               </div>
             </a>
           ))}
         </div>
 
-        {/* Secondary Projects Divider */}
-        <div className="my-16 relative">
-          <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-          <div className="relative flex justify-center">
-            <span className="bg-background px-4 text-xs text-muted-foreground tracking-widest uppercase">
-              Otros proyectos
-            </span>
-          </div>
-        </div>
+        {/* Divisor editorial */}
+        <p className="eyebrow mt-20 mb-8">Otros proyectos</p>
 
-        {/* Secondary Projects Grid */}
-        <div className="grid md:grid-cols-3 gap-4 lg:gap-6 mb-8">
+        <div className="newspaper grid-cols-1 md:grid-cols-3">
           {secondaryProjects.map((project) => (
             <a
               key={project.id}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative p-5 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 hover:bg-card transition-all duration-300"
+              className="group p-7"
             >
-              {/* Content */}
-              <div className="relative">
-                {/* Category */}
-                <div className="text-xs text-primary/70 font-medium mb-2 group-hover:text-primary transition-colors">
-                  {project.category}
-                </div>
-
-                {/* Title */}
-                <h4 className="text-sm font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 flex items-center gap-2">
-                  {project.title}
-                  <ArrowUpRight className="w-3 h-3 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </h4>
-
-                {/* Description */}
-                <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-0.5 rounded-full bg-muted/30 text-muted-foreground/80 border border-border/30"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <span className="meta text-primary">{project.category}</span>
+              <h3 className="font-display italic text-lg leading-snug text-foreground mt-3 mb-2 flex items-start gap-2">
+                {project.title}
+                <ArrowUpRight className="w-3.5 h-3.5 flex-shrink-0 mt-1.5 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {project.description}
+              </p>
             </a>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center">
-          <p className="text-sm text-muted-foreground mb-4">
+        <div className="mt-14 pt-8 border-t border-border flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+          <p className="text-sm text-muted-foreground">
             Descubre más proyectos y detalles técnicos en nuestro GitHub
           </p>
           <a
             href="https://github.com/SalazarDukeImpactHub"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block btn-soft"
+            className="font-mono text-sm text-primary underline underline-offset-4 hover:text-foreground transition-colors"
           >
-            Ver todo en GitHub
-            <ArrowUpRight className="w-4 h-4 ml-2 inline" />
+            Ver todo en GitHub →
           </a>
         </div>
       </div>

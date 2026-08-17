@@ -34,36 +34,33 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border"
+          ? "bg-background/85 backdrop-blur-xl border-b border-border"
           : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+          {/* Logo + wordmark */}
           <Link href="/" className="group">
-            <div className="relative">
-              <Image
-                src="/images/logo.jpg"
-                alt="Salazar Duke Impact Hub"
-                width={48}
-                height={48}
-                className="rounded-lg"
-              />
-              <div className="absolute -inset-1 bg-primary/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+            <Image
+              src="/images/logo.jpg"
+              alt="Salazar Duke Impact Hub"
+              width={44}
+              height={44}
+              className="rounded-none transition-opacity group-hover:opacity-80"
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Navegación — mono en versalitas, como índice de publicación */}
+          <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative group rounded-lg hover:bg-primary/5"
+                className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors relative group py-1"
               >
                 {item.label}
-                <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-primary scale-x-0 transition-transform group-hover:scale-x-100 rounded-full" />
+                <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-primary scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
@@ -106,7 +103,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+              className="px-4 py-3 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground hover:bg-surface transition-colors border-b border-border last:border-b-0"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}

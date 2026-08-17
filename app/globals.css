@@ -4,53 +4,55 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   Salazar Duke Impact Hub — sistema voxel
-   Fondo navy casi negro + morado como acento primario + cyan
-   como acento secundario. Máximo dos acentos por pieza.
+   Salazar Duke Impact Hub — sistema editorial
+   Base navy profundo + tinta hueso cálida + ámbar como único
+   acento de UI. El morado queda reservado al arte voxel.
+   La jerarquía la hace la tipografía y el aire, no el color.
    ============================================================ */
 :root {
-  /* Base navy (voxel: #070b18) */
-  --background: #070b18;
-  --foreground: #f4f6fb;
-  --surface: #0d1226;
-  --surface-2: #111832;
-  --card: #0d1226;
-  --card-foreground: #f4f6fb;
-  --popover: #0d1226;
-  --popover-foreground: #f4f6fb;
-  /* Morado — acento primario */
-  --primary: #8b5cf6;
-  --primary-foreground: #ffffff;
-  /* Navy elevado como secundario neutro */
-  --secondary: #111832;
-  --secondary-foreground: #e6e9f2;
-  --muted: #101630;
-  --muted-foreground: #8b93ab;
-  /* Cyan — acento secundario (usar con moderación) */
-  --accent: #22d3ee;
-  --accent-foreground: #070b18;
-  --destructive: #f87171;
+  /* Base */
+  --background: #080c16;
+  --foreground: #ede6d8;
+  --surface: #0d1220;
+  --surface-2: #12182a;
+  --card: #0d1220;
+  --card-foreground: #ede6d8;
+  --popover: #0d1220;
+  --popover-foreground: #ede6d8;
+  /* Ámbar — único acento de interfaz */
+  --primary: #d9a441;
+  --primary-foreground: #120d02;
+  /* Neutros cálidos */
+  --secondary: #12182a;
+  --secondary-foreground: #ded6c6;
+  --muted: #0f1424;
+  --muted-foreground: #a09884;
+  --accent: #d9a441;
+  --accent-foreground: #120d02;
+  --destructive: #e26d5c;
   --destructive-foreground: #ffffff;
-  /* Bordes sutiles sobre navy */
-  --border: rgba(148, 163, 216, 0.18);
-  --input: rgba(148, 163, 216, 0.18);
-  --ring: #8b5cf6;
-  /* Verde solo semántico (métricas positivas) */
-  --green: #4ade80;
-  /* Nuevos tokens — referencia laboratorio del arnés */
-  --accent-lt: #a78bfa;
-  --amber: #fbbf24;
-  --radius: 1rem;
+  /* Hairlines cálidas — el gramaje del papel */
+  --border: rgba(237, 230, 216, 0.13);
+  --input: rgba(237, 230, 216, 0.13);
+  --ring: #d9a441;
+  /* Semánticos */
+  --green: #6bbf8a;
+  --amber: #d9a441;
+  /* Morado — SOLO arte voxel, nunca tipografía ni UI */
+  --voxel: #8b5cf6;
+  /* Editorial: casi sin radio */
+  --radius: 2px;
 }
 
 .dark {
-  --background: #070b18;
-  --foreground: #f4f6fb;
+  --background: #080c16;
+  --foreground: #ede6d8;
 }
 
 @theme inline {
   --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
@@ -73,12 +75,12 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-green: var(--green);
-  --color-accent-lt: var(--accent-lt);
   --color-amber: var(--amber);
-  --radius-sm: calc(var(--radius) - 8px);
-  --radius-md: calc(var(--radius) - 4px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 8px);
+  --color-voxel: var(--voxel);
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 3px;
 }
 
 @layer base {
@@ -87,30 +89,33 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    /* Dual glow: morado arriba-derecha + cyan abajo-izquierda — iluminación ambiental viva */
-    background-image:
-      radial-gradient(
-        ellipse 55% 38% at 84% 4%,
-        rgba(139, 92, 246, 0.22),
-        transparent 62%
-      ),
-      radial-gradient(
-        ellipse 45% 30% at 8% 92%,
-        rgba(34, 211, 238, 0.10),
-        transparent 60%
-      );
+    /* Una sola fuente de luz, tenue y alta. Nada de dual glow. */
+    background-image: radial-gradient(
+      ellipse 70% 45% at 50% -8%,
+      rgba(217, 164, 65, 0.07),
+      transparent 68%
+    );
     background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   html {
     scroll-behavior: smooth;
   }
-  h1, h2 {
-    @apply font-sans font-black tracking-tight;
-    font-weight: 900;
+  /* Los títulos son serif display, peso medio. Nunca font-black.
+     El tamaño y el aire hacen la jerarquía — no el grosor. */
+  h1, h2, h3 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
-  h3, h4 {
-    @apply font-sans font-black tracking-tight;
-    font-weight: 800;
+  h4 {
+    @apply font-sans;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  p {
+    text-wrap: pretty;
   }
 }
 
@@ -121,7 +126,80 @@
   .text-pretty {
     text-wrap: pretty;
   }
-  /* Halo de luz difusa detrás de escenas voxel — pseudo-elemento con glow morado */
+
+  /* --- Tipografía editorial --- */
+
+  /* Display serif — para titulares y citas */
+  .font-display {
+    font-family: var(--font-fraunces), Georgia, serif;
+  }
+
+  /* Eyebrow: mono, versalitas, tracking abierto, con guion */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground inline-flex items-center gap-3;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 1.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+    display: inline-block;
+  }
+
+  /* Titular de sección — fluido, siempre clamp */
+  .h-section {
+    @apply font-display italic;
+    font-size: clamp(34px, 4.6vw, 60px);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+
+  /* Cita destacada — el momento emocional */
+  .pull-quote {
+    @apply font-display italic border-l-2 border-primary pl-6 text-foreground;
+    font-size: clamp(22px, 2.6vw, 32px);
+    font-weight: 500;
+    line-height: 1.28;
+  }
+
+  /* Label mono para metadatos, tags y pies de foto */
+  .meta {
+    @apply font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground;
+  }
+
+  /* Regla horizontal editorial */
+  .rule {
+    @apply h-px w-full bg-border;
+  }
+
+  /* --- Newspaper grid --- */
+  /* El container dibuja las líneas con gap-px + fondo.
+     Las cards NO llevan border, rounded ni shadow propios. */
+  .newspaper {
+    @apply grid gap-px bg-border;
+    border: 1px solid var(--border);
+  }
+  .newspaper > * {
+    @apply bg-background transition-colors duration-200;
+  }
+  .newspaper > *:hover {
+    background: var(--surface);
+  }
+
+  /* Bloque voxel — la única zona donde vive el morado */
+  .voxel-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: border-color 0.25s ease;
+  }
+  .voxel-block:hover {
+    border-color: rgba(139, 92, 246, 0.35);
+  }
+
+  /* Halo suave detrás de escenas voxel */
   .glow-halo {
     position: relative;
   }
@@ -131,112 +209,77 @@
     inset: -40px;
     background: radial-gradient(
       circle,
-      rgba(139, 92, 246, 0.25) 0%,
+      rgba(139, 92, 246, 0.18) 0%,
       transparent 70%
     );
-    filter: blur(30px);
+    filter: blur(34px);
     pointer-events: none;
     z-index: -1;
   }
-
-  /* Tarjeta voxel: superficie oscura, borde sutil, radio generoso */
-  .voxel-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: calc(var(--radius) + 8px);
-    transition: all 0.3s ease;
-  }
-  .voxel-card:hover {
-    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.18);
-    border-color: rgba(139, 92, 246, 0.25);
-  }
-  /* Kicker: etiqueta corta arriba de un título de sección */
-  .kicker {
-    @apply font-sans text-sm font-black uppercase tracking-[0.08em] text-primary;
-  }
-  /* Botón secundario/soft: estilo referencia laboratorio del arnés */
-  .btn-soft {
-    @apply font-sans font-black text-xs uppercase tracking-[0.06em];
-    background: var(--surface);
-    color: var(--accent-lt);
-    border: 1px solid var(--primary);
-    border-radius: 10px;
-    padding: 9px 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-soft:hover {
-    background: var(--primary);
-    color: #ffffff;
-  }
 }
 
-/* Custom Animations */
+/* ============================================================
+   Movimiento — mínimo y con propósito.
+   Una entrada por elemento. Nada en loop infinito salvo el
+   flotar lento del voxel, que es arte, no interfaz.
+   ============================================================ */
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
 @keyframes float-cube {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(3deg); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
 .animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
+  animation: fade-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: fade-in-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animate-float-cube {
-  animation: float-cube 7s ease-in-out infinite;
+  animation: float-cube 9s ease-in-out infinite;
 }
 
-/* Grid de fondo — morado tenue, escala voxel */
-.grid-pattern {
-  background-image:
-    linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-/* Custom Scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--muted);
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
+  background: rgba(237, 230, 216, 0.16);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
 
-/* Selection */
 ::selection {
-  background: rgba(139, 92, 246, 0.35);
+  background: rgba(217, 164, 65, 0.3);
   color: var(--foreground);
 }

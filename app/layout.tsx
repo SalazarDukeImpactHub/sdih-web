@@ -1,17 +1,28 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Fraunces, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter'
-});
+// Cuerpo — neutro, legible, se sale del camino
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ["latin"],
-  variable: '--font-space-grotesk'
-});
+// Display — serif con cursiva real. Es la voz del hub.
+// Ojo: variable font, weight debe ser "variable" (un array rompe el build)
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: 'variable',
+  style: ['normal', 'italic'],
+  variable: '--font-fraunces',
+})
+
+// Mono — eyebrows, metadatos, pies de foto
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+})
 
 export const metadata: Metadata = {
   title: 'Salazar Duke Impact Hub | IA con alma: tecnología, salud mental e impacto',
@@ -51,7 +62,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#070b18',
+  themeColor: '#080c16',
   width: 'device-width',
   initialScale: 1,
 }
@@ -63,7 +74,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} font-sans antialiased bg-background text-foreground`}>
         {children}
         <Analytics />
       </body>

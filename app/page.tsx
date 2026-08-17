@@ -10,21 +10,14 @@ import { Resources } from "@/components/sections/resources"
 import { Community } from "@/components/sections/community"
 import { Social } from "@/components/sections/social"
 import { Footer } from "@/components/sections/footer"
-import { ParticleNetwork } from "@/components/ui/particle-network"
 import { AIAssistant } from "@/components/ui/ai-assistant"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background relative">
-      {/* Animated Particle Network Background */}
-      <ParticleNetwork
-        particleCount={50}
-        connectionDistance={120}
-        particleColor="6, 182, 212"
-        lineColor="6, 182, 212"
-      />
-
-      {/* Main Content */}
+      {/* Sin red de partículas: competía con el contenido y aportaba
+          un cyan que ya no existe en la paleta. El fondo lo hace
+          una sola luz tenue definida en globals.css. */}
       <div className="relative z-10">
         <Header />
         <Hero />

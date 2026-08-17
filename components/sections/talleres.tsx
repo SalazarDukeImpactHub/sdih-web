@@ -27,6 +27,19 @@ export function Talleres() {
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
 
+      {/* Escena voxel de fondo — difuminada, sin partir el contenido */}
+      <img
+        src="/images/voxel/memoria.webp"
+        alt=""
+        aria-hidden
+        className="absolute right-0 top-16 w-[440px] max-w-[45%] h-auto opacity-15 pointer-events-none select-none"
+        style={{
+          maskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse 70% 70% at center, black 40%, transparent 75%)",
+          filter: "blur(1.5px)",
+        }}
+      />
+
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Label */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8">
@@ -81,21 +94,6 @@ export function Talleres() {
             Nada a medias. Los disponibles viven en la vitrina — entra y elige el que más te
             hable.
           </p>
-        </div>
-
-        {/* Visual Element — escena voxel */}
-        <div className="mb-8 flex justify-center">
-          <div className="w-full max-w-sm rounded-xl overflow-hidden">
-            <img
-              src="/images/voxel/memoria.webp"
-              alt="Talleres — escena voxel"
-              className="w-full h-auto"
-              style={{
-                maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
-                WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
-              }}
-            />
-          </div>
         </div>
 
         {/* CTA */}

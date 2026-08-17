@@ -61,7 +61,7 @@ export function Hero() {
       </div>
 
       {/* Escena voxel protagonista (desktop) — arriba a la derecha, sin tapar el texto */}
-      <div className="absolute inset-0 hidden lg:flex items-start justify-end pointer-events-none z-5 pr-10 xl:pr-16 pt-24 xl:pt-20">
+      <div className="absolute inset-0 hidden lg:flex items-start justify-end pointer-events-none z-5 pr-10 xl:pr-16 pt-44 xl:pt-40">
         <div className="w-1/4 max-w-sm relative glow-halo">
           {/* Halo de luz morada detrás */}
           <div

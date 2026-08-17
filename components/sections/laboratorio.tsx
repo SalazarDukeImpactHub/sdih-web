@@ -20,31 +20,13 @@ const piezas: PiezaLab[] = [
     imagen: "/images/voxel/laboratorio-harness.webp",
   },
   {
-    titulo: "Landing con IA",
-    descripcion:
-      "El material del taller estrella: convierte una idea en una página web real usando IA, sin programar. Copywriting, diseño y construcción guiada.",
-    etiqueta: "Material de taller",
-    href: "/lab/landing-con-ia",
-    color: "#22d3ee",
-    imagen: "/images/voxel/landing.webp",
-  },
-  {
     titulo: "Las tres pirámides",
     descripcion:
-      "Un modelo visual para entender cómo se relacionan datos, conocimiento y decisiones cuando trabajas con IA.",
-    etiqueta: "Material de taller",
+      "La entrada a la metodología del hub: un modelo visual para entender cómo se relacionan datos, conocimiento y decisiones cuando trabajas con IA. Empieza por aquí.",
+    etiqueta: "Conoce la metodología · Abierto",
     href: "/lab/piramides",
-    color: "#a78bfa",
+    color: "#22d3ee",
     imagen: "/images/voxel/layers.webp",
-  },
-  {
-    titulo: "ISO/IEC 42001",
-    descripcion:
-      "Gobernanza de IA para tu organización: qué exige el primer estándar internacional de gestión de IA y cómo empezar a cumplirlo.",
-    etiqueta: "Material de taller",
-    href: "/lab/iso-42001",
-    color: "#34d399",
-    imagen: "/images/voxel/riesgos.webp",
   },
 ]
 
@@ -69,9 +51,9 @@ export function Laboratorio() {
         </h2>
 
         <p className="text-lg text-muted-foreground leading-relaxed mb-12 max-w-3xl">
-          Piezas educativas interactivas creadas en el hub: escenas voxel, modelos visuales y
-          material real de talleres. Abiertas para todos — porque el conocimiento que no circula no
-          genera impacto.
+          Piezas educativas interactivas creadas en el hub, abiertas para todos — porque el
+          conocimiento que no circula no genera impacto. El material completo de cada taller vive
+          en la vitrina, para quienes se inscriben.
         </p>
 
         {/* Grid de piezas */}
@@ -87,7 +69,7 @@ export function Laboratorio() {
             >
               {/* Thumbnail imagen voxel */}
               {pieza.imagen && (
-                <div className="w-full h-40 overflow-hidden bg-muted/30">
+                <div className="w-full aspect-[2/1] overflow-hidden bg-muted/30">
                   <img
                     src={pieza.imagen}
                     alt={pieza.titulo}

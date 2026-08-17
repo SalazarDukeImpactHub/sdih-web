@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El laboratorio del arnés · Salazar Duke Impact Hub</title>
+<meta name="description" content="Los cinco componentes del harness engineering explicados con la metáfora del laboratorio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b18; --panel:#0d1228; --card:#111827; --border:#1e293b;
+    --accent:#8b5cf6; --accent-lt:#a78bfa; --accent2:#22d3ee; --green:#34d399; --amber:#fbbf24;
+    --text:#fff; --muted:#cbd5e1; --muted2:#94a3b8; --muted3:#64748b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scrollbar-gutter:stable}
+  body{
+    background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;min-height:100vh;
+    background-image:radial-gradient(ellipse 55% 38% at 84% 4%, rgba(139,92,246,.18), transparent 62%);
+  }
+  .wrap{max-width:1320px;margin:0 auto;padding:26px 22px 60px}
+
+  header{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+  header img{width:40px;height:40px}
+  header .t{font-weight:800;font-size:.86rem;line-height:1.3}
+  header .t span{display:block;color:var(--accent-lt)}
+  .ctrl{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .btn{
+    font-family:inherit;font-weight:800;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--card);color:var(--accent-lt);border:1px solid var(--accent);
+    border-radius:10px;padding:9px 16px;cursor:pointer;transition:all .2s;
+  }
+  .btn:hover{background:var(--accent);color:#fff}
+  .btn.soft{border-color:var(--border);color:var(--muted2)}
+  .btn.soft:hover{background:var(--card);color:var(--text);border-color:var(--accent2)}
+  .lang{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .lang button{background:transparent;border:none;color:var(--muted2);font:inherit;font-size:.72rem;font-weight:900;padding:8px 14px;cursor:pointer;transition:all .18s}
+  .lang button.on{background:var(--accent);color:#fff}
+
+  h1{font-size:clamp(1.5rem,2.8vw,2.4rem);font-weight:900;letter-spacing:-.03em;line-height:1.12;margin-bottom:10px}
+  h1 em{font-style:normal;color:var(--accent-lt)}
+  .sub{color:var(--muted2);font-size:clamp(.92rem,1.1vw,1.05rem);max-width:70ch;margin-bottom:22px;line-height:1.6}
+
+  /* ══ ESCENA ══ */
+  /* container-type habilita las unidades cqw: 1cqw = 1% del ancho de la escena.
+     Así las etiquetas escalan CON la imagen y no con la ventana. Sin esto, en
+     pantalla angosta los rótulos quedan gigantes y se pisan entre sí. */
+  .escena{
+    position:relative;width:100%;border-radius:18px;overflow:hidden;
+    border:1px solid var(--border);background:#0a0f1f;box-shadow:0 24px 60px rgba(0,0,0,.55);
+    container-type:inline-size;
+  }
+  .escena img.base{width:100%;height:auto;display:block}
+  .escena svg.lineas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .escena svg.lineas line, .escena svg.lineas circle{
+    opacity:0;transition:opacity .45s ease;
+  }
+  .escena svg.lineas g.on line, .escena svg.lineas g.on circle{opacity:1}
+
+  /* Ancladas por el BORDE, nunca por el centro.
+     El texto en español es más largo que en inglés; centrando, las etiquetas
+     de la derecha se salían de la imagen al cambiar de idioma. */
+  .eti{
+    position:absolute;z-index:3;
+    display:flex;align-items:center;gap:.9cqw;white-space:nowrap;
+    background:rgba(7,11,24,.88);backdrop-filter:blur(8px);
+    border:1px solid var(--c);border-radius:.85cqw;padding:.75cqw 1.25cqw;
+    opacity:0;pointer-events:none;transform:scale(.92);transform-origin:left center;
+    transition:opacity .45s ease, transform .45s cubic-bezier(.2,.8,.3,1);
+  }
+  .eti.der{transform-origin:right center}
+  .eti.on{opacity:1;transform:scale(1)}
+  .punto{
+    position:absolute;z-index:2;width:1.05cqw;height:1.05cqw;border-radius:50%;
+    background:var(--c);transform:translate(-50%,-50%) scale(.4);
+    box-shadow:0 0 0 .35cqw rgba(7,11,24,.55);
+    opacity:0;transition:opacity .45s ease, transform .45s cubic-bezier(.2,.8,.3,1);
+  }
+  .punto.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .eti .n{
+    flex:0 0 auto;width:1.85cqw;height:1.85cqw;border-radius:.45cqw;background:var(--c);color:#06101f;
+    display:flex;align-items:center;justify-content:center;font-size:1.05cqw;font-weight:900;
+  }
+  .eti .txt{display:flex;flex-direction:column;gap:.1cqw}
+  .eti .nombre{font-size:1.42cqw;font-weight:900;letter-spacing:-.01em;color:#fff;line-height:1.2}
+  .eti .que{font-size:1.08cqw;color:var(--muted2);font-weight:600;line-height:1.2}
+
+  .eti-arnes{
+    position:absolute;left:50%;bottom:2.4%;transform:translateX(-50%);z-index:3;
+    background:rgba(7,11,24,.92);backdrop-filter:blur(8px);
+    border:1px dashed var(--amber);border-radius:.85cqw;padding:.7cqw 1.8cqw;
+    opacity:0;transition:opacity .5s ease;white-space:nowrap;
+  }
+  .eti-arnes.on{opacity:1}
+  .eti-arnes b{color:var(--amber);font-size:1.32cqw;font-weight:900;letter-spacing:.04em}
+  .eti-arnes span{color:var(--muted2);font-size:1.06cqw;font-weight:600;margin-left:.8cqw}
+
+  /* Por debajo de cierto ancho, ninguna etiqueta cabe sin taparlo todo.
+     Ahí se ocultan y manda la leyenda numerada de abajo, que dice lo mismo. */
+  @container (max-width: 600px){
+    .eti, .eti-arnes, svg.lineas, .punto{display:none}
+  }
+  .aviso-chico{display:none;margin-top:12px;text-align:center;color:var(--amber);font-size:.82rem;font-weight:700}
+  @media(max-width:660px){ .aviso-chico{display:block} .pista{display:none} }
+
+  .pista{margin-top:14px;text-align:center;color:var(--muted3);font-size:.8rem;font-weight:600}
+  .pista kbd{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:2px 7px;font-family:inherit;font-size:.9em;color:var(--muted)}
+
+  /* ══ LEYENDA ══ */
+  .leyenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px;margin-top:26px}
+  .lg{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--c);border-radius:14px;padding:17px 19px;transition:all .2s;cursor:pointer}
+  .lg:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.4);border-color:var(--c)}
+  .lg .h{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  .lg .n{width:21px;height:21px;border-radius:6px;background:var(--c);color:#06101f;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;flex:0 0 auto}
+  .lg h3{font-size:.96rem;font-weight:900;letter-spacing:-.015em}
+  .lg p{font-size:.84rem;color:var(--muted2);line-height:1.55}
+  .lg p b{color:var(--text)}
+
+  .cierre{
+    margin-top:24px;background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--amber);
+    border-radius:16px;padding:22px 26px;
+  }
+  .cierre p{font-size:clamp(1rem,1.2vw,1.18rem);font-weight:700;color:var(--text);line-height:1.5;max-width:64ch}
+  .cierre span{display:block;margin-top:9px;font-size:.88rem;font-weight:500;color:var(--muted2);line-height:1.6}
+
+  footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.75rem;color:var(--muted3);font-weight:600}
+  footer .em{color:var(--accent-lt)}
+
+  /* Modo limpio: para proyectar o capturar sin la interfaz */
+  body.limpio header, body.limpio h1, body.limpio .sub,
+  body.limpio .leyenda, body.limpio .cierre, body.limpio footer, body.limpio .pista{display:none}
+  body.limpio .wrap{padding:0;max-width:none}
+  body.limpio .escena{border:none;border-radius:0;box-shadow:none}
+  body.limpio .salir-limpio{display:block}
+  .salir-limpio{
+    display:none;position:fixed;top:16px;right:16px;z-index:20;
+    font-family:inherit;font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(7,11,24,.8);backdrop-filter:blur(8px);color:var(--muted2);
+    border:1px solid var(--border);border-radius:9px;padding:8px 14px;cursor:pointer;opacity:.3;transition:opacity .2s;
+  }
+  .salir-limpio:hover{opacity:1;color:#fff}
+
+  @media(max-width:640px){
+    .eti{padding:6px 10px;gap:6px;border-radius:9px}
+    .eti .n{width:17px;height:17px;font-size:.6rem}
+    .eti .que{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<button class="salir-limpio" id="salirLimpio">✕ Salir</button>
+
+<div class="wrap">
+
+  <header>
+    <img src="assets/logo.png" alt="Salazar Duke Impact Hub">
+    <div class="t">Salazar Duke<span>Impact Hub</span></div>
+    <div class="ctrl">
+      <button class="btn" id="btnRevelar">Revelar</button>
+      <button class="btn soft" id="btnTodo">Mostrar todo</button>
+      <button class="btn soft" id="btnReset">Reiniciar</button>
+      <button class="btn soft" id="btnLimpio">Modo limpio</button>
+      <div class="lang">
+        <button id="btn-es" class="on">ES</button>
+        <button id="btn-en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <h1 data-en="The <em>harness</em> laboratory.">El laboratorio del <em>arnés</em>.</h1>
+  <p class="sub" data-en="A model alone answers. A harness turns it into a system. These are the five things any harness has to solve — and none of them is the model.">Un modelo solo responde. Un arnés lo convierte en un sistema. Estos son los cinco componentes que cualquier arnés tiene que resolver, y ninguno de ellos es el modelo.</p>
+
+  <!-- ══ ESCENA ══ -->
+  <div class="escena" id="escena">
+    <img class="base" src="assets/laboratorio-harness.webp" width="1600" height="900" alt="Laboratorio voxel con los cinco componentes del arnés">
+
+    <!-- Líneas conectoras. viewBox 0..100 en ambos ejes con preserveAspectRatio="none":
+         las coordenadas son porcentajes puros, y non-scaling-stroke evita que el
+         grosor se deforme al no ser cuadrado el lienzo. -->
+    <svg class="lineas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <g id="l1"><line x1="17" y1="11" x2="29" y2="26" stroke="#8b5cf6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></g>
+      <g id="l2"><line x1="14" y1="74" x2="28" y2="63" stroke="#22d3ee" stroke-width="1.3" vector-effect="non-scaling-stroke"/></g>
+      <g id="l3"><line x1="83" y1="11" x2="72" y2="25" stroke="#34d399" stroke-width="1.3" vector-effect="non-scaling-stroke"/></g>
+      <g id="l4"><line x1="82" y1="84" x2="77" y2="63" stroke="#a78bfa" stroke-width="1.3" vector-effect="non-scaling-stroke"/></g>
+      <g id="l5"><line x1="17" y1="88" x2="47" y2="74" stroke="#fbbf24" stroke-width="1.3" vector-effect="non-scaling-stroke"/></g>
+    </svg>
+
+    <!-- Los puntos van como elementos HTML, no como <circle> del SVG:
+         con preserveAspectRatio="none" un círculo se deforma en elipse,
+         porque vector-effect solo protege el grosor del trazo, no la forma. -->
+    <span class="punto" id="p1" style="--c:#8b5cf6;left:29%;top:26%"></span>
+    <span class="punto" id="p2" style="--c:#22d3ee;left:28%;top:63%"></span>
+    <span class="punto" id="p3" style="--c:#34d399;left:72%;top:25%"></span>
+    <span class="punto" id="p4" style="--c:#a78bfa;left:77%;top:63%"></span>
+    <span class="punto" id="p5" style="--c:#fbbf24;left:47%;top:74%"></span>
+
+    <div class="eti" id="e1" style="--c:#8b5cf6;left:3%;top:5%">
+      <span class="n">1</span>
+      <span class="txt">
+        <span class="nombre" data-en="Context injection">Inyección de contexto</span>
+        <span class="que" data-en="what it knows when it starts">lo que sabe al empezar</span>
+      </span>
+    </div>
+
+    <div class="eti" id="e2" style="--c:#22d3ee;left:3%;top:70%">
+      <span class="n">2</span>
+      <span class="txt">
+        <span class="nombre" data-en="Actions">Acciones</span>
+        <span class="que" data-en="what it can do">lo que puede hacer</span>
+      </span>
+    </div>
+
+    <div class="eti der" id="e3" style="--c:#34d399;right:3%;top:5%">
+      <span class="n">3</span>
+      <span class="txt">
+        <span class="nombre" data-en="Persistence">Persistencia</span>
+        <span class="que" data-en="what survives between sessions">lo que sobrevive entre sesiones</span>
+      </span>
+    </div>
+
+    <div class="eti der" id="e4" style="--c:#a78bfa;right:3%;top:80%">
+      <span class="n">4</span>
+      <span class="txt">
+        <span class="nombre" data-en="Observability">Observabilidad</span>
+        <span class="que" data-en="seeing what is happening">ver qué está pasando</span>
+      </span>
+    </div>
+
+    <div class="eti" id="e5" style="--c:#fbbf24;left:3%;top:84%">
+      <span class="n">5</span>
+      <span class="txt">
+        <span class="nombre" data-en="Verification and control">Verificación y control</span>
+        <span class="que" data-en="validating, and being able to stop it">validar, y poder frenar</span>
+      </span>
+    </div>
+
+    <div class="eti-arnes" id="e6">
+      <b data-en="THE WHOLE LAB IS THE HARNESS">EL LABORATORIO ENTERO ES EL ARNÉS</b>
+      <span data-en="the model is only the brain">el modelo es solo el cerebro</span>
+    </div>
+  </div>
+
+  <p class="pista" data-en="Press <kbd>space</kbd> or <kbd>→</kbd> to reveal one by one · <kbd>0</kbd> to reset">Presiona <kbd>espacio</kbd> o <kbd>→</kbd> para revelar de a uno · <kbd>0</kbd> para reiniciar</p>
+  <p class="aviso-chico" data-en="↓ On a small screen the labels don't fit. The numbered legend below says the same.">↓ En pantalla pequeña los rótulos no caben. La leyenda numerada de abajo dice lo mismo.</p>
+
+  <!-- ══ LEYENDA ══ -->
+  <div class="leyenda">
+    <div class="lg" data-ir="1" style="--c:#8b5cf6">
+      <div class="h"><span class="n">1</span><h3 data-en="Context injection">Inyección de contexto</h3></div>
+      <p data-en="The archive whose documents <b>flow toward</b> the agent. Everything it needs to know before acting: memory, files, current state. Without this it invents, because nobody told it anything.">El archivador cuyos documentos <b>fluyen hacia</b> el agente. Todo lo que necesita saber antes de actuar: memoria, archivos, estado actual. Sin esto inventa, porque nadie le dijo nada.</p>
+    </div>
+    <div class="lg" data-ir="2" style="--c:#22d3ee">
+      <div class="h"><span class="n">2</span><h3 data-en="Actions">Acciones</h3></div>
+      <p data-en="The instruments: microscope, robotic arm, beakers. What the agent can actually <b>do</b> in the world, not just say. An agent without actions is a chat with extra steps.">Los instrumentos: microscopio, brazo robótico, matraces. Lo que el agente puede <b>hacer</b> de verdad en el mundo, no solo decir. Un agente sin acciones es un chat con pasos de más.</p>
+    </div>
+    <div class="lg" data-ir="3" style="--c:#34d399">
+      <div class="h"><span class="n">3</span><h3 data-en="Persistence">Persistencia</h3></div>
+      <p data-en="The vault with labeled notebooks. What <b>survives</b> when the session ends. Without it, every conversation starts from zero and you repeat your context forever.">La bóveda con los cuadernos etiquetados. Lo que <b>sobrevive</b> cuando la sesión termina. Sin ella, cada conversación arranca de cero y repites tu contexto para siempre.</p>
+    </div>
+    <div class="lg" data-ir="4" style="--c:#a78bfa">
+      <div class="h"><span class="n">4</span><h3 data-en="Observability">Observabilidad</h3></div>
+      <p data-en="The wall of screens. Being able to <b>see</b> what it did, when and why. If you can't see it, you can't audit it — and if you can't audit it, you can't defend it.">La pared de monitores. Poder <b>ver</b> qué hizo, cuándo y por qué. Si no lo puedes ver, no lo puedes auditar. Y si no lo puedes auditar, no lo puedes defender.</p>
+    </div>
+    <div class="lg" data-ir="5" style="--c:#fbbf24">
+      <div class="h"><span class="n">5</span><h3 data-en="Verification and control">Verificación y control</h3></div>
+      <p data-en="The desk with the checklist and <b>the lever</b>. Validating the output, and being able to stop it. Verification without the ability to stop is just watching.">La mesa con el checklist y <b>la palanca</b>. Validar el resultado, y poder frenarlo. Verificación sin capacidad de frenar es solo mirar.</p>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <p data-en="A prompt gives you an answer. A harness gives you a system.">Un prompt te da una respuesta. Un arnés te da un sistema.</p>
+    <span data-en="Notice that four of the five have nothing to do with the model. That's why every team starts with the same model available, and the difference ends up being the architecture.">Fíjate que cuatro de los cinco no tienen nada que ver con el modelo. Por eso todos los equipos arrancan con el mismo modelo disponible, y la diferencia termina estando en la arquitectura.</span>
+  </div>
+
+  <footer>
+    <span data-en="The harness laboratory · Salazar Duke Impact Hub">El laboratorio del arnés · Salazar Duke Impact Hub</span>
+    <span class="em" data-en="A serious system demands it.">Un sistema serio lo exige.</span>
+  </footer>
+</div>
+
+<script>
+/* ══ Revelado progresivo ══
+   Sirve para explicar en vivo: se muestra el laboratorio limpio y se va
+   nombrando un componente por vez, en vez de soltar las cinco etiquetas de golpe. */
+const PASOS = ['e1','e2','e3','e4','e5','e6'];
+let paso = 0;
+
+function pintarPaso(){
+  PASOS.forEach((id, i) => {
+    document.getElementById(id).classList.toggle('on', i < paso);
+    const linea = document.getElementById('l' + (i + 1));
+    if (linea) linea.classList.toggle('on', i < paso);
+    const punto = document.getElementById('p' + (i + 1));
+    if (punto) punto.classList.toggle('on', i < paso);
+  });
+  document.getElementById('btnRevelar').textContent =
+    paso >= PASOS.length ? (idioma === 'en' ? 'Done' : 'Listo') : (idioma === 'en' ? 'Reveal' : 'Revelar');
+}
+function avanzar(){ if (paso < PASOS.length) { paso++; pintarPaso(); } }
+function todo(){ paso = PASOS.length; pintarPaso(); }
+function reiniciar(){ paso = 0; pintarPaso(); }
+
+document.getElementById('btnRevelar').addEventListener('click', avanzar);
+document.getElementById('btnTodo').addEventListener('click', todo);
+document.getElementById('btnReset').addEventListener('click', reiniciar);
+document.getElementById('escena').addEventListener('click', avanzar);
+/* Cada tarjeta de la leyenda revela hasta su propio componente */
+document.querySelectorAll('.lg').forEach(c => c.addEventListener('click', () => {
+  paso = Math.max(paso, +c.dataset.ir); pintarPaso();
+}));
+
+document.addEventListener('keydown', e => {
+  if (e.key === ' ' || e.key === 'ArrowRight'){ e.preventDefault(); avanzar(); }
+  if (e.key === 'ArrowLeft'){ e.preventDefault(); if (paso > 0){ paso--; pintarPaso(); } }
+  if (e.key === '0') reiniciar();
+  if (e.key === 'Enter') todo();
+  if (e.key === 'Escape') salirLimpio();
+});
+
+/* ══ Modo limpio: solo la escena, para proyectar o capturar ══ */
+function entrarLimpio(){
+  document.body.classList.add('limpio');
+  if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
+}
+function salirLimpio(){
+  document.body.classList.remove('limpio');
+  if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(()=>{});
+}
+document.getElementById('btnLimpio').addEventListener('click', entrarLimpio);
+document.getElementById('salirLimpio').addEventListener('click', salirLimpio);
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement && document.body.classList.contains('limpio')) salirLimpio();
+});
+
+/* ══ Bilingüe ══
+   Mismo patrón que la página de trayectoria: el español vive en el HTML y el
+   inglés viaja en data-en. Se guarda el original una sola vez para que el
+   regreso sea exacto aunque se alterne muchas veces. */
+const META = {
+  es:{titulo:'El laboratorio del arnés · Salazar Duke Impact Hub'},
+  en:{titulo:'The harness laboratory · Salazar Duke Impact Hub'}
+};
+let idioma = 'es';
+const nodos = document.querySelectorAll('[data-en]');
+const bEs = document.getElementById('btn-es'), bEn = document.getElementById('btn-en');
+function aplicarIdioma(l, guardar){
+  nodos.forEach(el => {
+    if (el.dataset.es === undefined) el.dataset.es = el.innerHTML;
+    el.innerHTML = l === 'en' ? el.dataset.en : el.dataset.es;
+  });
+  idioma = l;
+  document.documentElement.lang = l;
+  document.title = META[l].titulo;
+  bEs.classList.toggle('on', l === 'es');
+  bEn.classList.toggle('on', l === 'en');
+  document.getElementById('btnTodo').textContent  = l === 'en' ? 'Show all' : 'Mostrar todo';
+  document.getElementById('btnReset').textContent = l === 'en' ? 'Reset' : 'Reiniciar';
+  document.getElementById('btnLimpio').textContent = l === 'en' ? 'Clean mode' : 'Modo limpio';
+  pintarPaso();
+  if (guardar) { try{ localStorage.setItem('sdih-lang', l); }catch(e){} }
+}
+bEs.addEventListener('click', () => aplicarIdioma('es', true));
+bEn.addEventListener('click', () => aplicarIdioma('en', true));
+let ini = null;
+try{ ini = localStorage.getItem('sdih-lang'); }catch(e){}
+if (!ini) ini = (navigator.language || 'es').toLowerCase().startsWith('en') ? 'en' : 'es';
+aplicarIdioma(ini, false);
+</script>
+
+<!--
+  EL LABORATORIO DEL ARNÉS · Salazar Duke Impact Hub
+  - Rótulos SOBRE la imagen, no dentro. La escena voxel se generó sin una sola letra
+    (los generadores de imagen escriben mal), y las etiquetas se montan en HTML.
+    Ventaja: la misma imagen sirve en español y en inglés sin regenerar nada.
+  - Revelado progresivo: espacio o flecha derecha van mostrando un componente por vez.
+    Para explicar en vivo vale mucho más que soltar las cinco etiquetas de golpe.
+    Enter muestra todo, 0 reinicia, Escape sale del modo limpio.
+  - Modo limpio: oculta toda la interfaz y deja solo la escena, para proyectar o capturar.
+  - Las líneas conectoras usan viewBox 0..100 con preserveAspectRatio="none", así las
+    coordenadas son porcentajes puros y sirven con cualquier proporción de imagen.
+    vector-effect="non-scaling-stroke" evita que el grosor se deforme.
+  - AJUSTE FINO: si alguna etiqueta no cae justo sobre su estación, mover el left/top
+    del .eti correspondiente y las coordenadas x2/y2 de su <line> y <circle>.
+-->
+</body>
+</html>

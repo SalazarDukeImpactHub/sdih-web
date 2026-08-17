@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jennifer Salazar Duke · Trayectoria</title>
+<meta name="description" content="Arquitecta de sistemas de IA, datos y trazabilidad. CEO de Salazar Duke Impact Hub y cofundadora de AKDARA. Innovation Catalyst certificada por GIM Institute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b18; --panel:#0d1228; --card:#111827; --card2:#161f38; --border:#1e293b;
+    --accent:#8b5cf6; --accent-lt:#a78bfa; --accent2:#22d3ee; --green:#34d399; --amber:#fbbf24;
+    --text:#ffffff; --muted:#cbd5e1; --muted2:#94a3b8; --muted3:#64748b;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 55% 38% at 84% 3%, rgba(139,92,246,.20), transparent 62%),
+      radial-gradient(ellipse 46% 32% at 6% 38%, rgba(34,211,238,.10), transparent 62%),
+      radial-gradient(ellipse 50% 34% at 92% 82%, rgba(139,92,246,.10), transparent 62%);
+  }
+  .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ── NAV ── */
+  nav{
+    position:sticky;top:0;z-index:20;background:rgba(7,11,24,.86);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+  }
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:14px}
+  .nav-brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:.86rem;white-space:nowrap;flex:0 0 auto}
+  .nav-brand img{width:32px;height:32px}
+  .nav-brand span{color:var(--accent-lt)}
+  .nav-links{margin-left:auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{
+    color:var(--muted2);text-decoration:none;font-size:.82rem;font-weight:600;
+    padding:8px 13px;border-radius:9px;white-space:nowrap;transition:all .2s;
+  }
+  .nav-links a:hover{color:var(--text);background:var(--card)}
+  .lang{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;flex:0 0 auto}
+  .lang button{
+    background:transparent;border:none;color:var(--muted2);font:inherit;
+    font-size:.74rem;font-weight:900;letter-spacing:.06em;padding:7px 14px;cursor:pointer;transition:all .18s;
+  }
+  .lang button:hover{color:var(--text)}
+  .lang button.on{background:var(--accent);color:#fff}
+
+  /* ── HERO ── */
+  header.hero{padding:64px 0 56px}
+  .hero-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:44px;align-items:center}
+  .kicker{
+    display:inline-block;color:var(--accent);font-size:.72rem;font-weight:900;
+    letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px;
+  }
+  h1{font-size:clamp(2.3rem,5vw,4rem);font-weight:900;line-height:1.06;letter-spacing:-.03em}
+  h1 em{font-style:normal;color:var(--accent-lt)}
+  .hero-name{
+    font-size:clamp(1rem,1.5vw,1.2rem);font-weight:800;color:var(--muted);
+    margin-top:22px;letter-spacing:-.01em;
+  }
+  .hero-role{font-size:clamp(.94rem,1.2vw,1.06rem);color:var(--muted2);margin-top:8px;max-width:620px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+  .chip{
+    font-size:.79rem;font-weight:700;color:var(--muted);
+    background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 15px;
+  }
+  .chip b{color:var(--accent2);font-weight:800}
+  .hero-art{display:flex;justify-content:center}
+  .hero-art img{
+    width:100%;max-width:330px;height:auto;display:block;
+    filter:drop-shadow(0 28px 60px rgba(139,92,246,.32));
+    -webkit-mask-image:radial-gradient(76% 76% at 50% 47%, #000 57%, transparent 100%);
+            mask-image:radial-gradient(76% 76% at 50% 47%, #000 57%, transparent 100%);
+  }
+
+  /* ── SECCIONES ── */
+  section{padding:52px 0;scroll-margin-top:70px}
+  .sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:30px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:900;letter-spacing:-.025em}
+  .sec-head .lead{color:var(--muted2);font-size:.95rem;max-width:620px;margin-top:8px}
+  .sec-num{
+    font-size:.68rem;font-weight:900;letter-spacing:.2em;color:var(--accent);
+    border:1px solid rgba(139,92,246,.4);background:rgba(139,92,246,.1);
+    border-radius:999px;padding:6px 13px;flex:0 0 auto;
+  }
+  .sec-art{margin-left:auto;width:104px;flex:0 0 auto}
+  .sec-art img{
+    width:100%;height:auto;display:block;
+    -webkit-mask-image:radial-gradient(68% 68% at 50% 48%, #000 50%, transparent 100%);
+            mask-image:radial-gradient(68% 68% at 50% 48%, #000 50%, transparent 100%);
+  }
+  @media(max-width:760px){.sec-art{display:none}}
+
+  /* ── PIPELINE ── */
+  .pipe{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:26px}
+  .pipe .step{
+    background:var(--card);border:1px solid var(--border);border-top:3px solid var(--c);
+    border-radius:15px;padding:20px 22px;
+  }
+  .pipe .step .n{font-size:.66rem;font-weight:900;letter-spacing:.18em;color:var(--c);margin-bottom:9px}
+  .pipe .step h3{font-size:1.04rem;font-weight:800;margin-bottom:7px}
+  .pipe .step p{font-size:.85rem;color:var(--muted2);line-height:1.5}
+  .prose{color:var(--muted);font-size:1.02rem;line-height:1.72;max-width:66ch}
+  .prose + .prose{margin-top:14px}
+  .prose b{color:var(--text);font-weight:700}
+  .prose .hl{color:var(--accent-lt);font-weight:700}
+
+  .two{display:grid;grid-template-columns:1fr 250px;gap:40px;align-items:center}
+  .side-art img{
+    width:100%;height:auto;display:block;border-radius:18px;
+    -webkit-mask-image:radial-gradient(72% 72% at 50% 48%, #000 54%, transparent 100%);
+            mask-image:radial-gradient(72% 72% at 50% 48%, #000 54%, transparent 100%);
+  }
+
+  /* ── LOGROS ── */
+  .wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .win{
+    background:linear-gradient(160deg, rgba(251,191,36,.09), transparent 70%);
+    border:1px solid rgba(251,191,36,.3);border-radius:16px;padding:22px;
+  }
+  .win .medal{font-size:1.5rem;line-height:1;margin-bottom:11px;display:block}
+  .win h3{font-size:1rem;font-weight:800;margin-bottom:6px;line-height:1.3}
+  .win p{font-size:.84rem;color:var(--muted2);line-height:1.5}
+  .win .when{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:10px;display:block}
+  .win.gold{
+    grid-column:1/-1;border-color:rgba(251,191,36,.55);
+    background:linear-gradient(150deg, rgba(251,191,36,.16), rgba(139,92,246,.07) 60%, transparent);
+    box-shadow:0 0 40px rgba(251,191,36,.09);
+  }
+  .win.gold .medal{font-size:2.1rem}
+  .win.gold h3{font-size:1.34rem}
+  .win.gold p{font-size:.94rem;max-width:60ch}
+  .win.gold sup{font-size:.6em}
+  .win.silver{
+    grid-column:1/-1;border-color:rgba(203,213,225,.32);
+    background:linear-gradient(150deg, rgba(203,213,225,.09), rgba(34,211,238,.05) 60%, transparent);
+  }
+  .win.silver .medal{font-size:1.9rem}
+  .win.silver h3{font-size:1.24rem}
+  .win.silver p{font-size:.92rem;max-width:74ch}
+  .win.silver .when{color:var(--muted2)}
+  .win-bullets{list-style:none;margin:15px 0 0;display:flex;flex-direction:column;gap:10px}
+  .win-bullets li{font-size:.87rem;color:var(--muted2);line-height:1.55;padding-left:20px;position:relative;max-width:74ch}
+  .win-bullets li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:2px;background:var(--accent2)}
+  .win-bullets li b{color:var(--text);font-weight:700}
+  .win-note{
+    margin-top:15px;padding-left:14px;border-left:3px solid var(--accent);
+    font-style:italic;color:var(--muted)!important;
+  }
+  .win-close{
+    margin-top:18px;padding-top:16px;border-top:1px solid rgba(251,191,36,.28);
+    font-size:1.02rem!important;font-weight:800;color:var(--text)!important;max-width:60ch;
+  }
+
+  /* ── TIMELINE ── */
+  .tl{position:relative;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent2),transparent)}
+  .job{position:relative;margin-bottom:22px}
+  .job::before{
+    content:"";position:absolute;left:-30px;top:24px;width:16px;height:16px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--c);box-shadow:0 0 0 4px rgba(7,11,24,1);
+  }
+  .job-in{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:24px 26px;transition:border-color .2s}
+  .job-in:hover{border-color:var(--c)}
+  .job-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:5px}
+  .job h3{font-size:1.14rem;font-weight:900;letter-spacing:-.015em}
+  .job .org-note{font-size:.76rem;font-weight:700;color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);border-radius:6px;padding:3px 9px;margin-left:8px;white-space:nowrap}
+  .job .when{font-size:.78rem;font-weight:800;color:var(--c);white-space:nowrap}
+  .job .role{font-size:.92rem;font-weight:700;color:var(--muted);margin-bottom:4px}
+  .job .place{font-size:.78rem;color:var(--muted3);margin-bottom:12px}
+  .job p{font-size:.91rem;color:var(--muted2);line-height:1.6}
+  .job .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+  .job .tags span{font-size:.73rem;font-weight:700;color:var(--muted2);background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:5px 10px}
+
+  /* ── PROYECTOS ── */
+  .projs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .proj{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:24px;transition:all .2s}
+  .proj:hover{border-color:var(--accent2);transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+  .proj h3{font-size:1.02rem;font-weight:800;margin-bottom:9px;line-height:1.3}
+  .proj p{font-size:.86rem;color:var(--muted2);line-height:1.55}
+  .proj p b{color:var(--text);font-weight:700}
+  .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .stack span{font-size:.69rem;font-weight:700;color:var(--accent2);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);border-radius:6px;padding:4px 9px}
+
+  /* ── VISIÓN ── */
+  .vis{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+  .vis .v{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--c);border-radius:15px;padding:24px}
+  .vis .v .yr{font-size:.7rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--c);margin-bottom:9px;display:block}
+  .vis .v h3{font-size:1.04rem;font-weight:800;margin-bottom:9px;line-height:1.3}
+  .vis .v p{font-size:.87rem;color:var(--muted2);line-height:1.55}
+
+  /* ── LISTAS ── */
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+  .box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+  .box h3{font-size:.74rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:15px}
+  .box ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .box li{font-size:.88rem;color:var(--muted2);line-height:1.5;padding-left:19px;position:relative}
+  .box li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:2px;background:var(--accent)}
+  .box li b{color:var(--text);font-weight:700}
+  .box li .meta{display:block;font-size:.78rem;color:var(--muted3);margin-top:3px}
+  .skills{display:flex;flex-wrap:wrap;gap:7px}
+  .skills span{font-size:.79rem;font-weight:600;color:var(--muted);background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:6px 12px}
+
+  /* ── CONTACTO ── */
+  footer{padding:56px 0 76px}
+  .cta{
+    background:var(--panel);border:1px solid var(--border);border-radius:26px;
+    padding:clamp(32px,5vw,54px);text-align:center;position:relative;overflow:hidden;
+  }
+  .cta::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 60% at 50% 0%, rgba(139,92,246,.16), transparent 65%)}
+  .cta > *{position:relative;z-index:1}
+  .cta h2{font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:900;letter-spacing:-.03em;max-width:22ch;margin:0 auto;line-height:1.14}
+  .cta h2 b{color:var(--accent-lt)}
+  .cta p{margin-top:18px;color:var(--muted2);font-size:1rem;max-width:52ch;margin-left:auto;margin-right:auto}
+  .links{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;margin-top:30px}
+  .links a{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-size:.88rem;font-weight:800;color:var(--accent-lt);
+    border:2px solid var(--accent);border-radius:12px;padding:12px 22px;transition:all .2s;
+  }
+  .links a:hover{background:var(--accent);color:#fff}
+  .links a.soft{border-color:var(--border);color:var(--muted)}
+  .links a.soft:hover{background:var(--card);color:var(--text);border-color:var(--accent2)}
+  .foot{margin-top:44px;display:flex;align-items:center;justify-content:center;gap:12px;color:var(--muted3);font-size:.82rem;font-weight:700}
+  .foot img{width:30px;height:30px}
+  .foot b{color:var(--muted)}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:24px}
+    .hero-art{order:-1;justify-content:flex-start}
+    .hero-art img{max-width:210px}
+    .two{grid-template-columns:1fr;gap:22px}
+    .side-art{max-width:190px;margin:0 auto}
+    header.hero{padding:38px 0 40px}
+    section{padding:40px 0}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .nav-brand span{display:none}
+    .nav-in{gap:10px}
+    .tl{padding-left:22px}
+    .job::before{left:-22px;width:13px;height:13px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="nav-brand"><img src="assets/logo.png" alt=""> Jennifer Salazar <span>Duke</span></div>
+    <div class="nav-links">
+      <a href="#hago" data-en="What I do">Qué hago</a>
+      <a href="#logros" data-en="Awards">Logros</a>
+      <a href="#trayectoria" data-en="Career">Trayectoria</a>
+      <a href="#proyectos" data-en="Projects">Proyectos</a>
+      <a href="#vision" data-en="Vision">Visión</a>
+      <a href="#formacion" data-en="Education">Formación</a>
+      <a href="#contacto" data-en="Contact">Contacto</a>
+    </div>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button id="btn-es" class="on" aria-pressed="true">ES</button>
+      <button id="btn-en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ════ HERO ════ -->
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker" data-en="Salazar Duke Impact Hub">Salazar Duke Impact Hub</div>
+        <h1 data-en="I turn knowledge into <em>systems that run</em>.">Convierto conocimiento en <em>sistemas que operan</em>.</h1>
+        <p class="hero-name">Jennifer Salazar Duke</p>
+        <p class="hero-role" data-en="Architect of AI, data and traceability systems. CEO of Salazar Duke Impact Hub and co-founder of AKDARA. Innovation Catalyst certified by the GIM Institute.">Arquitecta de sistemas de IA, datos y trazabilidad. CEO de Salazar Duke Impact Hub y cofundadora de AKDARA. Innovation Catalyst certificada por el GIM Institute.</p>
+        <div class="hero-meta">
+          <span class="chip" data-en="📍 Medellín, Colombia">📍 Medellín, Colombia</span>
+          <span class="chip" data-en="<b>Innovation Catalyst</b> · GIM Institute"><b>Innovation Catalyst</b> · GIM Institute</span>
+          <span class="chip" data-en="Native Spanish · English <b>C1</b>">Español nativo · Inglés <b>C1</b></span>
+        </div>
+      </div>
+      <div class="hero-art"><img src="assets/voxel/host.webp" alt="Jennifer Salazar Duke" fetchpriority="high"></div>
+    </div>
+  </header>
+
+  <!-- ════ QUÉ HAGO ════ -->
+  <section id="hago">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <div>
+        <h2 data-en="What I do">Qué hago</h2>
+        <p class="lead" data-en="One path, whatever the sector: from scattered data to a decision you can audit.">Un mismo recorrido, sin importar el sector: del dato disperso a la decisión trazable.</p>
+      </div>
+    </div>
+
+    <div class="pipe">
+      <div class="step" style="--c:var(--accent)">
+        <div class="n">01</div>
+        <h3 data-en="Data">Datos</h3>
+        <p data-en="Organizing what the company already knows but keeps scattered.">Ordenar lo que la organización ya sabe pero tiene disperso.</p>
+      </div>
+      <div class="step" style="--c:var(--accent2)">
+        <div class="n">02</div>
+        <h3 data-en="AI models">Modelos de IA</h3>
+        <p data-en="Recommenders, classifiers and assistants with one concrete purpose.">Recomendadores, clasificadores y asistentes con un propósito concreto.</p>
+      </div>
+      <div class="step" style="--c:var(--accent)">
+        <div class="n">03</div>
+        <h3 data-en="Automation">Automatización</h3>
+        <p data-en="So the system runs on its own, without depending on someone remembering.">Que el sistema opere solo, sin depender de que alguien se acuerde.</p>
+      </div>
+      <div class="step" style="--c:var(--green)">
+        <div class="n">04</div>
+        <h3 data-en="Traceability">Trazabilidad</h3>
+        <p data-en="So every decision can be audited. Without this, the rest is smoke.">Que cada decisión se pueda auditar. Sin esto, lo demás es humo.</p>
+      </div>
+    </div>
+
+    <div class="two">
+      <div>
+        <p class="prose" data-en="I design systems that turn knowledge into <b>measurable operation</b>, so organizations and the people leading them decide with more clarity and less risk.">Diseño sistemas que convierten conocimiento en <b>operación medible</b>, para que las organizaciones y quienes las lideran decidan con más claridad y menos riesgo.</p>
+        <p class="prose" data-en="Every product I build is measured against something verifiable: <span class='hl'>time, coverage, savings and quality</span>. If it can't be measured, it can't be defended in a meeting.">Cada producto que construyo se mide contra algo verificable: <span class="hl">tiempo, cobertura, ahorro y calidad</span>. Si no se puede medir, no se puede sostener en una reunión.</p>
+        <p class="prose" data-en="I work in mental health, legaltech, education and Web3. Different sectors, same underlying problem: there is valuable knowledge trapped in someone's head, and nobody else can use it.">Trabajo en salud mental, legaltech, educación y Web3. Sectores distintos, mismo problema de fondo: hay conocimiento valioso atrapado en la cabeza de alguien, y nadie más puede usarlo.</p>
+      </div>
+      <div class="side-art"><img src="assets/voxel/memoria.webp" alt="" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- ════ LOGROS ════ -->
+  <section id="logros">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <div>
+        <h2 data-en="Recent awards">Reconocimientos recientes</h2>
+        <p class="lead" data-en="External validation, not self-perception.">Validación externa, no autopercepción.</p>
+      </div>
+      <div class="sec-art"><img src="assets/voxel/marca.webp" alt="" loading="lazy"></div>
+    </div>
+    <div class="wins">
+
+      <div class="win gold">
+        <span class="medal">🥇</span>
+        <h3 data-en="1<sup>st</sup> place · Marketing challenge · Ruta N AI Marathon">1.<sup>er</sup> lugar · Reto de marketing · Maratón de IA de Ruta N</h3>
+        <p data-en="The challenge came from a real problem: producing content consistently, without losing the brand voice and without a large team behind it. They publish when they remember, run out of ideas after three days, and every piece looks like it belongs to a different brand.">El reto salió de un problema real: producir contenido de forma consistente, sin perder la voz de marca y sin un equipo grande detrás. Publican cuando se acuerdan, se quedan sin ideas a los tres días, y cada pieza parece de otra marca.</p>
+        <p class="win-note" data-en="Every team showed up with the same model available. The difference wasn't there. It was in the architecture.">Todos los equipos llegamos con el mismo modelo disponible. La diferencia no estuvo ahí. Estuvo en la arquitectura.</p>
+        <ul class="win-bullets">
+          <li data-en="<b>A prompt gives you an answer. A harness gives you a system:</b> context that isn't lost, an orchestrator that chains steps, metrics that decide the next cycle, and a record of everything that happened."><b>Un prompt te da una respuesta. Un arnés te da un sistema:</b> contexto que no se pierde, un orquestador que encadena, métricas que deciden el próximo ciclo, y registro de todo lo que pasó.</li>
+          <li data-en="With that I built <b>Musa</b>: it takes the little a brand already has and returns identity, calendar, copy and images per channel. In its own voice.">Con eso construí <b>Musa</b>: toma lo poco que una marca ya tiene y devuelve identidad, calendario, copy e imágenes por canal. Con su voz.</li>
+          <li data-en="<b>What I didn't look for and found:</b> by the end, the architecture already met much of <b>ISO/IEC 42001</b>, the international standard for AI management. Traceability, measurement and defined responsibilities, because a serious system demands them."><b>Lo que no busqué y encontré:</b> al terminar, la arquitectura ya cumplía buena parte de <b>ISO/IEC 42001</b>, la norma internacional de gestión de IA. Trazabilidad, medición y responsabilidades definidas, porque un sistema serio las exige.</li>
+        </ul>
+        <p class="win-close" data-en="If AI is already producing inside your company, the question isn't how good the output is. It's whether you can audit it.">Si en tu empresa la IA ya está produciendo, la pregunta no es qué tan bueno es el output. Es si puedes auditarlo.</p>
+        <span class="when" data-en="2026 · Ruta N + smart4ai · open repository">2026 · Ruta N + smart4ai · repositorio abierto</span>
+      </div>
+
+      <div class="win silver">
+        <span class="medal">🥈</span>
+        <h3 data-en="2<sup>nd</sup> place · Talento Tech Hackathon">2.º lugar · Hackathon Talento Tech</h3>
+        <p data-en="One challenge, twenty-four hours of development, a live product. With a team of five we built <b>CAVALTEC</b>: an app that lets any company measure its compliance with Colombia's Law 1581 on data protection in five minutes, by answering eleven questions, and receive an AI-generated action plan tailored to its sector and size.">Un reto, veinticuatro horas de desarrollo, un producto vivo. Con un equipo de cinco personas construimos <b>CAVALTEC</b>: una aplicación que permite a cualquier empresa medir en cinco minutos su cumplimiento de la Ley 1581 de protección de datos, respondiendo once preguntas, y recibir un plan de acción generado con IA según su sector y su tamaño.</p>
+        <ul class="win-bullets">
+          <li data-en="<b>Recommendations that adapt to the real profile.</b> Five sectors by four company sizes: a small health business gets different advice than a large financial firm for the same control. It isn't a generic test."><b>Recomendaciones que se adaptan al perfil real.</b> Cinco sectores por cuatro tamaños: una microempresa de salud recibe un consejo distinto al de una financiera grande para el mismo control. No es un test genérico.</li>
+          <li data-en="<b>Privacy by design applied to the product itself.</b> Only question codes and aggregate metrics travel to the AI. Zero personal data leaves the database. A tool that assesses data protection has to start by respecting it."><b>Privacidad por diseño aplicada al propio producto.</b> A la IA solo viajan códigos de pregunta y métricas agregadas. Cero datos personales de titulares salen de la base. Una herramienta que evalúa protección de datos tiene que empezar por respetarla.</li>
+          <li data-en="<b>Vale</b>, a conversational advisor that knows each company's specific diagnosis and answers about its concrete gaps, not in general."><b>Vale</b>, una asesora conversacional que conoce el diagnóstico puntual de cada empresa y responde sobre sus brechas concretas, no en general.</li>
+          <li data-en="<b>PDF report with AI analysis</b>, ready to take to the legal team or to senior management."><b>Reporte PDF con análisis de IA</b>, listo para llevar al área legal o a la alta dirección.</li>
+        </ul>
+        <p class="win-note" data-en="The lesson: when the product is designed from the user, technology stops being the protagonist and becomes invisible. Which is exactly where it should be.">La lección: cuando el producto se piensa desde el usuario, la tecnología deja de ser protagonista y se vuelve invisible. Que es exactamente donde debería estar.</p>
+        <span class="when" data-en="2026 · Talento Tech programme">2026 · Programa Talento Tech</span>
+      </div>
+
+      <div class="win">
+        <span class="medal">🏆</span>
+        <h3 data-en="Winners · Caribe Innova">Ganadores · Caribe Innova</h3>
+        <p data-en="AI and blockchain solution for traceability and trust, with seed funding from the programme.">Solución de IA y blockchain para trazabilidad y confianza, con microcapitalización del programa.</p>
+        <span class="when">2025</span>
+      </div>
+      <div class="win">
+        <span class="medal">🎖️</span>
+        <h3 data-en="Innovation Catalyst · GIM Institute">Innovation Catalyst · GIM Institute</h3>
+        <p data-en="International credential in innovation management. Valid through November 2030.">Credencial internacional en gestión de innovación. Vigente hasta noviembre de 2030.</p>
+        <span class="when" data-en="Nov 2025">Nov 2025</span>
+      </div>
+      <div class="win">
+        <span class="medal">🌐</span>
+        <h3 data-en="IXL Center mentorship">Mentoría IXL Center</h3>
+        <p data-en="International validation in Innovation Management for the AKDARA portfolio.">Validación internacional en Innovation Management para el portafolio de AKDARA.</p>
+        <span class="when">2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TRAYECTORIA ════ -->
+  <section id="trayectoria">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <div>
+        <h2 data-en="Career">Trayectoria</h2>
+        <p class="lead" data-en="From federal legal assistance to AI systems architecture. The thread was always the same: organizing complex information so someone can decide.">De asistencia legal federal a arquitectura de sistemas de IA. El hilo conductor siempre fue el mismo: ordenar información compleja para que alguien pueda decidir.</p>
+      </div>
+      <div class="sec-art"><img src="assets/voxel/riesgos.webp" alt="" loading="lazy"></div>
+    </div>
+
+    <div class="tl">
+      <div class="job" style="--c:var(--accent)">
+        <div class="job-in">
+          <div class="job-top">
+            <h3 data-en="AKDARA <span class='org-note'>formerly Trazzos Labs</span>">AKDARA <span class="org-note">antes Trazzos Labs</span></h3>
+            <span class="when" data-en="Sep 2025 — Present">Sep 2025 — Actual</span>
+          </div>
+          <div class="role" data-en="Co-founder · Applied Innovation Architect">Cofundadora · Arquitecta de Innovación Aplicada</div>
+          <div class="place" data-en="Medellín, Colombia">Medellín, Colombia</div>
+          <p data-en="Applied innovation lab designing systems for clearer decisions and lower-risk operation. Portfolio: <b>Arkana</b> (queryable organizational knowledge) and <b>Cluster Pro</b> (inter-company coordination, validated with an industrial cluster). Currently in the Medellín City Hall Entrepreneurship Track.">Laboratorio de innovación aplicada que diseña sistemas para decisiones claras y operación con menor riesgo. Portafolio: <b>Arkana</b> (conocimiento organizacional consultable) y <b>Cluster Pro</b> (coordinación interempresarial, validado con un clúster industrial). Actualmente en la Ruta del Emprendimiento de la Alcaldía de Medellín.</p>
+          <div class="tags" data-en="<span>B2B trust infrastructure</span><span>Arkana</span><span>Cluster Pro</span><span>IXL Center</span>"><span>Infraestructura de confianza B2B</span><span>Arkana</span><span>Cluster Pro</span><span>IXL Center</span></div>
+        </div>
+      </div>
+
+      <div class="job" style="--c:var(--accent2)">
+        <div class="job-in">
+          <div class="job-top">
+            <h3>Salazar Duke Impact Hub</h3>
+            <span class="when" data-en="Jun 2023 — Present">Jun 2023 — Actual</span>
+          </div>
+          <div class="role">CEO</div>
+          <div class="place" data-en="Medellín, Colombia">Medellín, Colombia</div>
+          <p data-en="Social innovation ecosystem where <b>neurodiversity is treated as a competitive advantage</b>. Servant leadership, technology with human purpose, therapeutic integration (CBT) and measurable double impact (SROI). Proprietary <b>KAIA</b> methodology, based on emotional-cognitive reverse learning.">Ecosistema de innovación social donde <b>la neurodiversidad se trata como ventaja competitiva</b>. Liderazgo servicial, tecnología con propósito humano, integración terapéutica (CBT) y doble impacto medible (SROI). Metodología propia <b>KAIA</b>, de aprendizaje inverso emocional-cognitivo.</p>
+          <div class="tags" data-en="<span>Social innovation</span><span>Neurodiversity</span><span>KAIA</span><span>SROI</span><span>CBT</span>"><span>Innovación social</span><span>Neurodiversidad</span><span>KAIA</span><span>SROI</span><span>CBT</span></div>
+        </div>
+      </div>
+
+      <div class="job" style="--c:var(--accent)">
+        <div class="job-in">
+          <div class="job-top">
+            <h3>Dra. María Victoria Pérez</h3>
+            <span class="when" data-en="Sep 2024 — Present">Sep 2024 — Actual</span>
+          </div>
+          <div class="role" data-en="Digital transformation and educational optimization with AI">Transformación digital y optimización educativa con IA</div>
+          <div class="place" data-en="Medellín, Colombia">Medellín, Colombia</div>
+          <p data-en="Modernizing a clinical legacy in Borderline Personality Disorder through AI and data management. Measurable result: <b>251 clinical-educational videos</b> turned into digital assets. In progress: an intelligent assistant consolidating over 30 years of clinical knowledge into a queryable product.">Modernización del legado clínico en Trastorno Límite de la Personalidad mediante IA y gestión de datos. Resultado medible: <b>251 videos clínico-educativos</b> convertidos en activos digitales. En curso: un asistente inteligente que consolida más de 30 años de conocimiento clínico en un producto consultable.</p>
+          <div class="tags" data-en="<span>Mental health</span><span>Knowledge base</span><span>251 digital assets</span>"><span>Salud mental</span><span>Base de conocimiento</span><span>251 activos digitales</span></div>
+        </div>
+      </div>
+
+      <div class="job" style="--c:var(--green)">
+        <div class="job-in">
+          <div class="job-top">
+            <h3>Criminal Law Don Bailey</h3>
+            <span class="when" data-en="Jan 2019 — Present">Ene 2019 — Actual</span>
+          </div>
+          <div class="role" data-en="Trial assistant · Paralegal · EN–ES translator">Asistente en juicio · Paralegal · Traductora EN–ES</div>
+          <div class="place" data-en="Sherman, Texas, United States">Sherman, Texas, Estados Unidos</div>
+          <p data-en="Full support on roughly <b>50 federal criminal cases</b>, including Colombian, Costa Rican and Guatemalan nationals extradited to the Eastern District of Texas.">Atención integral a cerca de <b>50 casos penales federales</b>, incluyendo personas colombianas, costarricenses y guatemaltecas extraditadas al Distrito Este de Texas.</p>
+          <div class="tags" data-en="<span>Legaltech</span><span>Federal litigation</span><span>Legal translation</span>"><span>Legaltech</span><span>Litigio federal</span><span>Traducción jurídica</span></div>
+        </div>
+      </div>
+
+      <div class="job" style="--c:var(--muted3)">
+        <div class="job-in">
+          <div class="job-top">
+            <h3>KAINOS Biocosmética</h3>
+            <span class="when" data-en="Mar — Jul 2024">Mar — Jul 2024</span>
+          </div>
+          <div class="role">Content Management Specialist</div>
+          <div class="place" data-en="Medellín, Colombia">Medellín, Colombia</div>
+          <p data-en="Applying AI to improve the brand's sales narrative and commercial argument.">Aplicación de IA para mejorar la narrativa de venta y el argumentario comercial de la marca.</p>
+        </div>
+      </div>
+
+      <div class="job" style="--c:var(--muted3)">
+        <div class="job-in">
+          <div class="job-top">
+            <h3 data-en="Medellín City Hall · Department of Economic Development">Alcaldía de Medellín · Secretaría de Desarrollo Económico</h3>
+            <span class="when" data-en="Estado Joven programme">Estado Joven</span>
+          </div>
+          <div class="role" data-en="Intern · Business Development Centres">Practicante · Centros de Desarrollo Empresarial</div>
+          <div class="place" data-en="Comuna 3 (Manrique), Medellín">Comuna 3 (Manrique), Medellín</div>
+          <p data-en="Advising local entrepreneurs on business models, value proposition analysis and market validation.">Asesoría a emprendedores locales en modelos de negocio, análisis de propuesta de valor y validación de mercado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PROYECTOS ════ -->
+  <section id="proyectos">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <div>
+        <h2 data-en="Projects">Proyectos</h2>
+        <p class="lead" data-en="Things I built, not things I studied.">Cosas que construí, no cosas que estudié.</p>
+      </div>
+      <div class="sec-art"><img src="assets/voxel/code.webp" alt="" loading="lazy"></div>
+    </div>
+    <div class="projs">
+      <div class="proj">
+        <h3>CAVALTEC</h3>
+        <p data-en="Law 1581 compliance diagnosis in five minutes: eleven questions and an AI action plan tailored to five sectors by four company sizes. Includes <b>Vale</b>, a conversational advisor that answers about each diagnosis's concrete gaps, and a PDF report for the legal team.">Diagnóstico de cumplimiento de la Ley 1581 en cinco minutos: once preguntas y un plan de acción con IA adaptado a cinco sectores por cuatro tamaños de empresa. Incluye a <b>Vale</b>, asesora conversacional que responde sobre las brechas concretas de cada diagnóstico, y reporte PDF para llevar al área legal.</p>
+        <div class="stack"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Supabase RLS</span><span>Claude Haiku 4.5</span><span>Claude Sonnet 4.6</span><span>Vercel</span></div>
+      </div>
+      <div class="proj">
+        <h3>Musa</h3>
+        <p data-en="An agent harness for brand content production: it takes the little a brand already has and returns identity, calendar, copy and images per channel, in its own voice. Persistent context, a chaining orchestrator, metrics that decide the next cycle, and an auditable record of every step. The architecture meets much of <b>ISO/IEC 42001</b>.">Arnés de agentes para producción de contenido de marca: toma lo poco que una marca ya tiene y devuelve identidad, calendario, copy e imágenes por canal, con su voz. Contexto persistente, orquestador que encadena, métricas que deciden el siguiente ciclo y registro auditable de cada paso. La arquitectura cumple buena parte de <b>ISO/IEC 42001</b>.</p>
+        <div class="stack" data-en="<span>Harness engineering</span><span>Agent orchestration</span><span>ISO/IEC 42001</span><span>AI governance</span>"><span>Harness engineering</span><span>Orquestación de agentes</span><span>ISO/IEC 42001</span><span>Gobernanza de IA</span></div>
+      </div>
+      <div class="proj">
+        <h3>Asesor Virtual SDIH</h3>
+        <p data-en="A Telegram chatbot that recommends training content based on the user's profile, combining supervised machine learning with generative AI. It captures demand automatically and generates real-time market intelligence.">Chatbot en Telegram que recomienda contenido formativo según el perfil del usuario, combinando machine learning supervisado con IA generativa. Captura la demanda automáticamente y genera inteligencia de mercado en tiempo real.</p>
+        <div class="stack"><span>Python</span><span>scikit-learn</span><span>PCA</span><span>Qwen2.5-7B</span><span>Telegram Bot</span></div>
+      </div>
+      <div class="proj">
+        <h3>Ikigai IA</h3>
+        <p data-en="An occupational recommender inspired by the Japanese concept of life purpose. It combines Colombian open labour-skills data from DANE with a KNN model to suggest occupations.">Recomendador ocupacional inspirado en el concepto japonés de propósito vital. Integra datos abiertos del DANE sobre habilidades laborales en Colombia con un modelo KNN para sugerir ocupaciones.</p>
+        <div class="stack"><span>KNN</span><span>Pandas</span><span>NumPy</span><span>Django</span><span>Streamlit</span></div>
+      </div>
+      <div class="proj">
+        <h3 data-en="Multi-label biomedical classifier">Clasificador biomédico multietiqueta</h3>
+        <p data-en="Assigns medical domains (cardiovascular, neurological, hepatorenal, oncological) from title and abstract, to speed up scientific reading triage. IAY Data Challenge 2025.">Asigna dominios médicos (cardiovascular, neurológico, hepatorrenal, oncológico) a partir de título y abstract, para acelerar la priorización de lectura científica. IAY Data Challenge 2025.</p>
+        <div class="stack" data-en="<span>TF-IDF</span><span>Logistic regression</span><span>FastAPI</span><span>MLOps</span>"><span>TF-IDF</span><span>Regresión logística</span><span>FastAPI</span><span>MLOps</span></div>
+      </div>
+      <div class="proj">
+        <h3>POSTEDOR Inteligente</h3>
+        <p data-en="A Web3 prototype for traceable electrical infrastructure with digital identity. Latin Hack 2025. My role: strategy, narrative and pitch direction.">Prototipo Web3 de infraestructura eléctrica trazable con identidad digital. Latin Hack 2025. Mi rol: estrategia, narrativa y dirección del pitch.</p>
+        <div class="stack"><span>Web3</span><span>NFT</span><span>Polkadot</span><span>Smart Contracts</span><span>Hardhat</span></div>
+      </div>
+      <div class="proj">
+        <h3 data-en="Chatbot for INGE LEAN S.A.S">Chatbot para INGE LEAN S.A.S</h3>
+        <p data-en="A conversational assistant that evolves from FAQ to adaptive assistant, with target metrics: under 2 seconds per answer, 90% coverage and full traceability. AI Hackathon, Risaralda 2025.">Asistente conversacional que evoluciona de FAQ a asistente adaptativo, con métricas objetivo: menos de 2 segundos por respuesta, 90% de cobertura y trazabilidad completa. Hackathon de IA, Risaralda 2025.</p>
+        <div class="stack"><span>Sentence-Transformers</span><span>Flask</span><span>NLP</span><span>Make</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ VISIÓN ════ -->
+  <section id="vision">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <div>
+        <h2 data-en="Where I'm headed">Hacia dónde voy</h2>
+        <p class="lead">2026 — 2030</p>
+      </div>
+    </div>
+    <div class="two">
+      <div class="vis">
+        <div class="v" style="--c:var(--accent)">
+          <span class="yr" data-en="Doctoral track">Ruta doctoral</span>
+          <h3 data-en="PhD · Georgia Tech">PhD · Georgia Tech</h3>
+          <p data-en="Applied research in Lab-to-Product: translating clinical BPD knowledge into scalable AI systems, with KAIA as an original methodological contribution. Target: Fall 2029.">Investigación aplicada en Lab-to-Product: traducir conocimiento clínico en TLP a sistemas de IA escalables, con KAIA como aporte metodológico original. Objetivo: otoño de 2029.</p>
+        </div>
+        <div class="v" style="--c:var(--accent2)">
+          <span class="yr">AKDARA</span>
+          <h3 data-en="Scaling the portfolio">Escalar el portafolio</h3>
+          <p data-en="Consolidating Arkana and Cluster Pro as a reference in B2B trust infrastructure for mid-sized companies across Latin America.">Consolidar Arkana y Cluster Pro como referencia en infraestructura de confianza B2B para empresas medianas en Latinoamérica.</p>
+        </div>
+        <div class="v" style="--c:var(--green)">
+          <span class="yr" data-en="Mental health">Salud mental</span>
+          <h3 data-en="Clinical-educational product">Producto clínico-educativo</h3>
+          <p data-en="Packaging over 30 years of BPD knowledge as a queryable assistant, with clinical traceability and real usage metrics.">Empaquetar más de 30 años de conocimiento en TLP como asistente consultable, con trazabilidad clínica y métricas de uso reales.</p>
+        </div>
+      </div>
+      <div class="side-art"><img src="assets/voxel/layers.webp" alt="" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- ════ FORMACIÓN ════ -->
+  <section id="formacion">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <div><h2 data-en="Education and credentials">Formación y credenciales</h2></div>
+      <div class="sec-art"><img src="assets/voxel/basico.webp" alt="" loading="lazy"></div>
+    </div>
+    <div class="cols">
+      <div class="box">
+        <h3 data-en="Education">Educación</h3>
+        <ul>
+          <li data-en="<b>Postgraduate in Finance and Project Management</b><span class='meta'>Institución Universitaria de Envigado · 2019–2020</span>"><b>Especialización en Finanzas y Proyectos</b><span class="meta">Institución Universitaria de Envigado · 2019–2020</span></li>
+          <li data-en="<b>BA in International Business Administration</b><span class='meta'>Institución Universitaria de Envigado · 2014–2019</span>"><b>Administradora de Negocios Internacionales</b><span class="meta">Institución Universitaria de Envigado · 2014–2019</span></li>
+          <li data-en="<b>Advanced Deep Learning</b><span class='meta'>Estudia IA · Medellín City Hall · 2026</span>"><b>Deep Learning Avanzado</b><span class="meta">Estudia IA · Alcaldía de Medellín · 2026</span></li>
+          <li data-en="<b>Artificial Intelligence Bootcamp</b><span class='meta'>MinTIC · Talento Tech · 2025</span>"><b>Bootcamp en Inteligencia Artificial</b><span class="meta">MinTIC · Talento Tech · 2025</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3 data-en="Certifications">Certificaciones</h3>
+        <ul>
+          <li data-en="<b>Innovation Catalyst</b> — GIM Institute<span class='meta'>International credential · valid through 2030</span>"><b>Innovation Catalyst</b> — GIM Institute<span class="meta">Credencial internacional · vigente a 2030</span></li>
+          <li data-en="<b>Responsible AI Leadership</b> — Microsoft"><b>Liderazgo Responsable en IA</b> — Microsoft</li>
+          <li data-en="<b>Innovation Management</b> — IXL Center"><b>Innovation Management</b> — IXL Center</li>
+          <li data-en="<b>Machine Learning</b> — certified diploma"><b>Machine Learning</b> — diploma certificado</li>
+          <li data-en="<b>EF SET C1</b> — professional English"><b>EF SET C1</b> — inglés profesional</li>
+          <li data-en="<b>STEMinistA badge</b><span class='meta'>STEM Women Congress Latin America · Medellín 2025</span>"><b>Insignia STEMinistA</b><span class="meta">STEM Women Congress Latin America · Medellín 2025</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3 data-en="Skills">Habilidades</h3>
+        <div class="skills" data-en="<span>Machine Learning</span><span>Knowledge bases</span><span>Business analytics</span><span>FastAPI</span><span>Streamlit</span><span>Hugging Face</span><span>MLOps</span><span>Django</span><span>Make</span><span>Notion</span><span>Git</span><span>Vercel</span><span>Solidity</span><span>Smart Contracts</span><span>Polkadot</span><span>AI product design</span><span>Impact metrics (SROI)</span><span>Agile PMO</span><span>KAIA methodology</span><span>Applied CBT framework</span>">
+          <span>Machine Learning</span><span>Bases de conocimiento</span><span>Analítica de negocio</span>
+          <span>FastAPI</span><span>Streamlit</span><span>Hugging Face</span><span>MLOps</span>
+          <span>Django</span><span>Make</span><span>Notion</span><span>Git</span><span>Vercel</span>
+          <span>Solidity</span><span>Smart Contracts</span><span>Polkadot</span>
+          <span>Diseño de productos IA</span><span>Métricas de impacto (SROI)</span>
+          <span>PMO ágil</span><span>Metodología KAIA</span><span>Marco CBT aplicado</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════ CONTACTO ════ -->
+<div class="wrap">
+  <footer id="contacto">
+    <div class="cta">
+      <h2 data-en="Is there knowledge <b>trapped</b> inside your organization?">¿Tienes conocimiento <b>atrapado</b> en tu organización?</h2>
+      <p data-en="If any of this is useful for what you're building, write to me. I'll tell you straight whether I can help or not.">Si algo de lo que hago te sirve para lo que estás construyendo, escríbeme. Te digo con franqueza si puedo ayudarte o no.</p>
+      <div class="links">
+        <a href="mailto:jennisalazar1909@gmail.com" data-en="Write to me">Escríbeme</a>
+        <a class="soft" href="https://www.linkedin.com/in/jennifer-salazar-duke-1194b2289/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="soft" href="https://github.com/SalazarDukeImpactHub" target="_blank" rel="noopener">GitHub</a>
+        <a class="soft" href="https://salazardukeimpacthub.com" target="_blank" rel="noopener" data-en="Portfolio">Portafolio</a>
+        <a class="soft" href="https://huggingface.co/jennifersalazarduke" target="_blank" rel="noopener">Hugging Face</a>
+      </div>
+      <div class="foot">
+        <img src="assets/logo.png" alt="">
+        <span>Salazar Duke <b>Impact Hub</b> · Medellín, Colombia</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ── Bilingüe ES/EN ──
+   Cada elemento traducible lleva data-en con su versión en inglés.
+   El español vive en el HTML como fuente de verdad; al cambiar a EN se guarda
+   una copia en data-es la primera vez, así el regreso a español es exacto.
+   No hay diccionario aparte: la traducción vive al lado del texto original,
+   que es lo que evita que se desincronicen cuando alguien edita solo uno. */
+(function(){
+  const META = {
+    es:{ titulo:'Jennifer Salazar Duke · Trayectoria',
+         desc:'Arquitecta de sistemas de IA, datos y trazabilidad. CEO de Salazar Duke Impact Hub y cofundadora de AKDARA.' },
+    en:{ titulo:'Jennifer Salazar Duke · Career',
+         desc:'Architect of AI, data and traceability systems. CEO of Salazar Duke Impact Hub and co-founder of AKDARA.' }
+  };
+  const nodos  = document.querySelectorAll('[data-en]');
+  const btnEs  = document.getElementById('btn-es');
+  const btnEn  = document.getElementById('btn-en');
+  const metaDesc = document.querySelector('meta[name="description"]');
+
+  function aplicar(idioma, guardar){
+    nodos.forEach(el => {
+      if (el.dataset.es === undefined) el.dataset.es = el.innerHTML;  // se guarda una sola vez
+      el.innerHTML = idioma === 'en' ? el.dataset.en : el.dataset.es;
+    });
+    document.documentElement.lang = idioma;
+    document.title = META[idioma].titulo;
+    if (metaDesc) metaDesc.setAttribute('content', META[idioma].desc);
+
+    btnEs.classList.toggle('on', idioma === 'es');
+    btnEn.classList.toggle('on', idioma === 'en');
+    btnEs.setAttribute('aria-pressed', idioma === 'es');
+    btnEn.setAttribute('aria-pressed', idioma === 'en');
+
+    if (guardar) { try { localStorage.setItem('sdih-lang', idioma); } catch(e){} }
+  }
+
+  btnEs.addEventListener('click', () => aplicar('es', true));
+  btnEn.addEventListener('click', () => aplicar('en', true));
+
+  // Idioma inicial: el guardado antes; si no hay, el del navegador.
+  let inicial = null;
+  try { inicial = localStorage.getItem('sdih-lang'); } catch(e){}
+  if (!inicial) inicial = (navigator.language || 'es').toLowerCase().startsWith('en') ? 'en' : 'es';
+  aplicar(inicial, false);
+})();
+</script>
+
+<!--
+  PÁGINA DE TRAYECTORIA · Jennifer Salazar Duke
+  - Identidad Salazar Duke Impact Hub: navy #070b18 + morado #8b5cf6 + cyan #22d3ee,
+    con verde #34d399 y amber #fbbf24 como acentos funcionales. Tipografía Inter.
+  - Bilingüe ES/EN mediante atributos data-en. El español es la fuente de verdad en el
+    HTML; el inglés viaja al lado. Se recuerda la elección en localStorage y, la primera
+    vez, se detecta el idioma del navegador.
+  - Fuentes del contenido (NADA inventado): CV publicado en
+    v0-cv-jennifer-salazar-duke.vercel.app (consultado 2026-08-12) + dos posts de
+    LinkedIn de Jennifer (1.er lugar Maratón de IA Ruta N con Musa; 2.º lugar Talento
+    Tech con CAVALTEC).
+  - CAMBIO DE MARCA: "Trazzos Labs" → "AKDARA". El CV de origen todavía usa el nombre
+    viejo en 5 lugares y debe actualizarse.
+  - DECIDIDO: la página NO lleva enlaces a la demo ni al repositorio de CAVALTEC.
+    Quien quiera verlos llega por LinkedIn, que ya está enlazado en Contacto.
+    Tampoco se nombran los 4 compañeros de equipo (queda "un equipo de cinco personas").
+  - PENDIENTE MENOR: confirmar qué ministerio corresponde a Talento Tech. El post de
+    Jennifer dice "Ministerio de Ciencia, Tecnología e Innovación" en el encabezado y
+    "Ministerio de TIC" al agradecer; su CV dice MinTIC. La página evita el problema
+    diciendo solo "programa Talento Tech".
+  - Carpeta autocontenida: index.html en la raíz + assets/ adentro.
+-->
+</body>
+</html>

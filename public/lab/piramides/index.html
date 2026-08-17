@@ -1,0 +1,1208 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Las tres pirámides · Taller · Salazar Duke Impact Hub</title>
+<meta name="description" content="Un recorrido que une el modelo OSI, las capas de la inteligencia artificial y la pirámide invertida del liderazgo servicial. Tres pilas, una sola ley.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070b18; --panel:#0d1228; --card:#111827; --card2:#161f38; --border:#1e293b;
+    --accent:#8b5cf6; --accent-lt:#a78bfa; --accent2:#22d3ee; --green:#34d399; --amber:#fbbf24; --red:#f87171;
+    --text:#ffffff; --muted:#cbd5e1; --muted2:#94a3b8; --muted3:#64748b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scrollbar-gutter:stable}
+  body{
+    font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+    background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(ellipse 55% 38% at 85% 5%, rgba(139,92,246,.20), transparent 62%),
+      radial-gradient(ellipse 48% 34% at 7% 88%, rgba(34,211,238,.11), transparent 62%);
+    background-attachment:fixed;
+  }
+  .layout{display:flex;min-height:100vh}
+
+  /* ══ SIDEBAR ══ */
+  .sidebar{
+    width:300px;min-width:300px;background:var(--panel);border-right:1px solid var(--border);
+    display:flex;flex-direction:column;padding:26px 22px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  }
+  .brand{margin-bottom:24px;display:flex;align-items:center;gap:12px}
+  .brand img{width:42px;height:42px;flex-shrink:0}
+  .brand .name{font-weight:800;font-size:.87rem;line-height:1.3}
+  .brand .name span{display:block;color:var(--accent-lt)}
+  .session{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:15px 17px;margin-bottom:20px}
+  .session strong{display:block;font-size:1rem;font-weight:800;margin-bottom:5px;line-height:1.25}
+  .session em{font-style:normal;font-size:.77rem;color:var(--muted2);line-height:1.5}
+  .actos{margin-bottom:18px}
+  .actos .t{font-size:.62rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--muted3);margin-bottom:9px}
+  .actos button{
+    display:flex;gap:9px;align-items:baseline;width:100%;text-align:left;background:transparent;
+    border:none;color:var(--muted2);font:inherit;font-size:.79rem;font-weight:600;
+    padding:6px 8px;border-radius:7px;cursor:pointer;transition:all .18s;
+  }
+  .actos button:hover{color:var(--text);background:rgba(139,92,246,.1)}
+  .actos button i{font-style:normal;font-weight:900;color:var(--c);flex:0 0 auto;font-size:.72rem}
+  .tab-btn{
+    display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:transparent;
+    border:1px solid transparent;color:var(--muted2);font-family:inherit;font-size:.91rem;font-weight:700;
+    padding:13px 15px;border-radius:11px;cursor:pointer;margin-bottom:7px;transition:all .2s;
+  }
+  .tab-btn .num{
+    width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:.75rem;font-weight:800;background:var(--card);color:var(--muted2);border:1px solid var(--border);flex-shrink:0;
+  }
+  .tab-btn:hover{color:var(--text);background:rgba(139,92,246,.09)}
+  .tab-btn.active{color:#fff;background:var(--card);border-color:var(--accent);box-shadow:0 0 20px rgba(139,92,246,.22)}
+  .tab-btn.active .num{background:var(--accent);color:#fff;border-color:transparent}
+  .anchor{margin-top:auto;padding:15px 17px;border-radius:12px;background:var(--card);border-left:3px solid var(--accent2);font-size:.78rem;line-height:1.55;color:var(--muted2)}
+  .anchor b{color:var(--accent2);display:block;margin-bottom:5px;font-size:.82rem}
+
+  /* ══ CONTENIDO ══ */
+  .content{flex:1;padding:38px 46px;max-width:1440px;min-width:0}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block;animation:fadeUp .35s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* ── DIAPOSITIVAS ── */
+  #slides{position:relative;padding-top:52px}
+  .present-btn{
+    position:absolute;top:0;right:0;font-family:inherit;font-weight:800;font-size:.75rem;
+    letter-spacing:.1em;text-transform:uppercase;background:var(--card);color:var(--accent-lt);
+    border:1px solid var(--accent);border-radius:10px;padding:10px 18px;cursor:pointer;transition:all .2s;z-index:5;
+  }
+  .present-btn:hover{background:var(--accent);color:#fff;box-shadow:0 0 18px rgba(139,92,246,.45)}
+  .deck-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .deck-prog{flex:1;height:5px;background:var(--card);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .deck-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s cubic-bezier(.2,.8,.3,1)}
+  .deck-count{font-size:.74rem;font-weight:900;letter-spacing:.1em;color:var(--muted3);white-space:nowrap}
+  .deck-count b{color:var(--accent-lt)}
+
+  .slide{display:none;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:44px 50px;min-height:490px;position:relative;overflow:hidden}
+  .slide.active{display:flex;gap:32px;align-items:center;animation:fadeUp .3s ease}
+  .slide .txt{flex:1 1 auto;min-width:0}
+  .slide .art{flex:0 0 auto;width:clamp(180px,15vw,270px)}
+  .slide .art.sm{width:clamp(125px,10vw,180px)}
+  .slide .art img{
+    width:100%;height:auto;display:block;
+    -webkit-mask-image:radial-gradient(72% 72% at 50% 48%, #000 54%, transparent 100%);
+            mask-image:radial-gradient(72% 72% at 50% 48%, #000 54%, transparent 100%);
+  }
+  .kicker{font-size:.7rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;color:var(--accent2)}
+  .slide h1{font-weight:900;font-size:clamp(1.95rem,2.7vw,2.9rem);line-height:1.11;margin-bottom:16px;letter-spacing:-.025em}
+  .slide h2{font-weight:900;font-size:clamp(1.45rem,2.05vw,2.2rem);line-height:1.2;margin-bottom:14px;letter-spacing:-.02em}
+  .slide p{font-size:clamp(.95rem,1.05vw,1.18rem);line-height:1.62;color:var(--muted);max-width:60ch}
+  .slide p+p{margin-top:10px}
+  .hl-m{color:var(--accent-lt);font-weight:700}
+  .hl-c{color:var(--accent2);font-weight:700}
+  .hl-a{color:var(--amber);font-weight:700}
+  .hl-g{color:var(--green);font-weight:700}
+  .hl-r{color:var(--red);font-weight:700}
+  .slide ul{list-style:none;margin-top:12px}
+  .slide ul li{padding:7px 0 7px 25px;position:relative;font-size:clamp(.92rem,1vw,1.1rem);line-height:1.5;color:var(--muted)}
+  .slide ul li::before{content:"▸";position:absolute;left:5px;color:var(--accent);font-weight:900}
+  .slide ul li b{color:var(--text)}
+  .tag{display:inline-block;font-size:.66rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px;border-radius:5px;margin-bottom:13px;color:var(--bg)}
+  .slide.acc-m{border-top:4px solid var(--accent)}
+  .slide.acc-c{border-top:4px solid var(--accent2)}
+  .slide.acc-a{border-top:4px solid var(--amber)}
+  .slide.acc-g{border-top:4px solid var(--green)}
+
+  /* ══ PIRÁMIDES — el componente central del taller ══ */
+  .pyr{display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:14px;width:100%}
+  .pyr .lay{
+    width:var(--w);min-width:150px;background:var(--card2);border:1px solid var(--border);
+    border-left:4px solid var(--c);border-radius:9px;padding:9px 14px;
+    display:flex;align-items:baseline;gap:10px;font-size:clamp(.8rem,.92vw,1.02rem);
+    transition:transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s, border-color .22s;
+  }
+  .pyr .lay b{color:var(--c);font-weight:900;flex:0 0 auto;font-size:.85em}
+  .pyr .lay span{font-weight:700;color:var(--text)}
+  .pyr .lay em{font-style:normal;color:var(--muted3);font-size:.86em;margin-left:auto;text-align:right;padding-left:10px}
+  .pyr .lay:hover{transform:translateX(4px) scale(1.015);box-shadow:0 10px 24px rgba(0,0,0,.45);border-color:var(--c)}
+  .pyr .lay.base{background:linear-gradient(90deg, rgba(139,92,246,.14), var(--card2));box-shadow:0 0 26px rgba(139,92,246,.14)}
+  /* La invertida: misma pila, dibujada al derecho. La base va abajo igual. */
+  .pyr.inv{flex-direction:column}
+
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px;width:100%}
+  .trio .col{display:flex;flex-direction:column}
+  .trio .col h4{
+    font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--c);margin-bottom:9px;text-align:center;
+  }
+  .trio .pyr{margin-top:0;gap:4px}
+  .trio .pyr .lay{min-width:0;padding:7px 10px;font-size:clamp(.68rem,.78vw,.86rem);gap:6px}
+  .trio .pyr .lay em{display:none}
+  .trio .nota{margin-top:9px;font-size:.72rem;color:var(--muted3);text-align:center;line-height:1.45}
+
+  /* ── Marca de agua ──
+     Va en cada diapositiva para que cualquier captura o grabación quede
+     identificada. Discreta al editar, algo más presente al proyectar,
+     que es cuando el material sale a circular. */
+  .marca-agua{
+    position:absolute;right:26px;bottom:18px;z-index:4;
+    display:flex;align-items:center;gap:8px;opacity:.26;pointer-events:none;user-select:none;
+  }
+  .marca-agua img{width:20px;height:20px;display:block}
+  .marca-agua span{font-size:.66rem;font-weight:800;letter-spacing:.09em;color:var(--muted2);white-space:nowrap}
+  .marca-agua b{color:var(--accent-lt);font-weight:800}
+  body.presenting .marca-agua{right:3.2vw;bottom:2.6vh;opacity:.34}
+  body.presenting .marca-agua img{width:clamp(22px,1.9vw,34px);height:auto}
+  body.presenting .marca-agua span{font-size:clamp(.68rem,.82vw,1rem)}
+  @media(max-width:900px){.marca-agua{right:14px;bottom:12px;opacity:.2}.marca-agua span{font-size:.6rem}}
+
+  /* Recorrido horizontal: baja la pila, viaja, sube, y entra por arriba */
+  .viaje{display:flex;align-items:stretch;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .viaje .paso{
+    flex:1;min-width:118px;background:var(--card2);border:1px solid var(--border);
+    border-top:3px solid var(--c);border-radius:11px;padding:12px 13px;text-align:center;
+  }
+  .viaje .paso .t{font-size:.6rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--c);margin-bottom:6px}
+  .viaje .paso .d{font-size:clamp(.8rem,.92vw,1rem);font-weight:700;color:var(--text);line-height:1.3}
+  .viaje .paso .s{font-size:clamp(.7rem,.78vw,.86rem);color:var(--muted3);margin-top:4px;line-height:1.35}
+  .viaje .flecha{flex:0 0 auto;align-self:center;color:var(--muted3);font-size:1.15rem;font-weight:900}
+  .viaje .paso.luz{background:linear-gradient(160deg, rgba(251,191,36,.14), var(--card2));box-shadow:0 0 22px rgba(251,191,36,.1)}
+
+  .ley{
+    margin-top:16px;background:var(--card2);border:1px solid var(--border);
+    border-left:4px solid var(--amber);border-radius:13px;padding:16px 20px;max-width:60ch;
+  }
+  .ley .lbl{font-size:.64rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+  .ley p{font-size:1.02rem!important;font-weight:700;color:var(--text)!important;line-height:1.5;max-width:none}
+
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .vs .c{background:var(--card2);border:1px solid var(--border);border-top:3px solid var(--c);border-radius:13px;padding:16px 18px}
+  .vs .c h4{font-size:.94rem;font-weight:900;color:var(--c);margin-bottom:8px}
+  .vs .c p{font-size:.88rem!important;max-width:none;line-height:1.55}
+
+  /* ── Vida ── */
+  @keyframes flotar{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-11px) rotate(-.6deg)}}
+  @keyframes respirar{0%,100%{opacity:.30;transform:translateX(-50%) scale(1)}50%{opacity:.16;transform:translateX(-50%) scale(.88)}}
+  @keyframes entrar{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  @keyframes crecer{from{opacity:0;transform:scaleX(.55)}to{opacity:1;transform:none}}
+  .slide.active .art{position:relative}
+  .slide.active .art::after{
+    content:"";position:absolute;left:50%;bottom:2%;width:56%;height:14px;border-radius:50%;
+    background:radial-gradient(closest-side, rgba(139,92,246,.55), transparent 72%);
+    filter:blur(7px);animation:respirar 6.5s ease-in-out infinite;
+  }
+  .slide.active .art img{animation:flotar 6.5s ease-in-out infinite}
+  .slide.active .txt > *{animation:entrar .5s ease backwards}
+  .slide.active .txt > *:nth-child(1){animation-delay:.04s}
+  .slide.active .txt > *:nth-child(2){animation-delay:.12s}
+  .slide.active .txt > *:nth-child(3){animation-delay:.20s}
+  .slide.active .txt > *:nth-child(4){animation-delay:.28s}
+  .slide.active ul li{animation:entrar .45s ease backwards}
+  .slide.active ul li:nth-child(1){animation-delay:.22s}
+  .slide.active ul li:nth-child(2){animation-delay:.31s}
+  .slide.active ul li:nth-child(3){animation-delay:.40s}
+  .slide.active ul li:nth-child(4){animation-delay:.49s}
+  .slide.active ul li:nth-child(5){animation-delay:.58s}
+  /* La pirámide se construye de abajo hacia arriba: primero la base. */
+  .slide.active .pyr .lay{animation:crecer .42s cubic-bezier(.2,.8,.3,1) backwards}
+  .slide.active .pyr .lay:nth-last-child(1){animation-delay:.14s}
+  .slide.active .pyr .lay:nth-last-child(2){animation-delay:.24s}
+  .slide.active .pyr .lay:nth-last-child(3){animation-delay:.34s}
+  .slide.active .pyr .lay:nth-last-child(4){animation-delay:.44s}
+  .slide.active .pyr .lay:nth-last-child(5){animation-delay:.54s}
+  .slide.active .pyr .lay:nth-last-child(6){animation-delay:.64s}
+  .slide.active .pyr .lay:nth-last-child(7){animation-delay:.74s}
+
+  .slide-nav{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:16px}
+  .slide-nav button{font-family:inherit;font-weight:700;font-size:.87rem;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:11px;padding:12px 24px;cursor:pointer;transition:all .2s}
+  .slide-nav button:hover:not(:disabled){border-color:var(--accent2);box-shadow:0 0 16px rgba(34,211,238,.22)}
+  .slide-nav button:disabled{opacity:.32;cursor:default}
+  .slide-dots{display:flex;gap:6px;flex-wrap:wrap}
+  .slide-dots span{width:8px;height:8px;border-radius:50%;background:var(--card);border:1px solid var(--border);cursor:pointer;transition:all .2s}
+  .slide-dots span.on{background:var(--accent);border-color:var(--accent);box-shadow:0 0 10px rgba(139,92,246,.6)}
+
+  /* ══ PRESENTACIÓN ══ */
+  body.presenting{overflow:hidden}
+  body.presenting .sidebar{display:none}
+  body.presenting .content{max-width:none;padding:0}
+  body.presenting #slides{padding-top:0}
+  body.presenting .present-btn{position:fixed;top:20px;right:24px;opacity:.25}
+  body.presenting .present-btn:hover{opacity:1}
+  body.presenting .deck-top{position:fixed;top:0;left:0;right:0;margin:0;z-index:7;gap:0}
+  body.presenting .deck-prog{height:3px;border:none;border-radius:0;background:rgba(30,41,59,.55)}
+  body.presenting .deck-count{display:none}
+  body.presenting .slide{border:none;border-radius:0;min-height:100vh;padding:5.5vh 5.5vw;background:transparent}
+  body.presenting .slide.active{justify-content:center;gap:4.5vw}
+  body.presenting .kicker{font-size:clamp(.8rem,1.05vw,1.3rem);margin-bottom:2.2vh}
+  body.presenting .tag{font-size:clamp(.76rem,.95vw,1.15rem);padding:7px 16px;margin-bottom:2.2vh}
+  body.presenting .slide h1{font-size:clamp(2.4rem,4.6vw,5rem);margin-bottom:2.4vh}
+  body.presenting .slide h2{font-size:clamp(1.85rem,3.5vw,3.8rem);margin-bottom:2.2vh}
+  body.presenting .slide p{font-size:clamp(1.05rem,1.5vw,1.9rem);max-width:36ch;line-height:1.5}
+  body.presenting .slide ul li{font-size:clamp(.98rem,1.3vw,1.65rem);padding:.9vh 0 .9vh 30px}
+  body.presenting .slide .art{width:clamp(230px,22vw,480px)}
+  body.presenting .slide .art.sm{width:clamp(160px,14vw,300px)}
+  body.presenting .pyr .lay{font-size:clamp(.9rem,1.15vw,1.5rem);padding:1.1vh 1.2vw}
+  body.presenting .trio .pyr .lay{font-size:clamp(.72rem,.85vw,1.05rem);padding:.7vh .7vw}
+  body.presenting .ley{max-width:44ch}
+  body.presenting .ley p{font-size:clamp(1.05rem,1.4vw,1.8rem)!important}
+  body.presenting .slide-nav{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%);margin:0;
+    background:rgba(13,18,40,.86);backdrop-filter:blur(10px);border:1px solid var(--border);
+    border-radius:999px;padding:10px 16px;gap:20px;width:auto;z-index:6;opacity:.35;transition:opacity .25s;
+  }
+  body.presenting .slide-nav:hover{opacity:1}
+  body.presenting .slide-nav button{padding:8px 16px;font-size:.82rem;border-radius:999px}
+
+  /* ── TRIVIA ── */
+  .panel-head{margin-bottom:24px}
+  .panel-head h1{font-weight:900;font-size:1.85rem;margin-bottom:9px;letter-spacing:-.025em}
+  .panel-head p{color:var(--muted2);line-height:1.6;max-width:66ch;font-size:.95rem}
+  .quiz-bar{display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+  .progress{flex:1;min-width:180px;height:9px;background:var(--card);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .35s}
+  .score{font-size:.83rem;font-weight:800;color:var(--muted2);white-space:nowrap}
+  .score b{color:var(--green)}
+  .q-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px 30px}
+  .q-meta{font-size:.68rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:11px}
+  .q-card h3{font-size:1.18rem;font-weight:800;line-height:1.35;margin-bottom:20px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{text-align:left;font:inherit;font-size:.94rem;color:var(--muted);background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:15px 18px;cursor:pointer;transition:all .18s;display:flex;gap:12px;align-items:flex-start}
+  .opt .k{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.74rem;font-weight:900;color:var(--muted2)}
+  .opt:hover:not(:disabled){border-color:var(--accent);color:var(--text)}
+  .opt:disabled{cursor:default}
+  .opt.ok{border-color:var(--green);background:rgba(52,211,153,.11);color:var(--text)}
+  .opt.ok .k{background:var(--green);color:var(--bg);border-color:transparent}
+  .opt.bad{border-color:var(--red);background:rgba(248,113,113,.09)}
+  .opt.bad .k{background:var(--red);color:var(--bg);border-color:transparent}
+  .why{margin-top:18px;padding:16px 19px;border-radius:12px;background:var(--card2);border:1px solid var(--border);border-left:4px solid var(--accent2);font-size:.9rem;line-height:1.6;color:var(--muted);display:none}
+  .why.show{display:block;animation:fadeUp .3s ease}
+  .why b{color:var(--text)}
+  .why .verdict{display:block;font-weight:900;margin-bottom:7px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+  .why.good .verdict{color:var(--green)}
+  .why.bad .verdict{color:var(--amber)}
+  .q-nav{display:flex;justify-content:flex-end;margin-top:18px}
+  .q-nav button{font-family:inherit;font-weight:800;font-size:.87rem;background:var(--accent);color:#fff;border:none;border-radius:11px;padding:13px 26px;cursor:pointer;transition:all .2s}
+  .q-nav button:hover{box-shadow:0 0 18px rgba(139,92,246,.5)}
+  .q-nav button:disabled{opacity:.3;cursor:default;box-shadow:none}
+  .result{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;text-align:center}
+  .result .big{font-size:3.4rem;font-weight:900;letter-spacing:-.04em;line-height:1}
+  .result .of{font-size:1rem;color:var(--muted2);margin-top:6px}
+  .result h3{font-size:1.4rem;font-weight:900;margin-top:20px;letter-spacing:-.02em}
+  .result p{color:var(--muted);margin-top:12px;max-width:56ch;margin-left:auto;margin-right:auto;line-height:1.65}
+  .result button{margin-top:26px;font-family:inherit;font-weight:800;font-size:.88rem;background:transparent;color:var(--accent-lt);border:2px solid var(--accent);border-radius:11px;padding:13px 28px;cursor:pointer;transition:all .2s}
+  .result button:hover{background:var(--accent);color:#fff}
+
+  /* ── GLOSARIO ── */
+  .vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px}
+  .vc{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:22px;transition:all .2s}
+  .vc:hover{border-color:var(--accent2);box-shadow:0 0 18px rgba(34,211,238,.13)}
+  .vc h3{font-weight:800;font-size:1rem;margin-bottom:8px;color:var(--accent2)}
+  .vc p{font-size:.86rem;line-height:1.6;color:var(--muted2)}
+  .vc .t{display:inline-block;margin-top:11px;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:4px;background:var(--panel);border:1px solid var(--border);color:var(--muted3)}
+
+  footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--border);font-size:.75rem;color:var(--muted3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  footer .em{color:var(--accent-lt)}
+
+  @media(max-width:1000px){
+    .trio{grid-template-columns:1fr;gap:22px}
+    .vs{grid-template-columns:1fr}
+  }
+  @media(max-width:900px){
+    .layout{flex-direction:column}
+    .sidebar{width:100%;min-width:0;height:auto;position:static;overflow:visible}
+    .anchor{margin-top:18px}
+    .content{padding:24px 18px}
+    .slide{padding:28px 20px;min-height:0}
+    .slide.active{flex-direction:column;align-items:flex-start;gap:20px}
+    .slide .art{width:150px;align-self:center;order:-1}
+    .pyr .lay{min-width:0}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ══════ SIDEBAR ══════ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Salazar Duke Impact Hub">
+      <div class="name">Salazar Duke<span>Impact Hub</span></div>
+    </div>
+    <div class="session">
+      <strong>Las tres pirámides</strong>
+      <em>El modelo OSI, las capas de la IA y el liderazgo servicial: tres pilas, una sola ley</em>
+    </div>
+
+    <div class="actos">
+      <div class="t">Actos</div>
+      <button data-ir="0" style="--c:var(--muted2)"><i>0</i> La pregunta</button>
+      <button data-ir="3" style="--c:var(--accent2)"><i>I</i> La pirámide que ya funciona</button>
+      <button data-ir="8" style="--c:var(--accent)"><i>II</i> La pirámide de la IA</button>
+      <button data-ir="18" style="--c:var(--green)"><i>III</i> La pirámide invertida</button>
+      <button data-ir="22" style="--c:var(--amber)"><i>IV</i> La unión</button>
+    </div>
+
+    <button class="tab-btn active" data-tab="slides"><span class="num">1</span> Diapositivas</button>
+    <button class="tab-btn" data-tab="trivia"><span class="num">2</span> Trivia · El viaje</button>
+    <button class="tab-btn" data-tab="vocab"><span class="num">3</span> Glosario</button>
+
+    <div class="anchor">
+      <b>"La base carga todo, y es la que nadie mira."</b>
+      En la red, en el modelo y en el equipo.
+    </div>
+  </aside>
+
+  <!-- ══════ CONTENIDO ══════ -->
+  <main class="content">
+
+    <!-- ─────── DIAPOSITIVAS ─────── -->
+    <section class="tab-panel active" id="slides">
+      <button class="present-btn" id="presentBtn" title="Modo presentación (tecla P)">▶ Presentar</button>
+      <div class="deck-top">
+        <div class="deck-prog"><i id="deckProg"></i></div>
+        <div class="deck-count" id="deckCount"><b>1</b> / 29</div>
+      </div>
+
+      <!-- ══ ACTO 0 ══ -->
+      <div class="slide active">
+        <div class="txt">
+          <div class="kicker">Acto 0 · La pregunta</div>
+          <h1>Tres pirámides que parecen <span class="hl-m">no tener nada que ver</span>.</h1>
+          <p>Un modelo de redes de 1984. La historia de la inteligencia artificial. Y un libro de liderazgo.</p>
+          <p>Al final de este recorrido vas a ver que son <b>la misma figura</b>, y que las tres dicen exactamente lo mismo. Quien entiende una, entiende las tres.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/host.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-m">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent)">El hilo</span>
+          <h2>Todo lo que funciona <span class="hl-m">está apilado</span>.</h2>
+          <p>Nada complejo se construye de una pieza. Se construye por capas, y cada capa se apoya en la de abajo sin necesitar entenderla por dentro.</p>
+          <p>Eso tiene un nombre: <b>abstracción</b>. Es lo que te permite mandar un mensaje sin saber de electrones, y usar una IA sin saber de matrices.</p>
+          <p>La abstracción es un regalo. Y también un riesgo, porque cuando dejas de ver la base, dejas de cuidarla.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/layers.webp" alt=""></div>
+      </div>
+
+      <div class="slide">
+        <div class="txt">
+          <div class="kicker">El recorrido</div>
+          <h2>Cuatro actos.</h2>
+          <ul>
+            <li><b>I · La pirámide que ya funciona</b> — el modelo OSI, siete capas que sostienen internet</li>
+            <li><b>II · La pirámide de la IA</b> — de dónde viene y de qué está hecha por dentro</li>
+            <li><b>III · La pirámide invertida</b> — el liderazgo servicial de James Hunter</li>
+            <li><b>IV · La unión</b> — dos leyes que valen para las tres</li>
+          </ul>
+          <p>No es una analogía bonita. Es la misma estructura resolviendo el mismo problema en tres terrenos distintos.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/marca.webp" alt=""></div>
+      </div>
+
+      <!-- ══ ACTO I · OSI ══ -->
+      <div class="slide acc-c">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent2)">Acto I · OSI</span>
+          <h2>1984: había que ponerse <span class="hl-c">de acuerdo</span>.</h2>
+          <p>Cada fabricante hacía redes que solo hablaban con las suyas. Comprar de dos marcas era condenarse a que no se entendieran.</p>
+          <p>La solución no fue obligar a todos a construir igual. Fue <b>partir el problema en siete capas</b> y acordar únicamente cómo se hablan entre vecinas.</p>
+          <p>Así nació el modelo OSI. Cuarenta años después, seguís usándolo cada vez que abres el celular.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/code.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-c">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent2)">Acto I · OSI</span>
+          <h2>Las siete capas.</h2>
+          <div class="pyr">
+            <div class="lay" style="--w:36%;--c:var(--amber)"><b>7</b><span>Aplicación</span><em>lo único que ves</em></div>
+            <div class="lay" style="--w:46%;--c:var(--amber)"><b>6</b><span>Presentación</span><em>formato y cifrado</em></div>
+            <div class="lay" style="--w:56%;--c:var(--accent2)"><b>5</b><span>Sesión</span><em>abrir y cerrar</em></div>
+            <div class="lay" style="--w:66%;--c:var(--accent2)"><b>4</b><span>Transporte</span><em>que llegue completo</em></div>
+            <div class="lay" style="--w:76%;--c:var(--accent)"><b>3</b><span>Red</span><em>encontrar el camino</em></div>
+            <div class="lay" style="--w:88%;--c:var(--accent)"><b>2</b><span>Enlace de datos</span><em>hablar con el vecino</em></div>
+            <div class="lay base" style="--w:100%;--c:var(--green)"><b>1</b><span>Física</span><em>cables, señal, electrones</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide acc-c">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent2)">Acto I · OSI</span>
+          <h2>Mandas un mensaje. <span class="hl-c">Trabajan las siete</span>.</h2>
+          <p>Escribes "hola" y tocas enviar. Lo que ves es la capa 7.</p>
+          <p>Debajo, tu mensaje se envuelve siete veces: se formatea, se cifra, se abre una sesión, se parte en pedazos numerados, se le pone una dirección, se entrega al vecino de red y finalmente se convierte en pulsos eléctricos o luz en una fibra.</p>
+          <p>Del otro lado se desenvuelve en orden inverso. <b>Nadie de arriba necesita saber cómo trabaja el de abajo.</b> Solo necesita confiar en que lo hará.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/basico.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-c">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent2)">Acto I · OSI</span>
+          <h2>Corta el cable y <span class="hl-r">se cae todo</span>.</h2>
+          <p>La capa 1 es la menos glamorosa: cables, conectores, señal. Ningún producto se vende diciendo "tenemos excelente capa física".</p>
+          <p>Pero si falla, no importa qué tan buena sea tu aplicación. <b>El fallo sube.</b> Nunca baja.</p>
+          <p>Y al revés: la aplicación más hermosa del mundo no repara un cable cortado. Arriba no se puede compensar lo que falta abajo.</p>
+          <div class="ley">
+            <div class="lbl">Primera pista</div>
+            <p>La capa que sostiene todo es la que nadie menciona.</p>
+          </div>
+        </div>
+        <div class="art"><img src="assets/voxel/riesgos.webp" alt=""></div>
+      </div>
+
+      <div class="slide">
+        <div class="txt">
+          <div class="kicker">Puente</div>
+          <h2>Ahora la misma pregunta, <span class="hl-m">para la IA</span>.</h2>
+          <p>Si internet está hecho de capas donde cada una se apoya en la anterior y solo se ve la de arriba...</p>
+          <p><b>¿qué hay debajo de la ventanita donde escribes tu prompt?</b></p>
+        </div>
+        <div class="art"><img src="assets/voxel/memoria.webp" alt=""></div>
+      </div>
+
+      <!-- ══ ACTO II · IA ══ -->
+      <div class="slide acc-m">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent)">Acto II · La IA</span>
+          <h2>Dos miradas de la misma pila.</h2>
+          <ul>
+            <li><b>La mirada histórica</b> — cómo se fue construyendo, capa sobre capa, desde 1950 hasta los agentes de hoy.</li>
+            <li><b>La mirada operativa</b> — de qué está hecho cualquier sistema de IA, hoy, por dentro: dato, algoritmo, entrenamiento, modelo, inferencia.</li>
+          </ul>
+          <p>Son la misma pirámide vista de frente y de perfil. Necesitas las dos: una te da criterio histórico, la otra te dice dónde meter la mano cuando algo falla.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/imagenes.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-m">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent)">Mirada histórica</span>
+          <h2>Seis capas, setenta años.</h2>
+          <div class="pyr">
+            <div class="lay" style="--w:40%;--c:var(--amber)"><b>6</b><span>IA Agéntica</span><em>hoy · actúa y encadena</em></div>
+            <div class="lay" style="--w:52%;--c:var(--amber)"><b>5</b><span>IA Generativa</span><em>2020s · crea contenido</em></div>
+            <div class="lay" style="--w:64%;--c:var(--accent2)"><b>4</b><span>Deep Learning</span><em>2010s · muchas capas</em></div>
+            <div class="lay" style="--w:76%;--c:var(--accent2)"><b>3</b><span>Redes Neuronales</span><em>capas de nodos</em></div>
+            <div class="lay" style="--w:88%;--c:var(--accent)"><b>2</b><span>Machine Learning</span><em>aprende de datos</em></div>
+            <div class="lay base" style="--w:100%;--c:var(--green)"><b>1</b><span>IA Clásica</span><em>1950s · reglas escritas a mano</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide acc-m">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent)">Mirada histórica</span>
+          <h2>Cada capa nació de una <span class="hl-m">frustración</span>.</h2>
+          <ul>
+            <li><b>IA Clásica:</b> le escribíamos las reglas a mano. Funcionó para el ajedrez, fracasó con el mundo real. Las reglas eran infinitas.</li>
+            <li><b>Machine Learning:</b> si no podemos escribir las reglas, que las deduzca de ejemplos.</li>
+            <li><b>Redes Neuronales:</b> organizamos ese aprendizaje en capas de nodos, imitando de lejos al cerebro.</li>
+            <li><b>Deep Learning:</b> apilamos muchas capas. La máquina dejó de necesitar que le dijéramos en qué fijarse.</li>
+            <li><b>Generativa y Agéntica:</b> ya no solo clasifica: crea, y después actúa.</li>
+          </ul>
+        </div>
+        <div class="art sm"><img src="assets/voxel/layers.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-c">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent2)">Mirada operativa</span>
+          <h2>De qué está hecho, <span class="hl-c">por dentro</span>.</h2>
+          <div class="pyr">
+            <div class="lay" style="--w:40%;--c:var(--amber)"><b>5</b><span>Inferencia</span><em>lo único que ve el usuario</em></div>
+            <div class="lay" style="--w:56%;--c:var(--amber)"><b>4</b><span>Modelo</span><em>lo aprendido, congelado</em></div>
+            <div class="lay" style="--w:72%;--c:var(--accent2)"><b>3</b><span>Entrenamiento</span><em>donde ocurre el aprendizaje</em></div>
+            <div class="lay" style="--w:86%;--c:var(--accent)"><b>2</b><span>Algoritmo</span><em>qué hacer con el dato</em></div>
+            <div class="lay base" style="--w:100%;--c:var(--green)"><b>1</b><span>Dato</span><em>la capa física de la IA</em></div>
+          </div>
+          <p style="margin-top:14px">Fíjate en la forma. Es la misma de OSI, con otros nombres.</p>
+        </div>
+      </div>
+
+      <div class="slide acc-g">
+        <div class="txt">
+          <span class="tag" style="background:var(--green)">Capa 1</span>
+          <h2>El dato es la <span class="hl-g">capa física</span> de la IA.</h2>
+          <p>Nadie compra un producto porque tenga buenos datos. Nadie los muestra en un pitch. No tienen glamour, igual que los cables.</p>
+          <p>Pero todo lo demás descansa ahí. Un dato sesgado produce un modelo sesgado, y ninguna capa de arriba lo arregla: ni un algoritmo mejor, ni más entrenamiento, ni un prompt más ingenioso.</p>
+          <p><b>El fallo sube.</b> Igual que en la red.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/memoria.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-m">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent)">Capa 2</span>
+          <h2>El algoritmo es <span class="hl-m">la receta</span>, no el plato.</h2>
+          <p>Es el procedimiento que define cómo se va a aprender del dato: qué mirar, cómo medir el error y cómo corregirse.</p>
+          <p>Elegir algoritmo es elegir qué tipo de patrón puedes encontrar. Uno que solo traza líneas rectas jamás va a ver una curva, por más datos que le des.</p>
+          <p>Por eso la pregunta correcta nunca es "¿cuál es el mejor algoritmo?", sino <b>"¿qué forma tiene mi problema?"</b>.</p>
+        </div>
+        <div class="art sm"><img src="assets/voxel/code.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-c">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent2)">Capa 3</span>
+          <h2>Entrenamiento: <span class="hl-c">cuatro formas de aprender</span>.</h2>
+          <ul>
+            <li><b>Supervisado</b> — le das ejemplos con la respuesta correcta. "Esto es spam, esto no". Aprende la relación entre entrada y salida.</li>
+            <li><b>No supervisado</b> — sin respuestas. Le pides que encuentre estructura por su cuenta: agrupar clientes parecidos, detectar lo que se sale de la norma.</li>
+            <li><b>Por refuerzo</b> — ensayo y error con recompensa. Como enseñarle a un perro, pero con millones de intentos.</li>
+            <li><b>Autosupervisado</b> — el dato genera sus propias etiquetas. Tapar una palabra y pedirle que la adivine. <b>Esto es lo que hizo posibles a los modelos de lenguaje</b>: ya no hacía falta que un humano etiquetara internet.</li>
+          </ul>
+        </div>
+        <div class="art sm"><img src="assets/voxel/basico.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-c">
+        <div class="txt">
+          <span class="tag" style="background:var(--accent2)">Capa 3</span>
+          <h2>Y dos atajos que <span class="hl-c">cambian el costo</span>.</h2>
+          <ul>
+            <li><b>Transferencia</b> — partir de un modelo ya entrenado en algo general y aprovechar lo que sabe. No empiezas de cero.</li>
+            <li><b>Ajuste fino</b> — tomar ese modelo y especializarlo con tus propios datos, que son muchos menos.</li>
+          </ul>
+          <p>Esta es la razón por la que hoy una empresa mediana puede tener un modelo propio. Ya no necesita el presupuesto de entrenar desde cero.</p>
+          <p>Y también es la razón por la que <b>hereda los sesgos del modelo del que partió</b>, sin haberlos elegido.</p>
+        </div>
+        <div class="art sm"><img src="assets/voxel/imagenes.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-a">
+        <div class="txt">
+          <span class="tag" style="background:var(--amber)">Capas 4 y 5</span>
+          <h2>El modelo recuerda. <span class="hl-a">La inferencia responde</span>.</h2>
+          <p>El <b>modelo</b> es el resultado del entrenamiento: lo aprendido, congelado. No sigue aprendiendo mientras lo usas.</p>
+          <p>La <b>inferencia</b> es cada vez que le preguntas algo y responde. Es la capa 5, y es <b>la única que el usuario ve</b>.</p>
+          <p>De ahí el espejismo: la gente cree que la IA "es" el chat. El chat es la punta. Debajo hay cuatro capas que decidieron todo lo que ese chat puede y no puede decir.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/landing.webp" alt=""></div>
+      </div>
+
+      <div class="slide">
+        <div class="txt">
+          <div class="kicker">Puente</div>
+          <h2>Dos pirámides, <span class="hl-m">la misma forma</span>.</h2>
+          <p>En OSI, la capa física carga todo y nadie la nombra. En la IA, el dato carga todo y nadie lo muestra.</p>
+          <p>Y ahora la pregunta que convierte esto en algo más que una clase de tecnología:</p>
+          <p><b>¿qué pasa cuando la pila está hecha de personas?</b></p>
+        </div>
+        <div class="art"><img src="assets/voxel/marca.webp" alt=""></div>
+      </div>
+
+      <!-- ══ ACTO III · HUNTER ══ -->
+      <div class="slide acc-g">
+        <div class="txt">
+          <span class="tag" style="background:var(--green)">Acto III · Liderazgo</span>
+          <h2>El organigrama de siempre.</h2>
+          <div class="pyr">
+            <div class="lay" style="--w:34%;--c:var(--red)"><b>▲</b><span>Dirección</span><em>arriba del todo</em></div>
+            <div class="lay" style="--w:52%;--c:var(--muted3)"><b>·</b><span>Mandos medios</span><em>sirven a la dirección</em></div>
+            <div class="lay" style="--w:74%;--c:var(--muted3)"><b>·</b><span>Equipos</span><em>sirven a los mandos</em></div>
+            <div class="lay" style="--w:100%;--c:var(--muted3)"><b>·</b><span>Cliente</span><em>al final de la fila</em></div>
+          </div>
+          <p style="margin-top:14px">Todos miran hacia arriba. La energía de la organización sube, buscando aprobación. <b>Y el cliente queda hasta el final.</b></p>
+        </div>
+      </div>
+
+      <div class="slide acc-g">
+        <div class="txt">
+          <span class="tag" style="background:var(--green)">Acto III · Liderazgo</span>
+          <h2>James Hunter <span class="hl-g">la da vuelta</span>.</h2>
+          <div class="pyr">
+            <div class="lay" style="--w:36%;--c:var(--green)"><b>▲</b><span>Cliente</span><em>a quien todo sirve</em></div>
+            <div class="lay" style="--w:54%;--c:var(--accent2)"><b>·</b><span>Equipos</span><em>sostenidos, no vigilados</em></div>
+            <div class="lay" style="--w:76%;--c:var(--accent)"><b>·</b><span>Mandos medios</span><em>quitan obstáculos</em></div>
+            <div class="lay base" style="--w:100%;--c:var(--amber)"><b>▼</b><span>Quien lidera</span><em>abajo, sosteniendo</em></div>
+          </div>
+          <p style="margin-top:14px">En <em>La paradoja</em>, Hunter lo resume en una frase: <b>para liderar hay que servir</b>. Quien manda ya no está arriba pidiendo, sino abajo sosteniendo.</p>
+        </div>
+      </div>
+
+      <div class="slide acc-g">
+        <div class="txt">
+          <span class="tag" style="background:var(--green)">Acto III · Liderazgo</span>
+          <h2>Poder y autoridad <span class="hl-g">no son lo mismo</span>.</h2>
+          <div class="vs">
+            <div class="c" style="--c:var(--red)">
+              <h4>Poder</h4>
+              <p>La capacidad de obligar por la posición que ocupas. Te la da el cargo, funciona de inmediato y <b>se gasta con el uso</b>. Cuando te vas, se va con vos.</p>
+            </div>
+            <div class="c" style="--c:var(--green)">
+              <h4>Autoridad</h4>
+              <p>La capacidad de influir porque la gente quiere seguirte. Se gana sirviendo, tarda en construirse y <b>se acumula</b>. Cuando te vas, queda.</p>
+            </div>
+          </div>
+          <p style="margin-top:14px">El poder es la capa 7: se ve, es vistosa, es inmediata. La autoridad es la capa 1: no se ve, no se presume, y sostiene todo lo demás.</p>
+        </div>
+      </div>
+
+      <div class="slide acc-g">
+        <div class="txt">
+          <span class="tag" style="background:var(--green)">Acto III · Liderazgo</span>
+          <h2>Y aquí está <span class="hl-g">el truco</span>.</h2>
+          <p>Decimos que Hunter "invirtió" la pirámide. Pero mira las otras dos: en OSI y en la IA, <b>la base siempre estuvo abajo</b>. A nadie se le ocurrió dibujar la capa física arriba.</p>
+          <p>El organigrama fue el único de los tres que se dibujó al revés desde el principio.</p>
+          <div class="ley">
+            <div class="lbl">La revelación</div>
+            <p>Hunter no invirtió la pirámide. Corrigió un error de dibujo.</p>
+          </div>
+        </div>
+        <div class="art"><img src="assets/voxel/host.webp" alt=""></div>
+      </div>
+
+      <!-- ══ ACTO IV · LA UNIÓN ══ -->
+      <div class="slide acc-a">
+        <div class="txt">
+          <span class="tag" style="background:var(--amber)">Acto IV · La unión</span>
+          <h2>Las tres, <span class="hl-a">lado a lado</span>.</h2>
+          <div class="trio">
+            <div class="col" style="--c:var(--accent2)">
+              <h4>Red</h4>
+              <div class="pyr">
+                <div class="lay" style="--w:52%;--c:var(--amber)"><span>Aplicación</span></div>
+                <div class="lay" style="--w:70%;--c:var(--accent2)"><span>Transporte</span></div>
+                <div class="lay" style="--w:85%;--c:var(--accent)"><span>Red</span></div>
+                <div class="lay base" style="--w:100%;--c:var(--green)"><span>Física</span></div>
+              </div>
+              <div class="nota">Lo que ves: la app<br>Lo que carga: el cable</div>
+            </div>
+            <div class="col" style="--c:var(--accent)">
+              <h4>Inteligencia artificial</h4>
+              <div class="pyr">
+                <div class="lay" style="--w:52%;--c:var(--amber)"><span>Inferencia</span></div>
+                <div class="lay" style="--w:70%;--c:var(--accent2)"><span>Modelo</span></div>
+                <div class="lay" style="--w:85%;--c:var(--accent)"><span>Entrenamiento</span></div>
+                <div class="lay base" style="--w:100%;--c:var(--green)"><span>Dato</span></div>
+              </div>
+              <div class="nota">Lo que ves: el chat<br>Lo que carga: el dato</div>
+            </div>
+            <div class="col" style="--c:var(--green)">
+              <h4>Equipo</h4>
+              <div class="pyr">
+                <div class="lay" style="--w:52%;--c:var(--amber)"><span>Cliente</span></div>
+                <div class="lay" style="--w:70%;--c:var(--accent2)"><span>Equipos</span></div>
+                <div class="lay" style="--w:85%;--c:var(--accent)"><span>Mandos</span></div>
+                <div class="lay base" style="--w:100%;--c:var(--green)"><span>Quien sirve</span></div>
+              </div>
+              <div class="nota">Lo que ves: el resultado<br>Lo que carga: quien sostiene</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide acc-a">
+        <div class="txt">
+          <span class="tag" style="background:var(--amber)">La pregunta difícil</span>
+          <h2>¿El dato se convierte en <span class="hl-a">luz</span> cada vez que mandas un prompt?</h2>
+          <p>Sí y no. Y la respuesta separa dos cosas que se llaman igual.</p>
+          <div class="vs">
+            <div class="c" style="--c:var(--green)">
+              <h4>Sí viaja: tu prompt</h4>
+              <p>El texto que escribes ahora baja las siete capas, se vuelve luz en la fibra o voltaje en el cobre, cruza el mundo y sube las siete del otro lado. La respuesta hace el camino de vuelta.</p>
+            </div>
+            <div class="c" style="--c:var(--red)">
+              <h4>No viaja: el dato de entrenamiento</h4>
+              <p>Ese es la capa 1 de la pirámide de IA y ya ocurrió, meses o años antes. Hoy ni siquiera existe como dato: quedó comprimido en los pesos del modelo.</p>
+            </div>
+          </div>
+          <p style="margin-top:14px">Es como preguntar dónde está la harina en un pan horneado. <b>Está, pero ya no es harina.</b></p>
+        </div>
+      </div>
+
+      <div class="slide acc-a">
+        <div class="txt">
+          <span class="tag" style="background:var(--amber)">La pregunta difícil</span>
+          <h2>Las dos pirámides no se apilan. <span class="hl-a">Se cruzan</span>.</h2>
+          <div class="viaje">
+            <div class="paso" style="--c:var(--accent2)">
+              <div class="t">1 · Baja</div>
+              <div class="d">Capas 7 → 1</div>
+              <div class="s">se cifra, se parte, se direcciona</div>
+            </div>
+            <div class="flecha">→</div>
+            <div class="paso luz" style="--c:var(--amber)">
+              <div class="t">2 · Viaja</div>
+              <div class="d">Luz o voltaje</div>
+              <div class="s">acá sí es física pura</div>
+            </div>
+            <div class="flecha">→</div>
+            <div class="paso" style="--c:var(--accent2)">
+              <div class="t">3 · Sube</div>
+              <div class="d">Capas 1 → 7</div>
+              <div class="s">vuelve a ser tu texto</div>
+            </div>
+            <div class="flecha">→</div>
+            <div class="paso" style="--c:var(--accent)">
+              <div class="t">4 · Entra</div>
+              <div class="d">Por la capa 5</div>
+              <div class="s">inferencia, no dato</div>
+            </div>
+          </div>
+          <p style="margin-top:15px">OSI es <b>el camino</b>. La pirámide de la IA es <b>el edificio al final del camino</b>. Y tu prompt no entra por abajo: entra por el último piso, porque las capas 1 a 4 estaban terminadas antes de que escribieras nada.</p>
+          <div class="ley">
+            <div class="lbl">El cierre</div>
+            <p>Todo dato fue luz alguna vez. Pero no el mismo día.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide acc-a">
+        <div class="txt">
+          <span class="tag" style="background:var(--amber)">Ley 1</span>
+          <h2>La base carga todo, <span class="hl-a">y es invisible</span>.</h2>
+          <p>El cable, el dato y quien sirve tienen algo en común: nadie los aplaude, no aparecen en el pitch, y son lo primero que se recorta cuando hay que ahorrar.</p>
+          <p>La abstracción nos deja usar la cima sin pensar en la base. Es un regalo enorme. Pero tiene una factura: <b>lo que dejamos de ver, dejamos de mantener</b>.</p>
+          <div class="ley">
+            <div class="lbl">Ley 1</div>
+            <p>Cuanto más invisible es una capa, más probable es que esté abandonada.</p>
+          </div>
+        </div>
+        <div class="art"><img src="assets/voxel/memoria.webp" alt=""></div>
+      </div>
+
+      <div class="slide acc-a">
+        <div class="txt">
+          <span class="tag" style="background:var(--amber)">Ley 2</span>
+          <h2>El fallo <span class="hl-r">sube</span>. Nunca baja.</h2>
+          <ul>
+            <li>Cable cortado → no hay app que lo salve.</li>
+            <li>Dato sesgado → no hay prompt que lo corrija.</li>
+            <li>Nadie sostiene al equipo → no hay talento que lo compense.</li>
+          </ul>
+          <p>Y su consecuencia práctica, que es lo que te llevas:</p>
+          <div class="ley">
+            <div class="lbl">Ley 2</div>
+            <p>Cuando algo falla arriba, el problema casi nunca está arriba.</p>
+          </div>
+        </div>
+        <div class="art"><img src="assets/voxel/riesgos.webp" alt=""></div>
+      </div>
+
+      <div class="slide">
+        <div class="txt">
+          <div class="kicker">Cómo se usa</div>
+          <h2>El diagnóstico <span class="hl-m">de abajo hacia arriba</span>.</h2>
+          <p>La próxima vez que algo falle, resistí la tentación de arreglar lo que se ve. Baja una capa y pregunta.</p>
+          <ul>
+            <li>¿La web va lenta? Antes de rediseñar, mira la conexión y el servidor.</li>
+            <li>¿El modelo responde mal? Antes de cambiar el prompt, mira con qué datos aprendió.</li>
+            <li>¿El equipo no rinde? Antes de exigir más, pregunta qué obstáculo nadie les quitó.</li>
+          </ul>
+          <p>Arreglar la capa 7 cuando el problema está en la 1 es la forma más cara de perder el tiempo. Y la más común.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/code.webp" alt=""></div>
+      </div>
+
+      <div class="slide">
+        <div class="txt">
+          <div class="kicker">Cierre</div>
+          <h1>Tres pirámides. <span class="hl-a">Una sola ley</span>.</h1>
+          <p>Ingenieros de red en 1984, investigadores de IA durante setenta años, y un libro de liderazgo llegaron por caminos distintos a la misma conclusión.</p>
+          <p style="font-size:1.22em;font-weight:700;color:var(--text);margin-top:16px">Lo que sostiene nunca es lo que se ve.</p>
+          <p>Quien entiende eso deja de arreglar síntomas. En su red, en sus modelos y en su gente.</p>
+        </div>
+        <div class="art"><img src="assets/voxel/host.webp" alt=""></div>
+      </div>
+
+      <div class="slide-nav">
+        <button id="prevBtn">← Anterior</button>
+        <div class="slide-dots" id="dots"></div>
+        <button id="nextBtn">Siguiente →</button>
+      </div>
+    </section>
+
+    <!-- ─────── TRIVIA ─────── -->
+    <section class="tab-panel" id="trivia">
+      <div class="panel-head">
+        <h1>Trivia: <span class="hl-m">el viaje completo</span>.</h1>
+        <p>Diecisiete preguntas que recorren los cuatro actos. No buscan que memorices nombres de capas, sino que reconozcas la misma estructura cuando cambia de disfraz. Las opciones se barajan en cada intento.</p>
+      </div>
+      <div class="quiz-bar">
+        <div class="progress"><i id="prog"></i></div>
+        <div class="score" id="score">Pregunta <b>1</b> de 17</div>
+      </div>
+      <div id="quiz"></div>
+      <footer>
+        <span>Taller · Las tres pirámides · Salazar Duke Impact Hub</span>
+        <span class="em">Lo que sostiene nunca es lo que se ve.</span>
+      </footer>
+    </section>
+
+    <!-- ─────── GLOSARIO ─────── -->
+    <section class="tab-panel" id="vocab">
+      <div class="panel-head">
+        <h1>Glosario <span class="hl-c">del recorrido</span>.</h1>
+        <p>Los términos de los cuatro actos, sin jerga.</p>
+      </div>
+      <div class="vocab">
+        <div class="vc"><h3>Abstracción</h3><p>Poder usar una capa sin entender por dentro la de abajo. Es lo que permite mandar un mensaje sin saber de electrones. Un regalo con factura: lo que dejas de ver, dejas de cuidarlo.</p><span class="t">Concepto central</span></div>
+        <div class="vc"><h3>Modelo OSI</h3><p>Acuerdo de 1984 que parte la comunicación en red en siete capas, donde cada una solo necesita saber hablar con sus vecinas.</p><span class="t">Acto I</span></div>
+        <div class="vc"><h3>Encapsulación</h3><p>Cada capa envuelve el paquete de la anterior y le agrega lo suyo. Del otro lado se desenvuelve en orden inverso.</p><span class="t">Acto I</span></div>
+        <div class="vc"><h3>Capa física</h3><p>La capa 1 de OSI: cables, conectores, señal. La menos vistosa y la que sostiene todas las demás.</p><span class="t">Acto I</span></div>
+        <div class="vc"><h3>IA Clásica</h3><p>Primera capa histórica. Las reglas se escribían a mano. Funcionó para dominios cerrados como el ajedrez y fracasó ante el mundo real, donde las reglas son infinitas.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Machine Learning</h3><p>En lugar de escribir las reglas, se deducen a partir de ejemplos. El giro que hizo posible todo lo que vino después.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Deep Learning</h3><p>Redes con muchas capas, capaces de aprender por sí mismas en qué fijarse, sin que un humano se lo indique.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Aprendizaje supervisado</h3><p>Se entrena con ejemplos que ya traen la respuesta correcta. Sirve para clasificar y predecir.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Aprendizaje no supervisado</h3><p>Sin respuestas de referencia. Se le pide encontrar estructura: agrupar lo parecido, detectar lo anómalo.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Aprendizaje por refuerzo</h3><p>Ensayo y error guiado por una recompensa. Aprende de las consecuencias, no de ejemplos.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Aprendizaje autosupervisado</h3><p>El propio dato genera sus etiquetas: tapar una palabra y pedir que la adivine. Es lo que hizo viables a los modelos de lenguaje, porque eliminó la necesidad de etiquetar a mano.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Transferencia y ajuste fino</h3><p>Partir de un modelo ya entrenado y especializarlo con pocos datos propios. Abarata todo, y hace heredar sesgos que nadie eligió.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Inferencia</h3><p>Cada vez que le preguntas al modelo y responde. La única capa que el usuario ve, y la que hace creer que la IA "es" el chat.</p><span class="t">Acto II</span></div>
+        <div class="vc"><h3>Poder</h3><p>Capacidad de obligar que da el cargo. Inmediata, vistosa, y se gasta con el uso. Es la capa 7 del liderazgo.</p><span class="t">Acto III</span></div>
+        <div class="vc"><h3>Autoridad</h3><p>Capacidad de influir que se gana sirviendo. Tarda en construirse, se acumula y queda cuando te vas. Es la capa 1.</p><span class="t">Acto III</span></div>
+        <div class="vc"><h3>Pirámide invertida</h3><p>El organigrama dibujado con quien lidera abajo, sosteniendo, y el cliente arriba. Hunter no la invirtió: corrigió el dibujo.</p><span class="t">Acto III</span></div>
+      </div>
+      <footer>
+        <span>Taller · Las tres pirámides · Salazar Duke Impact Hub</span>
+        <span class="em">Lo que sostiene nunca es lo que se ve.</span>
+      </footer>
+    </section>
+
+  </main>
+</div>
+
+<script>
+/* ══ Pestañas ══ */
+const tabBtns = document.querySelectorAll('.tab-btn');
+const panels  = document.querySelectorAll('.tab-panel');
+tabBtns.forEach(b => b.addEventListener('click', () => {
+  tabBtns.forEach(x => x.classList.remove('active'));
+  panels.forEach(p => p.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById(b.dataset.tab).classList.add('active');
+}));
+
+/* ══ Diapositivas ══ */
+const slides = document.querySelectorAll('.slide');
+
+/* Marca de agua en cada diapositiva. Se inyecta por JS en vez de repetirla
+   29 veces en el HTML: un solo lugar que editar si cambia la marca. */
+slides.forEach(s => {
+  const m = document.createElement('div');
+  m.className = 'marca-agua';
+  m.setAttribute('aria-hidden', 'true');
+  m.innerHTML = '<img src="assets/logo.png" alt=""><span>Salazar Duke <b>Impact Hub</b></span>';
+  s.appendChild(m);
+});
+const dotsWrap = document.getElementById('dots');
+let cur = 0;
+slides.forEach((_, i) => {
+  const d = document.createElement('span');
+  d.setAttribute('role','button');
+  d.setAttribute('aria-label','Ir a la diapositiva ' + (i+1));
+  if (i === 0) d.classList.add('on');
+  d.addEventListener('click', () => go(i));
+  dotsWrap.appendChild(d);
+});
+const dots = dotsWrap.querySelectorAll('span');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const deckProg = document.getElementById('deckProg');
+const deckCount = document.getElementById('deckCount');
+function go(i){
+  slides[cur].classList.remove('active'); dots[cur].classList.remove('on');
+  cur = Math.max(0, Math.min(i, slides.length - 1));
+  slides[cur].classList.add('active'); dots[cur].classList.add('on');
+  prevBtn.disabled = cur === 0;
+  nextBtn.disabled = cur === slides.length - 1;
+  deckProg.style.width = ((cur + 1) / slides.length * 100) + '%';
+  deckCount.innerHTML = '<b>' + (cur + 1) + '</b> / ' + slides.length;
+}
+prevBtn.addEventListener('click', () => cur > 0 && go(cur - 1));
+nextBtn.addEventListener('click', () => cur < slides.length - 1 && go(cur + 1));
+
+/* Saltar directo a un acto desde el sidebar */
+document.querySelectorAll('.actos button').forEach(b => b.addEventListener('click', () => {
+  document.querySelector('.tab-btn[data-tab="slides"]').click();
+  go(+b.dataset.ir);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}));
+go(0);
+
+/* ══ Modo presentación ══ */
+const presentBtn = document.getElementById('presentBtn');
+function setPresenting(on){
+  document.body.classList.toggle('presenting', on);
+  presentBtn.textContent = on ? '✕ Salir' : '▶ Presentar';
+  if (on && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
+  else if (!on && document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(()=>{});
+}
+presentBtn.addEventListener('click', () => setPresenting(!document.body.classList.contains('presenting')));
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement && document.body.classList.contains('presenting')) setPresenting(false);
+});
+document.addEventListener('keydown', e => {
+  if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+  if (e.key === 'Escape' && document.body.classList.contains('presenting')) { setPresenting(false); return; }
+  if (e.key === 'p' || e.key === 'P') {
+    if (document.getElementById('slides').classList.contains('active')) setPresenting(!document.body.classList.contains('presenting'));
+    return;
+  }
+  if (!document.getElementById('slides').classList.contains('active')) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); nextBtn.click(); }
+  if (e.key === 'ArrowLeft'  || e.key === 'PageUp')  { e.preventDefault(); prevBtn.click(); }
+  if (e.key === 'Home') go(0);
+  if (e.key === 'End')  go(slides.length - 1);
+});
+
+/* ══ Trivia ══ */
+const PREGUNTAS = [
+  {
+    q: '¿Por qué el modelo OSI dividió la comunicación en siete capas en vez de resolverla de una sola pieza?',
+    o: ['Para que cada fabricante solo tuviera que acordar cómo hablar con las capas vecinas',
+        'Porque siete era el número máximo que soportaba el hardware de la época',
+        'Para poder cobrar licencias separadas por cada capa',
+        'Porque cada capa la desarrolló un país distinto'],
+    r: 0,
+    why: 'Partir el problema permitió que nadie tuviera que construir igual: bastaba con <b>acordar la conversación entre vecinas</b>. Esa es la esencia de una pila por capas, y la razón de que siga funcionando cuarenta años después.'
+  },
+  {
+    q: 'Tu aplicación no carga. El diseño es impecable y el código está bien. ¿Qué dice la lógica de capas?',
+    o: ['Que hay que rediseñar la interfaz',
+        'Que el problema probablemente está en una capa inferior',
+        'Que la capa 7 falló y hay que reescribirla',
+        'Que las capas no aplican al software moderno'],
+    r: 1,
+    why: 'El fallo <b>sube, nunca baja</b>. Un problema en la capa física o de red se manifiesta arriba, pero no se origina ahí. Arreglar la capa 7 cuando el problema está en la 1 es la forma más cara de perder el tiempo.'
+  },
+  {
+    q: 'En la pila operativa de la IA, ¿cuál es el equivalente a la capa física de OSI?',
+    o: ['El algoritmo', 'El modelo', 'El dato', 'La inferencia'],
+    r: 2,
+    why: 'El <b>dato</b> es la capa física de la IA: no tiene glamour, nadie lo muestra en un pitch, y todo lo demás descansa encima. Un dato sesgado produce un modelo sesgado, y ninguna capa superior lo corrige.'
+  },
+  {
+    q: '¿Qué tipo de aprendizaje hizo viables a los modelos de lenguaje actuales?',
+    o: ['Supervisado, con millones de textos etiquetados a mano',
+        'Autosupervisado, donde el propio dato genera sus etiquetas',
+        'Por refuerzo, con recompensa por cada palabra correcta',
+        'No supervisado, agrupando textos parecidos'],
+    r: 1,
+    why: 'El <b>autosupervisado</b> quitó el cuello de botella: tapar una palabra y pedir que la adivine genera etiquetas sin intervención humana. Etiquetar internet a mano habría sido imposible.'
+  },
+  {
+    q: 'Una empresa hace ajuste fino sobre un modelo preentrenado. ¿Qué riesgo asume sin decidirlo?',
+    o: ['Que el modelo olvide todo lo aprendido antes',
+        'Que hereda los sesgos del modelo del que partió',
+        'Que necesita más datos que entrenando desde cero',
+        'Que pierde el derecho a usar sus propios datos'],
+    r: 1,
+    why: 'Partir de un modelo entrenado abarata todo, y por eso hoy una empresa mediana puede tener modelo propio. Pero <b>hereda lo que ese modelo ya traía</b>, sesgos incluidos, sin haberlos elegido.'
+  },
+  {
+    q: 'Alguien dice: "la IA es ChatGPT". Según la mirada operativa, ¿qué está confundiendo?',
+    o: ['Nada, es una definición correcta',
+        'Confunde la inferencia, que es la única capa visible, con toda la pila',
+        'Confunde el algoritmo con el dato',
+        'Confunde deep learning con machine learning'],
+    r: 1,
+    why: 'El chat es la <b>inferencia</b>, la capa 5. Debajo hay cuatro capas —dato, algoritmo, entrenamiento y modelo— que ya decidieron todo lo que ese chat puede y no puede decir. Es el mismo espejismo que hace creer que internet es el navegador.'
+  },
+  {
+    q: '¿Qué frustración dio origen al Machine Learning?',
+    o: ['Que las computadoras eran demasiado lentas',
+        'Que escribir a mano las reglas del mundo real era imposible: son infinitas',
+        'Que no existían suficientes programadores',
+        'Que las redes neuronales habían fracasado'],
+    r: 1,
+    why: 'La IA clásica escribía reglas a mano y funcionó en dominios cerrados como el ajedrez. Ante el mundo real fracasó porque <b>las reglas no se acaban nunca</b>. De ahí el giro: que las deduzca de ejemplos.'
+  },
+  {
+    q: 'Quieres agrupar a tus clientes por comportamiento, pero no sabes qué grupos existen. ¿Qué tipo de aprendizaje usas?',
+    o: ['Supervisado', 'No supervisado', 'Por refuerzo', 'Autosupervisado'],
+    r: 1,
+    why: '<b>No supervisado</b>: no le das respuestas de referencia porque no las tienes. Le pides que encuentre la estructura por su cuenta. Si ya supieras los grupos y quisieras clasificar clientes nuevos en ellos, ahí sí sería supervisado.'
+  },
+  {
+    q: 'En el organigrama tradicional, ¿hacia dónde fluye la energía de la organización?',
+    o: ['Hacia el cliente, que está arriba',
+        'Hacia arriba, buscando la aprobación de quien manda',
+        'Hacia los equipos, que reciben apoyo',
+        'Hacia afuera, al mercado'],
+    r: 1,
+    why: 'En la pirámide tradicional todos miran hacia arriba buscando aprobación, y el <b>cliente queda al final de la fila</b>. Ese es exactamente el problema que Hunter señala.'
+  },
+  {
+    q: 'Según la distinción de Hunter, ¿qué diferencia al poder de la autoridad?',
+    o: ['El poder se gana sirviendo y la autoridad la da el cargo',
+        'Son sinónimos con distinto origen histórico',
+        'El poder lo da el cargo y se gasta; la autoridad se gana sirviendo y se acumula',
+        'La autoridad solo aplica a organizaciones sin jerarquía'],
+    r: 2,
+    why: 'El <b>poder</b> viene del cargo, es inmediato y se gasta con el uso; cuando te vas, se va contigo. La <b>autoridad</b> se gana sirviendo, tarda, se acumula, y queda cuando te vas. Poder es la capa 7; autoridad es la capa 1.'
+  },
+  {
+    q: '¿Cuál es el giro que propone este taller sobre la "pirámide invertida"?',
+    o: ['Que invertirla es un error y hay que volver al modelo tradicional',
+        'Que Hunter no invirtió nada: corrigió un organigrama mal dibujado',
+        'Que solo funciona en empresas pequeñas',
+        'Que la pirámide debería ser un círculo'],
+    r: 1,
+    why: 'En OSI y en la IA <b>la base siempre se dibujó abajo</b>: a nadie se le ocurrió poner la capa física arriba. El organigrama fue el único de los tres dibujado al revés. Hunter no invirtió la pirámide, corrigió un error de dibujo.'
+  },
+  {
+    q: '¿Qué tienen en común el cable de red, el dato y quien lidera sirviendo?',
+    o: ['Que son los componentes más caros de cada sistema',
+        'Que sostienen todo, nadie los aplaude, y son lo primero que se recorta',
+        'Que se pueden reemplazar fácilmente',
+        'Que aparecen destacados en cualquier presentación comercial'],
+    r: 1,
+    why: 'Los tres son la <b>capa base</b>: cargan todo el peso, no aparecen en el pitch, y por eso son lo primero que se recorta cuando hay que ahorrar. Cuanto más invisible es una capa, más probable es que esté abandonada.'
+  },
+  {
+    q: 'Tu equipo no está rindiendo. ¿Qué haría un diagnóstico de abajo hacia arriba?',
+    o: ['Aumentar la exigencia y los indicadores',
+        'Reemplazar a las personas con bajo desempeño',
+        'Preguntar qué obstáculo nadie les quitó',
+        'Rediseñar el organigrama'],
+    r: 2,
+    why: 'Es la aplicación directa de la ley 2: <b>cuando algo falla arriba, el problema casi nunca está arriba</b>. Exigir más a la capa visible es el equivalente a rediseñar la interfaz cuando el cable está cortado.'
+  },
+  {
+    q: '¿Qué es la abstracción y cuál es su factura?',
+    o: ['Usar una capa sin entender la de abajo; la factura es que lo invisible se descuida',
+        'Simplificar el diseño; la factura es que se pierde rendimiento',
+        'Ocultar información a los usuarios; la factura es la desconfianza',
+        'Reducir el número de capas; la factura es la complejidad'],
+    r: 0,
+    why: 'La abstracción te permite mandar un mensaje sin saber de electrones y usar IA sin saber de matrices. Es un regalo enorme. Su factura: <b>lo que dejamos de ver, dejamos de mantenerlo</b>.'
+  },
+  {
+    q: 'Mandas un prompt. ¿Qué viaja realmente por el cable como luz o voltaje?',
+    o: ['El dato de entrenamiento del modelo',
+        'Tu prompt y la respuesta, nada más',
+        'El modelo completo, que se descarga a tu equipo',
+        'Los pesos del modelo, capa por capa'],
+    r: 1,
+    why: 'Viaja <b>tu prompt</b>, baja las siete capas de OSI hasta volverse luz o voltaje, y la respuesta hace el camino inverso. El <b>dato de entrenamiento no viaja</b>: ocurrió meses o años antes y hoy está comprimido en los pesos del modelo. Como la harina en un pan horneado: está, pero ya no es harina.'
+  },
+  {
+    q: '¿Cómo se relacionan la pila de OSI y la pila de la IA?',
+    o: ['La de IA se apila encima de OSI, en la capa 8',
+        'Son la misma pila con distintos nombres',
+        'Son perpendiculares: OSI es el camino, la IA es el edificio al final',
+        'OSI se apila encima de la IA'],
+    r: 2,
+    why: 'No se apilan, <b>se cruzan</b>. OSI es el camino; la pirámide de la IA es el edificio al final del camino. Y tu prompt no entra por abajo: <b>entra por la capa 5, la inferencia</b>, porque las capas 1 a 4 ya estaban terminadas antes de que escribieras nada.'
+  },
+  {
+    q: 'Si tuvieras que resumir las tres pirámides en una sola frase, ¿cuál sería?',
+    o: ['Cuantas más capas, mejor el sistema',
+        'La capa superior determina la calidad del conjunto',
+        'Lo que sostiene nunca es lo que se ve',
+        'Toda jerarquía debe eliminarse'],
+    r: 2,
+    why: 'Ingenieros de red en 1984, setenta años de investigación en IA y un libro de liderazgo llegaron por caminos distintos a la misma conclusión. Quien la entiende <b>deja de arreglar síntomas</b>: en su red, en sus modelos y en su gente.'
+  }
+];
+
+const quizWrap = document.getElementById('quiz');
+const prog = document.getElementById('prog');
+const scoreEl = document.getElementById('score');
+let qi = 0, aciertos = 0, respondida = false, actual = null;
+
+/* Baraja las opciones en cada corrida. Si la correcta cae siempre en la misma letra,
+   el participante detecta el patrón y deja de razonar. */
+function barajar(p){
+  const orden = p.o.map((_, i) => i);
+  for (let i = orden.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [orden[i], orden[j]] = [orden[j], orden[i]];
+  }
+  return { textos: orden.map(i => p.o[i]), correcta: orden.indexOf(p.r) };
+}
+
+function pintar(){
+  if (qi >= PREGUNTAS.length) return resultado();
+  const p = PREGUNTAS[qi];
+  respondida = false;
+  actual = barajar(p);
+  prog.style.width = (qi / PREGUNTAS.length * 100) + '%';
+  scoreEl.innerHTML = 'Pregunta <b>' + (qi + 1) + '</b> de ' + PREGUNTAS.length + ' · aciertos: <b>' + aciertos + '</b>';
+  quizWrap.innerHTML =
+    '<div class="q-card">' +
+      '<div class="q-meta">Pregunta ' + (qi + 1) + '</div>' +
+      '<h3>' + p.q + '</h3>' +
+      '<div class="opts">' +
+        actual.textos.map((t, i) => '<button class="opt" data-i="' + i + '"><span class="k">' + 'ABCD'[i] + '</span><span>' + t + '</span></button>').join('') +
+      '</div>' +
+      '<div class="why" id="why"></div>' +
+      '<div class="q-nav"><button id="sig" disabled>' + (qi === PREGUNTAS.length - 1 ? 'Ver resultado' : 'Siguiente') + '</button></div>' +
+    '</div>';
+  quizWrap.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => responder(+b.dataset.i)));
+  document.getElementById('sig').addEventListener('click', () => { qi++; pintar(); });
+}
+
+function responder(elegida){
+  if (respondida) return;
+  respondida = true;
+  const p = PREGUNTAS[qi];
+  const acerto = elegida === actual.correcta;
+  if (acerto) aciertos++;
+  quizWrap.querySelectorAll('.opt').forEach((b, i) => {
+    b.disabled = true;
+    if (i === actual.correcta) b.classList.add('ok');
+    else if (i === elegida) b.classList.add('bad');
+  });
+  const why = document.getElementById('why');
+  why.className = 'why show ' + (acerto ? 'good' : 'bad');
+  why.innerHTML = '<span class="verdict">' + (acerto ? '✓ Correcto' : '✗ No era esa') + '</span>' + p.why;
+  document.getElementById('sig').disabled = false;
+  scoreEl.innerHTML = 'Pregunta <b>' + (qi + 1) + '</b> de ' + PREGUNTAS.length + ' · aciertos: <b>' + aciertos + '</b>';
+}
+
+function resultado(){
+  prog.style.width = '100%';
+  const total = PREGUNTAS.length;
+  const pct = Math.round(aciertos / total * 100);
+  let titulo, texto;
+  if (pct >= 85){
+    titulo = 'Ya viajas entre las tres sin mapa.';
+    texto = 'Reconoces la misma estructura aunque cambie de disfraz. Eso es lo que separa a quien opera una herramienta de quien entiende un sistema. Llévalo a tu propio terreno: ¿cuál es la capa 1 que hoy nadie está mirando?';
+  } else if (pct >= 60){
+    titulo = 'Tienes las tres pirámides. Falta unirlas.';
+    texto = 'Reconoces cada una por separado, pero el valor está en la traducción entre ellas. Vuelve al Acto IV: las dos leyes son el puente, y son lo único que hay que memorizar.';
+  } else {
+    titulo = 'Vuelve al recorrido. Sin culpa.';
+    texto = 'Este taller conecta tres mundos que casi nunca se enseñan juntos, y eso cuesta la primera vez. Empieza por el Acto I: si entiendes OSI, las otras dos se leen solas.';
+  }
+  scoreEl.innerHTML = 'Completado · <b>' + aciertos + '</b> de ' + total;
+  quizWrap.innerHTML =
+    '<div class="result">' +
+      '<div class="big">' + pct + '%</div>' +
+      '<div class="of">' + aciertos + ' de ' + total + ' respuestas correctas</div>' +
+      '<h3>' + titulo + '</h3>' +
+      '<p>' + texto + '</p>' +
+      '<button id="reintentar">Volver a intentar</button>' +
+    '</div>';
+  document.getElementById('reintentar').addEventListener('click', () => { qi = 0; aciertos = 0; pintar(); });
+}
+pintar();
+</script>
+
+<!--
+  TALLER · LAS TRES PIRÁMIDES — Salazar Duke Impact Hub
+  - Tesis: OSI, la pila de la IA y el liderazgo servicial son la misma estructura.
+    Dos leyes las unen: (1) la base carga todo y es invisible; (2) el fallo sube, nunca baja.
+    Remate del Acto III: Hunter no invirtió la pirámide, corrigió un error de dibujo —
+    OSI y la IA siempre se dibujaron con la base abajo; el organigrama fue el único al revés.
+  - 25 diapositivas en 4 actos + trivia de 15 + glosario de 16 términos.
+    Navegación directa por acto desde el sidebar.
+  - Componente .pyr: pirámide de capas con anchos variables (--w) y color por capa (--c).
+    Se anima de abajo hacia arriba con nth-last-child: primero se dibuja la base.
+    Variante .trio para comparar las tres pirámides lado a lado.
+  - FUENTES: el modelo OSI y los conceptos de IA son conocimiento técnico establecido.
+    La distinción poder/autoridad y la pirámide invertida provienen de "La paradoja"
+    de James C. Hunter; aquí se parafrasean, no se cita el libro más allá de su tesis
+    central. Si el taller se dicta comercialmente, conviene revisar el libro y citarlo
+    de forma explícita en los materiales de apoyo.
+  - Carpeta autocontenida: index.html en la raíz + assets/ adentro.
+-->
+</body>
+</html>

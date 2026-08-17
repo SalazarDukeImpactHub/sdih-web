@@ -82,6 +82,13 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    /* Glow morado sutil arriba a la derecha — firma visual de las piezas voxel */
+    background-image: radial-gradient(
+      ellipse 55% 38% at 84% 4%,
+      rgba(139, 92, 246, 0.14),
+      transparent 62%
+    );
+    background-repeat: no-repeat;
   }
   html {
     scroll-behavior: smooth;

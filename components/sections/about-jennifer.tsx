@@ -73,6 +73,14 @@ export function AboutJennifer() {
                     <p className="text-muted-foreground text-sm">
                       Arquitecta de sistemas digitales · Innovation Catalyst (GIM Institute) · Co-fundadora Trazzos Labs
                     </p>
+                    <a
+                      href="/lab/quien-soy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-sm font-semibold text-primary hover:underline"
+                    >
+                      Conoce mi trayectoria completa →
+                    </a>
                   </div>
                 </div>
               </div>

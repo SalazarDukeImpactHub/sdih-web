@@ -244,16 +244,15 @@ export function Projects() {
           <p className="text-sm text-muted-foreground mb-4">
             Descubre más proyectos y detalles técnicos en nuestro GitHub
           </p>
-          <Button
-            asChild
-            variant="outline"
-            className="border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+          <a
+            href="https://github.com/SalazarDukeImpactHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block btn-soft"
           >
-            <a href="https://github.com/SalazarDukeImpactHub" target="_blank" rel="noopener noreferrer">
-              Ver todo en GitHub
-              <ArrowUpRight className="w-4 h-4 ml-2" />
-            </a>
-          </Button>
+            Ver todo en GitHub
+            <ArrowUpRight className="w-4 h-4 ml-2 inline" />
+          </a>
         </div>
       </div>
     </section>

@@ -60,8 +60,24 @@ export function Hero() {
         <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-primary/50 rounded-full animate-pulse delay-700" />
       </div>
 
+      {/* Escena voxel protagonista (desktop) */}
+      <div className="absolute inset-0 hidden lg:flex items-center justify-end pointer-events-none z-5 pr-12 xl:pr-20">
+        <div className="w-1/3 max-w-md relative">
+          <img
+            src="/images/voxel/laboratorio-harness.webp"
+            alt="Laboratorio del arnés — escena voxel"
+            className="w-full h-auto object-cover"
+            style={{
+              maskImage: "radial-gradient(ellipse 70% 70% at center, black 55%, transparent 78%)",
+              WebkitMaskImage: "radial-gradient(ellipse 70% 70% at center, black 55%, transparent 78%)",
+              filter: "blur(0.5px)",
+            }}
+          />
+        </div>
+      </div>
+
       {/* Main Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:max-w-4xl lg:text-left">
         {/* Tag */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/30 backdrop-blur-sm mb-8 animate-fade-in">
           <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />

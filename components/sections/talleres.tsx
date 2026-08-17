@@ -72,12 +72,30 @@ export function Talleres() {
           </div>
         </div>
 
-        {/* Availability Notice */}
-        <div className="p-6 rounded-2xl bg-muted/30 border border-border mb-12">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            <span className="text-foreground font-semibold">Talleres activos se publican en la vitrina</span> cuando están 100% listos.
-            No publicamos nada a medias. Accede a todos los disponibles y elige el que más te hable.
+        {/* Availability Notice — estilo ámbar dashed */}
+        <div className="p-6 rounded-2xl mb-12" style={{
+          border: "1px dashed var(--amber)",
+          background: "rgba(251, 191, 36, 0.03)",
+        }}>
+          <p className="text-sm leading-relaxed">
+            <span className="font-bold" style={{ color: "var(--amber)" }}>Talleres activos se publican en la vitrina</span>
+            <span style={{ color: "var(--muted-foreground)" }}> cuando están 100% listos. No publicamos nada a medias. Accede a todos los disponibles y elige el que más te hable.</span>
           </p>
+        </div>
+
+        {/* Visual Element — escena voxel */}
+        <div className="mb-8 flex justify-center">
+          <div className="w-full max-w-sm h-40 rounded-xl overflow-hidden">
+            <img
+              src="/images/voxel/memoria.webp"
+              alt="Talleres — escena voxel"
+              className="w-full h-full object-cover"
+              style={{
+                maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+                WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+              }}
+            />
+          </div>
         </div>
 
         {/* CTA */}

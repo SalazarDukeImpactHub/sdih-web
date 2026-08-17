@@ -6,6 +6,7 @@ interface PiezaLab {
   etiqueta: string
   href: string
   color: string
+  imagen?: string
 }
 
 const piezas: PiezaLab[] = [
@@ -16,6 +17,7 @@ const piezas: PiezaLab[] = [
     etiqueta: "Interactivo · ES/EN",
     href: "/lab/harness-lab",
     color: "#8b5cf6",
+    imagen: "/images/voxel/laboratorio-harness.webp",
   },
   {
     titulo: "Landing con IA",
@@ -24,6 +26,7 @@ const piezas: PiezaLab[] = [
     etiqueta: "Material de taller",
     href: "/lab/landing-con-ia",
     color: "#22d3ee",
+    imagen: "/images/voxel/landing.webp",
   },
   {
     titulo: "Las tres pirámides",
@@ -32,6 +35,7 @@ const piezas: PiezaLab[] = [
     etiqueta: "Material de taller",
     href: "/lab/piramides",
     color: "#a78bfa",
+    imagen: "/images/voxel/layers.webp",
   },
   {
     titulo: "ISO/IEC 42001",
@@ -40,6 +44,7 @@ const piezas: PiezaLab[] = [
     etiqueta: "Material de taller",
     href: "/lab/iso-42001",
     color: "#34d399",
+    imagen: "/images/voxel/riesgos.webp",
   },
 ]
 
@@ -77,24 +82,37 @@ export function Laboratorio() {
               href={pieza.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group voxel-card p-6 lg:p-8 transition-all hover:-translate-y-1 hover:shadow-2xl"
+              className="group voxel-card overflow-hidden transition-all hover:-translate-y-1 hover:shadow-2xl"
               style={{ borderLeft: `4px solid ${pieza.color}` }}
             >
-              <div className="flex items-start justify-between gap-4 mb-3">
-                <h3 className="text-xl font-bold text-foreground leading-snug">{pieza.titulo}</h3>
-                <ArrowUpRight
-                  className="w-5 h-5 flex-shrink-0 text-muted-foreground transition-all group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
+              {/* Thumbnail imagen voxel */}
+              {pieza.imagen && (
+                <div className="w-full h-40 overflow-hidden bg-muted/30">
+                  <img
+                    src={pieza.imagen}
+                    alt={pieza.titulo}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              {/* Contenido */}
+              <div className="p-6 lg:p-8">
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <h3 className="text-xl font-bold text-foreground leading-snug">{pieza.titulo}</h3>
+                  <ArrowUpRight
+                    className="w-5 h-5 flex-shrink-0 text-muted-foreground transition-all group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {pieza.descripcion}
+                </p>
+                <span
+                  className="inline-block text-xs font-bold uppercase tracking-wider"
+                  style={{ color: pieza.color }}
+                >
+                  {pieza.etiqueta}
+                </span>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                {pieza.descripcion}
-              </p>
-              <span
-                className="inline-block text-xs font-bold uppercase tracking-wider"
-                style={{ color: pieza.color }}
-              >
-                {pieza.etiqueta}
-              </span>
             </a>
           ))}
         </div>

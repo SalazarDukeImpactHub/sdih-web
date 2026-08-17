@@ -14,17 +14,17 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Salazar Duke Impact Hub | Ecosistema de Innovación y Tecnología',
-  description: 'Ecosistema que integra IA, automatización, datos, blockchain y sistemas de conocimiento para transformar negocios, proyectos y comunidades. Liderado por Jennifer Salazar Duke.',
-  keywords: ['IA', 'automatización', 'blockchain', 'innovación', 'transformación digital', 'consultoría', 'GPTs', 'Jennifer Salazar Duke'],
+  title: 'Salazar Duke Impact Hub | IA con alma: tecnología, salud mental e impacto',
+  description: 'Ecosistema de innovación social que integra IA, automatización y sistemas de conocimiento al servicio del bienestar. Talleres, asesorías y proyectos con doble impacto medible. Liderado por Jennifer Salazar Duke desde Medellín.',
+  keywords: ['IA', 'inteligencia artificial', 'salud mental', 'talleres de IA', 'automatización', 'innovación social', 'consultoría', 'GPTs', 'Jennifer Salazar Duke', 'Medellín'],
   authors: [{ name: 'Jennifer Salazar Duke' }],
   creator: 'Salazar Duke Impact Hub',
   openGraph: {
     type: 'website',
     locale: 'es_CO',
     siteName: 'Salazar Duke Impact Hub',
-    title: 'Salazar Duke Impact Hub | Ecosistema de Innovación',
-    description: 'Ecosistema tecnológico para transformar negocios y comunidades',
+    title: 'Salazar Duke Impact Hub | IA con alma',
+    description: 'Tecnología, salud mental e impacto social con resultados medibles',
   },
   twitter: {
     card: 'summary_large_image',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a0f',
+  themeColor: '#070b18',
   width: 'device-width',
   initialScale: 1,
 }

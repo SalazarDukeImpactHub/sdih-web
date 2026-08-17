@@ -187,11 +187,11 @@ export function Advisory() {
 
         {/* ===== SECTION 3.5: VISUAL ELEMENT ===== */}
         <div className="flex justify-center mb-16">
-          <div className="w-full max-w-sm h-40 rounded-xl overflow-hidden">
+          <div className="w-full max-w-sm rounded-xl overflow-hidden">
             <img
               src="/images/voxel/marca.webp"
               alt="Asesorías — escena voxel"
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
               style={{
                 maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
                 WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",

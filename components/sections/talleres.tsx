@@ -72,24 +72,24 @@ export function Talleres() {
           </div>
         </div>
 
-        {/* Availability Notice — estilo ámbar dashed */}
-        <div className="p-6 rounded-2xl mb-12" style={{
-          border: "1px dashed var(--amber)",
-          background: "rgba(251, 191, 36, 0.03)",
-        }}>
-          <p className="text-sm leading-relaxed">
-            <span className="font-bold" style={{ color: "var(--amber)" }}>Talleres activos se publican en la vitrina</span>
-            <span style={{ color: "var(--muted-foreground)" }}> cuando están 100% listos. No publicamos nada a medias. Accede a todos los disponibles y elige el que más te hable.</span>
+        {/* Availability Notice — sobrio, premium */}
+        <div className="voxel-card border-l-4 border-l-primary p-6 mb-12">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            <span className="font-bold text-foreground">
+              Solo publicamos talleres cuando están 100% listos.
+            </span>{" "}
+            Nada a medias. Los disponibles viven en la vitrina — entra y elige el que más te
+            hable.
           </p>
         </div>
 
         {/* Visual Element — escena voxel */}
         <div className="mb-8 flex justify-center">
-          <div className="w-full max-w-sm h-40 rounded-xl overflow-hidden">
+          <div className="w-full max-w-sm rounded-xl overflow-hidden">
             <img
               src="/images/voxel/memoria.webp"
               alt="Talleres — escena voxel"
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
               style={{
                 maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
                 WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",

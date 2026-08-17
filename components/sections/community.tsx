@@ -49,11 +49,11 @@ export function Community() {
 
             {/* Visual Element — escena voxel */}
             <div className="my-10 flex justify-center">
-              <div className="w-full max-w-xs h-32 rounded-xl overflow-hidden">
+              <div className="w-full max-w-xs rounded-xl overflow-hidden">
                 <img
                   src="/images/voxel/imagenes.webp"
                   alt="Comunidad — escena voxel"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto"
                   style={{
                     maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
                     WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",

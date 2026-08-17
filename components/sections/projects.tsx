@@ -241,11 +241,11 @@ export function Projects() {
 
         {/* Visual Element — escena voxel */}
         <div className="my-16 flex justify-center">
-          <div className="w-full max-w-sm h-40 rounded-xl overflow-hidden">
+          <div className="w-full max-w-sm rounded-xl overflow-hidden">
             <img
               src="/images/voxel/code.webp"
               alt="Proyectos — escena voxel"
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
               style={{
                 maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
                 WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",

@@ -108,7 +108,7 @@ export function Projects() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
             Innovación en <span className="text-primary">acción</span>
           </h2>
 
@@ -237,6 +237,21 @@ export function Projects() {
               </div>
             </a>
           ))}
+        </div>
+
+        {/* Visual Element — escena voxel */}
+        <div className="my-16 flex justify-center">
+          <div className="w-full max-w-sm h-40 rounded-xl overflow-hidden">
+            <img
+              src="/images/voxel/code.webp"
+              alt="Proyectos — escena voxel"
+              className="w-full h-full object-cover"
+              style={{
+                maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+                WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+              }}
+            />
+          </div>
         </div>
 
         {/* Bottom CTA */}

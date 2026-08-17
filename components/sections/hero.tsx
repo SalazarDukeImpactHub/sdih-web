@@ -62,15 +62,25 @@ export function Hero() {
 
       {/* Escena voxel protagonista (desktop) */}
       <div className="absolute inset-0 hidden lg:flex items-center justify-end pointer-events-none z-5 pr-12 xl:pr-20">
-        <div className="w-1/3 max-w-md relative">
+        <div className="w-1/3 max-w-md relative glow-halo">
+          {/* Halo de luz morada detrás */}
+          <div
+            className="absolute inset-0 rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%)",
+              filter: "blur(30px)",
+              transform: "scale(1.2)",
+            }}
+          />
           <img
             src="/images/voxel/laboratorio-harness.webp"
             alt="Laboratorio del arnés — escena voxel"
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover animate-float-cube"
             style={{
               maskImage: "radial-gradient(ellipse 70% 70% at center, black 55%, transparent 78%)",
               WebkitMaskImage: "radial-gradient(ellipse 70% 70% at center, black 55%, transparent 78%)",
               filter: "blur(0.5px)",
+              animationDuration: "9s",
             }}
           />
         </div>
@@ -78,8 +88,13 @@ export function Hero() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:max-w-4xl lg:text-left">
+        {/* Welcome Line */}
+        <p className="text-sm font-medium mb-6 animate-fade-in" style={{ color: "var(--accent-lt)" }}>
+          Bienvenida, bienvenido al hub
+        </p>
+
         {/* Tag */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/30 backdrop-blur-sm mb-8 animate-fade-in">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/30 backdrop-blur-sm mb-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
           <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
           <span className="text-sm text-muted-foreground tracking-wide">
             Innovación social donde la salud mental es ventaja competitiva

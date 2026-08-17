@@ -96,7 +96,7 @@ export function Resources() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
             Herramientas para tu{" "}
             <span className="text-primary">Crecimiento</span>
           </h2>
@@ -108,7 +108,7 @@ export function Resources() {
         </div>
 
         {/* Resources Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
           {resources.map((resource) => (
             <div
               key={resource.title}
@@ -215,6 +215,21 @@ export function Resources() {
               )}
             </div>
           ))}
+        </div>
+
+        {/* Visual Element — escena voxel */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-sm h-40 rounded-xl overflow-hidden">
+            <img
+              src="/images/voxel/host.webp"
+              alt="Recursos — escena voxel"
+              className="w-full h-full object-cover"
+              style={{
+                maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+                WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>

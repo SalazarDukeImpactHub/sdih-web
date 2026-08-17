@@ -122,7 +122,7 @@ export function Advisory() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
             Te ayudo a construir{" "}
             <span className="text-primary">a tu medida</span>
           </h2>
@@ -182,6 +182,21 @@ export function Advisory() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* ===== SECTION 3.5: VISUAL ELEMENT ===== */}
+        <div className="flex justify-center mb-16">
+          <div className="w-full max-w-sm h-40 rounded-xl overflow-hidden">
+            <img
+              src="/images/voxel/marca.webp"
+              alt="Asesorías — escena voxel"
+              className="w-full h-full object-cover"
+              style={{
+                maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+                WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+              }}
+            />
           </div>
         </div>
 

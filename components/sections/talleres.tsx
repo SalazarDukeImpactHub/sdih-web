@@ -13,14 +13,14 @@ export function Talleres() {
       </div>
 
       {/* Decorative Voxel Cubes */}
-      <div className="absolute top-20 right-10 w-16 h-16 opacity-10 pointer-events-none animate-float-cube">
+      <div className="absolute top-20 right-10 w-16 h-16 opacity-20 pointer-events-none animate-float-cube">
         <div className="relative w-full h-full">
-          <div className="absolute inset-0 border border-primary transform perspective" style={{transform: "rotateX(20deg) rotateY(25deg)"}} />
+          <div className="absolute inset-0 border-2" style={{borderColor: "var(--accent-lt)", transform: "rotateX(20deg) rotateY(25deg)"}} />
         </div>
       </div>
-      <div className="absolute bottom-32 left-8 w-12 h-12 opacity-5 pointer-events-none animate-float-cube" style={{animationDelay: "2s"}}>
+      <div className="absolute bottom-32 left-8 w-12 h-12 opacity-15 pointer-events-none animate-float-cube" style={{animationDelay: "2s"}}>
         <div className="relative w-full h-full">
-          <div className="absolute inset-0 border border-primary transform perspective" style={{transform: "rotateX(30deg) rotateY(40deg)"}} />
+          <div className="absolute inset-0 border-2" style={{borderColor: "var(--accent)", transform: "rotateX(30deg) rotateY(40deg)"}} />
         </div>
       </div>
 

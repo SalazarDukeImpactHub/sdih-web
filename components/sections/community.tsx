@@ -37,7 +37,7 @@ export function Community() {
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
               Únete a la <span className="text-primary">Comunidad</span>
             </h2>
 
@@ -46,6 +46,21 @@ export function Community() {
               día con las últimas tendencias en tecnología y transformación
               digital.
             </p>
+
+            {/* Visual Element — escena voxel */}
+            <div className="my-10 flex justify-center">
+              <div className="w-full max-w-xs h-32 rounded-xl overflow-hidden">
+                <img
+                  src="/images/voxel/imagenes.webp"
+                  alt="Comunidad — escena voxel"
+                  className="w-full h-full object-cover"
+                  style={{
+                    maskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+                    WebkitMaskImage: "radial-gradient(ellipse 80% 80% at center, black 50%, transparent 80%)",
+                  }}
+                />
+              </div>
+            </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

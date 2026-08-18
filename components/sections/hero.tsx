@@ -38,19 +38,11 @@ export function Hero() {
               animationDuration: "9s",
             }}
           />
+          {/* Recorte con transparencia real — la escena flota a plena calidad */}
           <img
-            src="/images/voxel/laboratorio-harness.webp"
+            src="/images/voxel/laboratorio-harness-cut.webp"
             alt="Laboratorio del arnés — escena voxel"
             className="relative w-full h-auto animate-float-cube"
-            style={{
-              /* screen: el fondo casi negro del render se funde con la página
-                 y las luces neón se suman — la escena queda sin caja */
-              mixBlendMode: "screen",
-              maskImage:
-                "radial-gradient(ellipse 88% 88% at center, black 65%, transparent 95%)",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 88% 88% at center, black 65%, transparent 95%)",
-            }}
           />
         </div>
       </div>

@@ -1,24 +1,4 @@
 import Image from "next/image"
-import { Sparkles, Lightbulb, Network, Target } from "lucide-react"
-
-const features = [
-  {
-    icon: Sparkles,
-    title: "Sistemas de IA para salud mental",
-  },
-  {
-    icon: Network,
-    title: "Metodología KAIA",
-  },
-  {
-    icon: Lightbulb,
-    title: "Conocimiento clínico consultable",
-  },
-  {
-    icon: Target,
-    title: "Doble impacto medible (SROI)",
-  },
-]
 
 export function AboutJennifer() {
   return (
@@ -45,47 +25,63 @@ export function AboutJennifer() {
               <span className="text-primary">un legado familiar</span>
             </h2>
 
-            <div className="space-y-6 text-lg leading-relaxed text-muted-foreground max-w-2xl">
-              <p>
-                Salazar Duke no es solo el nombre del hub — son mis apellidos.
-                Este universo es mi marca personal: el legado familiar de lo
-                que soy, convertido en un ecosistema donde la tecnología está
-                al servicio del bienestar.
-              </p>
-              <p>
-                En febrero de 2023 perdí a mi hermano. Ese dolor se convirtió
-                en misión: crear sistemas donde la salud mental no sea un
-                diagnóstico que limita, sino conocimiento que se estructura, se
-                mide y se escala. Hoy convierto 30 años de conocimiento clínico
-                en TLP de la Dra. María Victoria Pérez en un asistente de IA
-                consultable, y construyo mi propio sistema de autocuidado con
-                CBT e inteligencia artificial. Diseño desde la experiencia —
-                vivo con la condición que estoy sistematizando.
-              </p>
-              <p>
-                De esta marca nace todo lo que ves aquí:{" "}
-                <span className="text-foreground">
-                  Musa, la fábrica de contenido que ganó el Marathon de IA de
-                  Ruta N
-                </span>
-                ; el laboratorio educativo; los talleres; las asesorías. Lo que
-                busco construir es simple de decir y exigente de lograr:
-                sistemas con doble impacto medible — valor para las
-                organizaciones, propósito real para las personas.
-              </p>
+            {/* Una sola frase que lo dice todo */}
+            <p className="text-lg leading-relaxed text-muted-foreground max-w-2xl">
+              <span className="text-foreground">
+                Salazar Duke Impact Hub es la marca personal de Jennifer
+                Salazar Duke
+              </span>
+              : un ecosistema que educa y construye sistemas de IA al servicio
+              del bienestar.
+            </p>
+
+            {/* Las 4 preguntas que el visitante trae — newspaper grid */}
+            <div className="newspaper grid-cols-1 sm:grid-cols-2 mt-12">
+              <div className="p-7">
+                <span className="meta text-primary">¿Qué es?</span>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Un hub de innovación social. Mis apellidos convertidos en
+                  marca: el legado familiar de lo que soy, hecho ecosistema.
+                </p>
+              </div>
+              <div className="p-7">
+                <span className="meta text-primary">¿Qué hace?</span>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Educa y construye. Talleres prácticos de IA, piezas
+                  educativas abiertas, asesorías — y sistemas reales que nacen
+                  aquí, como{" "}
+                  <span className="text-foreground">
+                    Musa, 1er lugar en el Marathon de IA de Ruta N
+                  </span>
+                  .
+                </p>
+              </div>
+              <div className="p-7">
+                <span className="meta text-primary">¿Quién está detrás?</span>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Jennifer Salazar Duke, arquitecta de sistemas digitales. En
+                  febrero de 2023 perdí a mi hermano; ese dolor se convirtió en
+                  misión: que la salud mental no sea un diagnóstico que limita,
+                  sino conocimiento que se estructura, se mide y se escala.
+                </p>
+              </div>
+              <div className="p-7">
+                <span className="meta text-primary">¿Cómo son los sistemas?</span>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Convierten conocimiento en operación: 30 años de experiencia
+                  clínica en TLP de la Dra. María Victoria Pérez vueltos
+                  asistente de IA consultable, y mi propio sistema de
+                  autocuidado con CBT. Doble impacto medible: valor para las
+                  organizaciones, propósito real para las personas.
+                </p>
+              </div>
             </div>
 
-            {/* Capacidades — newspaper grid, sin bordes ni radios individuales */}
-            <div className="newspaper grid-cols-1 sm:grid-cols-2 mt-14">
-              {features.map((feature) => (
-                <div key={feature.title} className="p-6 flex items-start gap-4">
-                  <feature.icon className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                  <h4 className="text-sm font-medium text-foreground leading-snug">
-                    {feature.title}
-                  </h4>
-                </div>
-              ))}
-            </div>
+            {/* El momento emocional — una sola cita */}
+            <blockquote className="pull-quote mt-12 max-w-2xl">
+              Diseño desde la experiencia — vivo con la condición que estoy
+              sistematizando.
+            </blockquote>
           </div>
 
           {/* Retrato sticky con pie de foto en mono */}

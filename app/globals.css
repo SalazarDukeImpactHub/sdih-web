@@ -246,6 +246,20 @@
     z-index: -1;
   }
 
+  /* Cinta infinita de portadas — desfile lento, pausa al pasar el mouse */
+  .marquee {
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 1.25rem;
+    width: max-content;
+    animation: marquee 48s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
   /* Hover lift con curva de resorte — para tarjetas y elementos interactivos */
   .lift {
     transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -273,6 +287,12 @@
 @keyframes float-cube {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
+}
+
+/* La cinta duplica su contenido: -50% = un ciclo completo sin salto */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .animate-fade-in {

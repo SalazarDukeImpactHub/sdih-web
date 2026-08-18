@@ -2,6 +2,7 @@
 import { Header } from "@/components/sections/header"
 import { Hero } from "@/components/sections/hero"
 import { AboutJennifer } from "@/components/sections/about-jennifer"
+import { Problema } from "@/components/sections/problema"
 import { Talleres } from "@/components/sections/talleres"
 import { Laboratorio } from "@/components/sections/laboratorio"
 import { Projects } from "@/components/sections/projects"
@@ -22,6 +23,7 @@ export default function Home() {
         <Header />
         <Hero />
         <AboutJennifer />
+        <Problema />
         <Talleres />
         <Laboratorio />
         <Projects />
@@ -33,11 +35,7 @@ export default function Home() {
       </div>
 
       {/* AI Assistant Robot */}
-      <AIAssistant
-        gptUrl="https://chatgpt.com/g/g-69b36d312d5c8191bf0520f296509dfc-asesor-ia-salazar-duke-impact-hub"
-        assistantName="Asistente Salazar Duke"
-        welcomeMessage="Hola, soy el asistente de Salazar Duke Impact Hub. Estoy aquí para ayudarte a explorar nuestro ecosistema de innovación: servicios, GPTs personalizados y recursos tecnológicos. ¿Quieres que te guíe?"
-      />
+      <AIAssistant assistantName="Asistente Salazar Duke" />
     </main>
   )
 }

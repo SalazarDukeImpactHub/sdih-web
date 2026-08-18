@@ -2,21 +2,22 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, ExternalLink, Sparkles, Cpu, Zap, MessageCircle } from "lucide-react"
+import { X, ExternalLink, Sparkles, Bot, Zap, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface AIAssistantProps {
-  gptUrl?: string
   whatsappUrl?: string
   assistantName?: string
   welcomeMessage?: string
 }
 
 export function AIAssistant({
-  gptUrl = "https://chatgpt.com/g/g-69b36d312d5c8191bf0520f296509dfc-asesor-ia-salazar-duke-impact-hub",
-  whatsappUrl = "https://api.whatsapp.com/send/?phone=573136139790&text&type=phone_number&app_absent=0",
+  whatsappUrl = "https://wa.me/573136139790?text=" +
+    encodeURIComponent(
+      "Hola Jennifer, vengo de la página del hub y tengo una duda 💜"
+    ),
   assistantName = "Asistente Salazar Duke",
-  welcomeMessage = "Hola, soy el asistente de Salazar Duke Impact Hub. Estoy aquí para ayudarte a explorar nuestro ecosistema de innovación.",
+  welcomeMessage = "¡Hola! Qué gusto tenerte por aquí 💜 Si te queda cualquier duda — de los talleres, las asesorías o lo que estamos construyendo — escríbenos con confianza. Jennifer te responde personalmente, sin compromiso y con todo el gusto.",
 }: AIAssistantProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [hasInteracted, setHasInteracted] = useState(false)
@@ -75,7 +76,7 @@ export function AIAssistant({
                     >
                       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/30 to-accent/30 blur-md" />
                       <div className="relative w-full h-full rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/40 flex items-center justify-center overflow-hidden">
-                        <Cpu className="w-6 h-6 text-primary" />
+                        <Bot className="w-7 h-7 text-primary" />
                         {/* Scanning line effect */}
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/20 to-transparent"
@@ -131,48 +132,23 @@ export function AIAssistant({
                   </div>
                 </motion.div>
 
-                {/* Interactive Features */}
-                <motion.div 
-                  className="flex gap-2"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  {["IA", "GPTs", "Innovacion"].map((tag, i) => (
-                    <span 
-                      key={tag}
-                      className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </motion.div>
-
-                {/* CTA Buttons */}
+                {/* CTA único — WhatsApp, ningún otro camino */}
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="space-y-2"
+                  transition={{ delay: 0.25 }}
                 >
                   <Button
                     asChild
-                    className="w-full h-11 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground gap-2 font-medium shadow-lg shadow-primary/25 border border-primary/50"
-                  >
-                    <a href={gptUrl} target="_blank" rel="noopener noreferrer">
-                      <Cpu className="w-4 h-4" />
-                      Hablar con IA
-                      <ExternalLink className="w-3.5 h-3.5 ml-auto opacity-70" />
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="w-full h-11 border-green-500/50 text-green-400 hover:bg-green-500/10 hover:border-green-500 gap-2 font-medium"
+                    className="w-full h-12 gap-2 font-semibold text-[15px] shadow-lg"
+                    style={{
+                      background: "#25D366",
+                      color: "#052e16",
+                    }}
                   >
                     <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-4 h-4" />
-                      Escribir por WhatsApp
+                      <MessageCircle className="w-5 h-5" />
+                      Escríbeme por WhatsApp
                       <ExternalLink className="w-3.5 h-3.5 ml-auto opacity-70" />
                     </a>
                   </Button>

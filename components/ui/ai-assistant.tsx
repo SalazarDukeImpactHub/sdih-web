@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, ExternalLink, Sparkles, Bot, Zap, MessageCircle } from "lucide-react"
+import { X, ExternalLink, Sparkles, Zap, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 interface AIAssistantProps {
@@ -76,7 +76,17 @@ export function AIAssistant({
                     >
                       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/30 to-accent/30 blur-md" />
                       <div className="relative w-full h-full rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/40 flex items-center justify-center overflow-hidden">
-                        <Bot className="w-7 h-7 text-primary" />
+                        {/* La misma carita del robot flotante — identidad consistente */}
+                        <svg viewBox="0 0 64 64" className="w-9 h-9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="14" y="18" width="36" height="30" rx="8" className="fill-muted/80 stroke-primary" strokeWidth="1.5" />
+                          <line x1="32" y1="10" x2="32" y2="18" className="stroke-primary" strokeWidth="2" strokeLinecap="round" />
+                          <circle cx="32" cy="8" r="3" className="fill-primary" />
+                          <ellipse cx="24" cy="31" rx="3.5" ry="4" className="fill-primary" />
+                          <circle cx="25" cy="30" r="1" className="fill-white/70" />
+                          <ellipse cx="40" cy="31" rx="3.5" ry="4" className="fill-primary" />
+                          <circle cx="41" cy="30" r="1" className="fill-white/70" />
+                          <path d="M 24 40 Q 32 46 40 40" className="stroke-primary" strokeWidth="2" strokeLinecap="round" fill="none" />
+                        </svg>
                         {/* Scanning line effect */}
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/20 to-transparent"

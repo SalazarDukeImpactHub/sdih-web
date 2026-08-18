@@ -36,7 +36,7 @@ const socials = [
 
 export function Social() {
   return (
-    <section id="social" className="relative py-24 lg:py-32">
+    <section id="social" className="relative py-14 lg:py-20">
       {/* Background */}
       <div className="absolute inset-0 bg-muted/20" />
 

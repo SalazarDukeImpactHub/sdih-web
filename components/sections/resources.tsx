@@ -83,7 +83,7 @@ const resources: Resource[] = [
 
 export function Resources() {
   return (
-    <section id="recursos" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="recursos" className="relative py-14 lg:py-20 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-muted/20" />
 

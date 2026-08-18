@@ -107,7 +107,7 @@ export function Advisory() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
 
   return (
-    <section id="asesorias" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="asesorias" className="relative py-14 lg:py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 grid-pattern opacity-50" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />

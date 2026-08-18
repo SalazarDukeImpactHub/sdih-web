@@ -17,7 +17,7 @@ export function Hero() {
     >
       {/* Escena voxel — arte, no interfaz. Única pieza en movimiento. */}
       <div className="absolute inset-0 hidden lg:flex items-center justify-end pointer-events-none pr-10 xl:pr-20">
-        <div className="w-[22%] max-w-xs relative glow-halo">
+        <div className="w-[32%] max-w-md relative glow-halo">
           <img
             src="/images/voxel/laboratorio-harness.webp"
             alt="Laboratorio del arnés — escena voxel"

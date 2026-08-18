@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/reveal"
 
 export function Community() {
   return (
-    <section id="comunidad" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="comunidad" className="relative py-14 lg:py-20 overflow-hidden">
       {/* Background Lines */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 

@@ -25,7 +25,7 @@ export function Talleres() {
   return (
     <section
       id="talleres"
-      className="relative py-28 lg:py-40 border-t border-border"
+      className="relative py-16 lg:py-24 border-t border-border"
     >
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal>

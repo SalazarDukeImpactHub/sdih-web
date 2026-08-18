@@ -12,7 +12,7 @@ const features = [
   },
   {
     icon: Lightbulb,
-    title: "Conocimiento clinico consultable",
+    title: "Conocimiento clínico consultable",
   },
   {
     icon: Target,
@@ -24,7 +24,7 @@ export function AboutJennifer() {
   return (
     <section
       id="jennifer"
-      className="relative py-28 lg:py-40 border-t border-border"
+      className="relative py-16 lg:py-24 border-t border-border"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <p className="eyebrow mb-14">Sobre Jennifer</p>
@@ -41,20 +41,39 @@ export function AboutJennifer() {
                 letterSpacing: "-0.025em",
               }}
             >
-              Diseñando el Futuro{" "}
-              <span className="text-primary">Digital</span>
+              Una marca personal,{" "}
+              <span className="text-primary">un legado familiar</span>
             </h2>
 
-            <p className="text-lg leading-relaxed text-muted-foreground max-w-2xl">
-              En febrero de 2023 perdí a mi hermano. Ese dolor se convirtió en
-              misión: crear sistemas donde la salud mental no sea un
-              diagnóstico que limita, sino conocimiento que se estructura, se
-              mide y se escala. Hoy convierto 30 años de conocimiento clínico
-              en TLP de la Dra. María Victoria Pérez en un asistente de IA
-              consultable, y construyo mi propio sistema de autocuidado con CBT
-              e inteligencia artificial. Diseño desde la experiencia — vivo con
-              la condición que estoy sistematizando.
-            </p>
+            <div className="space-y-6 text-lg leading-relaxed text-muted-foreground max-w-2xl">
+              <p>
+                Salazar Duke no es solo el nombre del hub — son mis apellidos.
+                Este universo es mi marca personal: el legado familiar de lo
+                que soy, convertido en un ecosistema donde la tecnología está
+                al servicio del bienestar.
+              </p>
+              <p>
+                En febrero de 2023 perdí a mi hermano. Ese dolor se convirtió
+                en misión: crear sistemas donde la salud mental no sea un
+                diagnóstico que limita, sino conocimiento que se estructura, se
+                mide y se escala. Hoy convierto 30 años de conocimiento clínico
+                en TLP de la Dra. María Victoria Pérez en un asistente de IA
+                consultable, y construyo mi propio sistema de autocuidado con
+                CBT e inteligencia artificial. Diseño desde la experiencia —
+                vivo con la condición que estoy sistematizando.
+              </p>
+              <p>
+                De esta marca nace todo lo que ves aquí:{" "}
+                <span className="text-foreground">
+                  Musa, la fábrica de contenido que ganó el Marathon de IA de
+                  Ruta N
+                </span>
+                ; el laboratorio educativo; los talleres; las asesorías. Lo que
+                busco construir es simple de decir y exigente de lograr:
+                sistemas con doble impacto medible — valor para las
+                organizaciones, propósito real para las personas.
+              </p>
+            </div>
 
             {/* Capacidades — newspaper grid, sin bordes ni radios individuales */}
             <div className="newspaper grid-cols-1 sm:grid-cols-2 mt-14">

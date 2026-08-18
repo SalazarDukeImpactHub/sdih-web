@@ -17,11 +17,31 @@ export function Hero() {
     >
       {/* Escena voxel — arte, no interfaz. Única pieza en movimiento. */}
       <div className="absolute inset-0 hidden lg:flex items-center justify-end pointer-events-none pr-10 xl:pr-20">
-        <div className="w-[32%] max-w-md relative glow-halo">
+        <div className="w-[32%] max-w-md relative">
+          {/* Luz morada que respira detrás de la escena */}
+          <div
+            className="absolute -inset-16 animate-breathe pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 45%, rgba(139, 92, 246, 0.32) 0%, transparent 65%)",
+              filter: "blur(38px)",
+            }}
+          />
+          {/* Reflejo cyan tenue bajo la escena — luz de piso */}
+          <div
+            className="absolute -inset-10 top-1/2 animate-breathe pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 45% at 50% 80%, rgba(34, 211, 238, 0.16) 0%, transparent 70%)",
+              filter: "blur(28px)",
+              animationDelay: "1.6s",
+              animationDuration: "9s",
+            }}
+          />
           <img
             src="/images/voxel/laboratorio-harness.webp"
             alt="Laboratorio del arnés — escena voxel"
-            className="w-full h-auto animate-float-cube opacity-90"
+            className="relative w-full h-auto animate-float-cube"
             style={{
               maskImage:
                 "radial-gradient(ellipse 75% 75% at center, black 55%, transparent 82%)",

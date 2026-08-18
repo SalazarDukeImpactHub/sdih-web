@@ -16,8 +16,8 @@ export function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
     >
       {/* Escena voxel — arte, no interfaz. Única pieza en movimiento. */}
-      <div className="absolute inset-0 hidden lg:flex items-center justify-end pointer-events-none pr-10 xl:pr-20">
-        <div className="w-[32%] max-w-md relative">
+      <div className="absolute inset-0 hidden lg:flex items-center justify-end pointer-events-none pr-4 xl:pr-10">
+        <div className="w-[44%] max-w-2xl relative">
           {/* Luz morada que respira detrás de la escena */}
           <div
             className="absolute -inset-24 animate-breathe pointer-events-none"

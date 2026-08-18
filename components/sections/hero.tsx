@@ -43,10 +43,13 @@ export function Hero() {
             alt="Laboratorio del arnés — escena voxel"
             className="relative w-full h-auto animate-float-cube"
             style={{
+              /* screen: el fondo casi negro del render se funde con la página
+                 y las luces neón se suman — la escena queda sin caja */
+              mixBlendMode: "screen",
               maskImage:
-                "radial-gradient(ellipse 75% 75% at center, black 55%, transparent 82%)",
+                "radial-gradient(ellipse 88% 88% at center, black 65%, transparent 95%)",
               WebkitMaskImage:
-                "radial-gradient(ellipse 75% 75% at center, black 55%, transparent 82%)",
+                "radial-gradient(ellipse 88% 88% at center, black 65%, transparent 95%)",
             }}
           />
         </div>

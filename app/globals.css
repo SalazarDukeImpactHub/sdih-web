@@ -297,8 +297,8 @@
 
 /* Luz que respira — acompaña al voxel del hero */
 @keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.55; }
-  50% { transform: scale(1.09); opacity: 1; }
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.12); opacity: 1; }
 }
 
 .animate-breathe {

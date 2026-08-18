@@ -150,6 +150,22 @@ export function Projects() {
               </div>
             </a>
             ))}
+            {/* Celda de cierre: ocupa el hueco de la grilla y lleva a GitHub */}
+            <a
+              href="https://github.com/SalazarDukeImpactHub"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group p-8 flex flex-col items-start justify-center gap-3 lift"
+            >
+              <span className="meta text-primary">¿Quieres ver más?</span>
+              <span className="font-display italic text-2xl leading-tight text-foreground">
+                Todos los proyectos viven en GitHub
+                <ArrowUpRight className="inline-block w-5 h-5 ml-2 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+              <span className="text-sm text-muted-foreground">
+                Código abierto, documentación y detalles técnicos.
+              </span>
+            </a>
           </div>
         </Reveal>
 

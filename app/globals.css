@@ -4,49 +4,52 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   Salazar Duke Impact Hub — sistema editorial
-   Base navy profundo + tinta hueso cálida + ámbar como único
-   acento de UI. El morado queda reservado al arte voxel.
-   La jerarquía la hace la tipografía y el aire, no el color.
+   Salazar Duke Impact Hub — sistema editorial voxel
+   Base navy profundo + morado como acento primario de marca +
+   cyan secundario. Estructura editorial (serif, newspaper),
+   color de marca morado. La jerarquía la hace la tipografía
+   y el aire; la vida la ponen la luz y el color.
    ============================================================ */
 :root {
-  /* Base */
-  --background: #080c16;
-  --foreground: #ede6d8;
-  --surface: #0d1220;
-  --surface-2: #12182a;
-  --card: #0d1220;
-  --card-foreground: #ede6d8;
-  --popover: #0d1220;
-  --popover-foreground: #ede6d8;
-  /* Ámbar — único acento de interfaz */
-  --primary: #d9a441;
-  --primary-foreground: #120d02;
-  /* Neutros cálidos */
-  --secondary: #12182a;
-  --secondary-foreground: #ded6c6;
-  --muted: #0f1424;
-  --muted-foreground: #a09884;
-  --accent: #d9a441;
-  --accent-foreground: #120d02;
-  --destructive: #e26d5c;
+  /* Base navy de marca */
+  --background: #070b18;
+  --foreground: #f4f6fb;
+  --surface: #0d1226;
+  --surface-2: #111832;
+  --card: #0d1226;
+  --card-foreground: #f4f6fb;
+  --popover: #0d1226;
+  --popover-foreground: #f4f6fb;
+  /* Morado — acento primario de marca */
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
+  /* Neutros fríos */
+  --secondary: #111832;
+  --secondary-foreground: #e6e9f2;
+  --muted: #101630;
+  --muted-foreground: #8b93ab;
+  /* Cyan — acento secundario (con moderación) */
+  --accent: #22d3ee;
+  --accent-foreground: #070b18;
+  --destructive: #f87171;
   --destructive-foreground: #ffffff;
-  /* Hairlines cálidas — el gramaje del papel */
-  --border: rgba(237, 230, 216, 0.13);
-  --input: rgba(237, 230, 216, 0.13);
-  --ring: #d9a441;
+  /* Hairlines frías sobre navy */
+  --border: rgba(148, 163, 216, 0.15);
+  --input: rgba(148, 163, 216, 0.15);
+  --ring: #8b5cf6;
   /* Semánticos */
-  --green: #6bbf8a;
-  --amber: #d9a441;
-  /* Morado — SOLO arte voxel, nunca tipografía ni UI */
+  --green: #4ade80;
+  --amber: #fbbf24;
+  /* Lila — variante clara del morado para destacados */
+  --accent-lt: #a78bfa;
   --voxel: #8b5cf6;
   /* Editorial: casi sin radio */
   --radius: 2px;
 }
 
 .dark {
-  --background: #080c16;
-  --foreground: #ede6d8;
+  --background: #070b18;
+  --foreground: #f4f6fb;
 }
 
 @theme inline {
@@ -76,6 +79,7 @@
   --color-ring: var(--ring);
   --color-green: var(--green);
   --color-amber: var(--amber);
+  --color-accent-lt: var(--accent-lt);
   --color-voxel: var(--voxel);
   --radius-sm: 2px;
   --radius-md: 2px;
@@ -89,14 +93,39 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    /* Una sola fuente de luz, tenue y alta. Nada de dual glow. */
-    background-image: radial-gradient(
-      ellipse 70% 45% at 50% -8%,
-      rgba(217, 164, 65, 0.07),
-      transparent 68%
-    );
-    background-repeat: no-repeat;
+    /* Textura de grilla voxel + dos visos de luz de marca:
+       morado arriba a la derecha, cyan tenue abajo a la izquierda. */
+    background-image:
+      linear-gradient(rgba(139, 92, 246, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.045) 1px, transparent 1px),
+      radial-gradient(ellipse 55% 40% at 84% 0%, rgba(139, 92, 246, 0.16), transparent 62%),
+      radial-gradient(ellipse 45% 32% at 6% 100%, rgba(34, 211, 238, 0.08), transparent 60%);
+    background-size: 56px 56px, 56px 56px, 100% 100%, 100% 100%;
+    background-repeat: repeat, repeat, no-repeat, no-repeat;
     background-attachment: fixed;
+  }
+  /* Cada bloque de la página tiene su propia luz — visos alternados
+     morado/cyan por sección, muy tenues, detrás del contenido. */
+  main > section {
+    position: relative;
+  }
+  main > section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 55% 45% at 12% 0%,
+      rgba(139, 92, 246, 0.09),
+      transparent 62%
+    );
+  }
+  main > section:nth-of-type(even)::before {
+    background: radial-gradient(
+      ellipse 55% 45% at 88% 0%,
+      rgba(34, 211, 238, 0.06),
+      transparent 62%
+    );
   }
   html {
     scroll-behavior: smooth;
@@ -280,7 +309,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(237, 230, 216, 0.16);
+  background: rgba(148, 163, 216, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -288,6 +317,6 @@
 }
 
 ::selection {
-  background: rgba(217, 164, 65, 0.3);
+  background: rgba(139, 92, 246, 0.35);
   color: var(--foreground);
 }

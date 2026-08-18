@@ -60,11 +60,12 @@ export function Laboratorio() {
                 className="group block lift"
               >
               {pieza.imagen && (
-                <div className="w-full aspect-[2/1] overflow-hidden border-b border-border">
+                {/* object-contain: la escena completa siempre, nunca recortada */}
+                <div className="w-full aspect-[2/1] overflow-hidden border-b border-border bg-surface">
                   <img
                     src={pieza.imagen}
                     alt={pieza.titulo}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
               )}

@@ -60,7 +60,6 @@ export function Laboratorio() {
                 className="group block lift"
               >
               {pieza.imagen && (
-                {/* object-contain: la escena completa siempre, nunca recortada */}
                 <div className="w-full aspect-[2/1] overflow-hidden border-b border-border bg-surface">
                   <img
                     src={pieza.imagen}
